@@ -53,7 +53,7 @@ namespace Finial_Project_RealEstateWebPage.Controllers
 
             string Username = signUp.UserID;
 
-            signUp.UserAccountSignUp(signUp.UserID, signUp.CompanyName, 
+            signUp.UserAccountSignUp(Username, signUp.CompanyName, 
                                      signUp.CompanyStreet,
                                      signUp.CompanyCity, signUp.CompanyState, 
                                      signUp.CompanyZipCode,
@@ -61,20 +61,24 @@ namespace Finial_Project_RealEstateWebPage.Controllers
                                      signUp.LicenseNumber,
                                      signUp.BrokerType, signUp.Password);
 
-            signUp.AccountPersonalInfoSignUp(signUp.UserID, 
+            signUp.AccountPersonalInfoSignUp(Username, 
                                              signUp.FirstName,  
                                              signUp.LastName,
                                              signUp.Street, 
                                              signUp.City,
                                              signUp.State,
                                              signUp.ZipCode, 
-                                             signUp.PhoneNumber, signUp.Email);
+                                             signUp.PhoneNumber,
+                                             signUp.Email);
 
-            signUp.AccountContactInfoSignUp(signUp.UserID, signUp.ContactFirstName, 
+            signUp.AccountContactInfoSignUp(Username, 
+                                            signUp.ContactFirstName, 
                                             signUp.ContactLastName,
-                                            signUp.ContactStreet, signUp.ContactCity, 
+                                            signUp.ContactStreet, 
+                                            signUp.ContactCity, 
                                             signUp.ContactState,
-                                            signUp.ContactZipCode, signUp.ContactPhoneNumber, 
+                                            signUp.ContactZipCode, 
+                                            signUp.ContactPhoneNumber, 
                                             signUp.ContactEmail);
 
             return View("~/Views/Login&SignUp/SignUpPage.cshtml");
