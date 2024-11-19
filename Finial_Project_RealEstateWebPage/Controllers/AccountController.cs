@@ -44,6 +44,8 @@ namespace Finial_Project_RealEstateWebPage.Controllers
 
 
         //This is the last fucking brach im going to make!!
+        //This is the secondlast fucking brach im going to make!!
+
 
         [HttpGet]
         public IActionResult Login()
