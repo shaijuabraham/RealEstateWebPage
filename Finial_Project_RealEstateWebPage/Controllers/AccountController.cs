@@ -39,6 +39,7 @@ namespace Finial_Project_RealEstateWebPage.Controllers
         //New way commit
         // Hi this is Ankit here 
         // Tell me if you can see this
+        // New trying to merge 
 
         [HttpGet]
         public IActionResult Login()
