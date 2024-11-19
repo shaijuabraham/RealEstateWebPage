@@ -12,6 +12,14 @@ namespace Finial_Project_RealEstateWebPage.Controllers
         [HttpGet]
         public IActionResult HomePageRun()
         {
+
+            return View("~/Views/Home/HomePage.cshtml");
+
+            
+        }
+
+        public IActionResult ViewHome()
+        {
             Home home = new Home();
 
             DBConnect objDB = new DBConnect();
