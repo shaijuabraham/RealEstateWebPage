@@ -35,6 +35,8 @@ namespace Finial_Project_RealEstateWebPage.Controllers
             //New way commit
             //New way commit
         }
+        //New way commit
+        //New way commit
 
         [HttpGet]
         public IActionResult Login()
