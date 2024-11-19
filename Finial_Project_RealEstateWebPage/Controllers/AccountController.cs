@@ -27,24 +27,8 @@ namespace Finial_Project_RealEstateWebPage.Controllers
 
             }
             //return View();
-            //Hsbsbhwbihbqhiqibhibabcbhachakaakbakcckas
-            //New way commit
-            //New way commit
-            //New way commit
-            //New way commit
-            //New way commit
-            //New way commit
         }
-        // Adding new commita jasks
-        //New way commit
-        //New way commit
-        // Hi this is Ankit here 
-        // Tell me if you can see this
-        // New trying to merge 
 
-
-        //This is the last fucking brach im going to make!!
-        //This is the secondlast fucking brach im going to make!!
 
 
         [HttpGet]
@@ -58,12 +42,16 @@ namespace Finial_Project_RealEstateWebPage.Controllers
             return View("~/Views/Login&SignUp/SignUpPage.cshtml");
         }
 
+        public IActionResult SignUpPage()
+        {
+            return View(new AccountRegistration());
+        }
+
 
         [HttpPost]
-        public IActionResult SignUp(string BrokerType) { 
-        
+        public IActionResult SignUp(AccountRegistration signUp) {
 
-          AccountRegistration signUp = new AccountRegistration();
+            string Username = signUp.UserID;
 
             signUp.UserAccountSignUp(signUp.UserID, signUp.CompanyName, 
                                      signUp.CompanyStreet,
@@ -71,7 +59,7 @@ namespace Finial_Project_RealEstateWebPage.Controllers
                                      signUp.CompanyZipCode,
                                      signUp.CompanyPhoneNumber, signUp.CompanyEmail, 
                                      signUp.LicenseNumber,
-                                     BrokerType, signUp.Password);
+                                     signUp.BrokerType, signUp.Password);
 
             signUp.AccountPersonalInfoSignUp(signUp.UserID, 
                                              signUp.FirstName,  

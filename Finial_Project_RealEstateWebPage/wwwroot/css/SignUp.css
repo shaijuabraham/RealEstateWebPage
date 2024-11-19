@@ -1,0 +1,73 @@
+﻿/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+h2, h3 {
+    color: #333;
+}
+
+.signUpInfo {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+    .signUpInfo h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .signUpInfo h3 {
+        margin-top: 20px;
+        color: #555;
+    }
+
+    /* Label and TextBox Styling */
+    .signUpInfo label {
+        font-weight: bold;
+        margin-top: 10px;
+        display: block;
+    }
+
+    /* Style for text inputs, password fields, and dropdowns */
+    .signUpInfo input[type="text"],
+    .signUpInfo select {
+        width: 100%; /* inputs take full width of the container */
+        padding: 10px; /* Adding Padding inside the textbox*/
+        margin: 5px 0 15px 0; /* add space between input fields */
+        border: 1px solid #ccc; /*light gray border around the input fields */
+        border-radius: 4px; /* Slightly round the corners of the inputs for a softer look */
+    }
+
+/* Address Section Styling */
+.Address {
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+    .Address label {
+        margin-top: 5px;
+    }
+
+/* Button Styling */
+.signUpInfo input[type="submit"], .signUpInfo button {
+    background-color: black;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
