@@ -29,6 +29,11 @@ namespace Finial_Project_RealEstateWebPage.Controllers
             //return View();
             //Hsbsbhwbihbqhiqibhibabcbhachakaakbakcckas
             //New way commit
+            //New way commit
+            //New way commit
+            //New way commit
+            //New way commit
+            //New way commit
         }
 
         [HttpGet]
