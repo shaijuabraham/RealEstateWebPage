@@ -1,7 +1,7 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@model Finial_Project_RealEstateWebPage.Models.Login
+@model Finial_Project_RealEstateWebPage.Models.Home
 
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
@@ -41,6 +41,56 @@
             </form>
         </div>
 
+    </div>
+
+    <div class="homeDashboard">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>PropertyImages:</th>
+                <th>AskingPrice:</th>
+                <th>BedRooms:</th>
+                <th>BathRooms:</th>
+                <th>HomeSize:</th>
+                <th>Street:</th>
+                <th>City:</th>
+                <th>State:</th>
+                <th>Zip:</th>
+
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <img src="Model.PropertyImages" class="img-homeFront" />
+                    </td>
+                    <td>
+                        @Model.AskingPrice.ToString("C2")
+                    </td>
+                    <td>
+                        @Model.BedRooms
+                    </td>
+                    <td>
+                        @Model.BathRooms
+                    </td>
+                    <td>
+                        @Model.HomeSize
+                    </td>
+                    <td>
+                        @Model.Street
+                    </td>
+                    <td>
+                        @Model.City
+                    </td>
+                    <td>
+                        @Model.State
+                    </td>
+                    <td>
+                        @Model.Zip
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
 </body>
