@@ -1,5 +1,7 @@
-﻿using Finial_Project_RealEstateWebPage.Models;
+﻿using Elfie.Serialization;
+using Finial_Project_RealEstateWebPage.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ViewEngines;
 using System.Security.Cryptography.X509Certificates;
 
 namespace Finial_Project_RealEstateWebPage.Controllers
@@ -16,8 +18,10 @@ namespace Finial_Project_RealEstateWebPage.Controllers
 
             if (loginStatus == true)
             {
+                var options = new CookieOptions { Expires = DateTime.Now.AddDays(1) };
+                Response.Cookies.Append("UserID", UserID,options);
                 ViewBag.ErrorMessage = "Login Accepted";
-                return View("~/Views/Login&SignUp/LoginPage.cshtml");
+                return View("~/Views/RealtorPage/RealtorMainPage.cshtml");
             }
             else
             {
