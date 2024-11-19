@@ -42,6 +42,9 @@ namespace Finial_Project_RealEstateWebPage.Controllers
         // Tell me if you can see this
         // New trying to merge 
 
+
+        //This is the last fucking brach im going to make!!
+
         [HttpGet]
         public IActionResult Login()
         {
