@@ -1,0 +1,129 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model Finial_Project_RealEstateWebPage.Models.AccountRegistration
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    Layout = null;
+
+    ViewData["Title"] = "SignUp";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>
+       Account Registration
+    </title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <h1>
+        Login
+    </h1>
+    <br />
+    <br />
+
+    <form asp-controller="Account" asp-action="SignUp" method="post">
+        <div class="signUpInfo">
+            @* history.back() will take the user back to the page they visited just before the SiginUp page *@
+            <button type="button" onclick="history.back()" style="height: 39px; width: 118px;">Back</button>
+            <h2>Sign Up</h2>
+
+            <h3>Personal Information</h3>
+            <label for="txtFullName">First Name</label>
+            <input type="text" id="txtFullName" name="FullName" @Model.FirstName/><br />
+            <label for="txtLastName">Last Name</label>
+            <input type="text" id="txtLastName" name="LastName" @Model.LastName /><br />
+
+            <div class="Address">
+                <label for="txtStreet">Street</label>
+                <input type="text" id="txtStreet" name="Street" @Model.Street /><br />
+                <label for="txtCity">City</label>
+                <input type="text" id="txtCity" name="City" @Model.City /><br />
+                <label for="txtState">State</label>
+                <input type="text" id="txtState" name="State" @Model.State/><br />
+                <label for="txtZipCode">Zip Code</label>
+                <input type="text" id="txtZipCode" name="ZipCode" @Model.ZipCode/><br />
+            </div>
+
+            <label for="txtPhoneNumber">Phone Number</label>
+            <input type="text" id="txtPhoneNumber" name="PhoneNumber" /><br />
+
+            <label for="txtEmail">Email Address</label>
+            <input type="email" id="txtEmail" name="Email" /><br />
+
+            <h3>Contact Information</h3>
+            <label for="txtContactFirstName">First Name</label>
+            <input type="text" id="txtContactFirstName" name="ContactFirstName" @Model.ContactFirstName/><br />
+            <label for="txtContactLastName">Last Name</label>
+            <input type="text" id="txtContactLastName" name="ContactLastName" @Model.ContactLastName/><br />
+
+            <div class="Address">
+                <label for="txtContactStreet">Street</label>
+                <input type="text" id="txtContactStreet" name="ContactStreet" @Model.ContactStreet/><br />
+                <label for="txtContactCity">City</label>
+                <input type="text" id="txtContactCity" name="ContactCity"@Model.ContactCity /><br />
+                <label for="txtContactState">State</label>
+                <input type="text" id="txtContactState" name="ContactState"@Model.ContactState /><br />
+                <label for="txtContactZipcode">Zip Code</label>
+                <input type="text" id="txtContactZipcode" name="ContactZipCode" @Model.CompanyZipCode /><br />
+            </div>
+
+            <label for="txtContactPhoneNumber">Phone Number</label>
+            <input type="text" id="txtContactPhoneNumber" name="ContactPhoneNumber" @Model.ContactPhoneNumber /><br />
+
+            <label for="txtContactEmail">Email Address</label>
+            <input type="email" id="txtContactEmail" name="ContactEmail" @Model.ContactEmail/><br />
+
+            <h3>Real Estate Company Information</h3>
+            <label for="txtCompanyName">Company Name</label>
+            <input type="text" id="txtCompanyName" name="CompanyName" @Model.CompanyName/><br />
+
+            <div class="Address">
+                <label for="txtCompanyStreet">Street</label>
+                <input type="text" id="txtCompanyStreet" name="CompanyStreet" @Model.CompanyStreet/><br />
+                <label for="txtCompanyCity">City</label>
+                <input type="text" id="txtCompanyCity" name="CompanyCity" @Model.CompanyCity/><br />
+                <label for="txtCompanyState">State</label>
+                <input type="text" id="txtCompanyState" name="CompanyState" @Model.CompanyState/><br />
+                <label for="txtCompanyZipCode">Zip Code</label>
+                <input type="text" id="txtCompanyZipCode" name="CompanyZipCode" @Model.CompanyZipCode/><br />
+            </div>
+
+            <label for="txtCompanyPhoneNumber">Company Phone Number</label>
+            <input type="text" id="txtCompanyPhoneNumber" name="CompanyPhoneNumber" @Model.CompanyPhoneNumber /><br />
+
+            <label for="txtCompanyEmail">Email Address</label>
+            <input type="email" id="txtCompanyEmail" name="CompanyEmail" @Model.CompanyEmail/><br />
+
+            <h3>Account Information</h3>
+            <label for="txtUsername">Username</label>
+            <input type="text" id="txtUsername" name="Username" @Model.UserID/><br />
+
+            <label for="txtPassword">Password</label>
+            <input type="password" id="txtPassword" name="Password" @Model.Password /><br />
+
+            <label for="txtConfirmPassword">Confirm Password</label>
+            <input type="password" id="txtConfirmPassword" name="ConfirmPassword" @Model.Password/><br />
+
+            <h3>Additional Information</h3>
+            <label for="txtLicenseNumber">License Number</label>
+            <input type="text" id="txtLicenseNumber" name="LicenseNumber" @Model.LicenseNumber/><br />
+
+            <label for="ddlBrokerType">Broker Type (e.g., residential, commercial)</label>
+            <select id="ddlBrokerType" name="BrokerType">
+                <option value="Residential">Residential</option>
+                <option value="Commercial">Commercial</option>
+            </select><br />
+            <button type="submit" class="btn btn-primary" style="width: 91px;">Submit</button>
+        </div>
+    </form>
+</body>
+
+</html>
