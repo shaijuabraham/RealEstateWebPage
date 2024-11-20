@@ -144,14 +144,11 @@
                     <div class="col-md-4 mb-4">
                         <div class="card h-100">
                             <div class="card-body">
-                                <h5 class="card-title">@home.Street, @home.City</h5>
                                 <p class="card-text">
-                                    <strong>Asking Price:</strong> @home.AskingPrice.ToString("C2")<br />
-                                    <strong>Bedrooms:</strong> @home.BedRooms<br />
-                                    <strong>Bathrooms:</strong> @home.BathRooms<br />
+                                    @home.AskingPrice.ToString("C2")<br>
+                                    @home.Street @home.City @home.ZipCode<br />
+                                    <strong>Bed:</strong> @home.BedRooms <strong>Bath:</strong> @home.BathRooms<br />
                                     <strong>Home Size:</strong> @home.HomeSize<br />
-                                    <strong>State:</strong> @home.State<br />
-                                    <strong>ZipCode:</strong> @home.ZipCode
                                 </p>
                             </div>
                             <div class="card-footer text-center">
