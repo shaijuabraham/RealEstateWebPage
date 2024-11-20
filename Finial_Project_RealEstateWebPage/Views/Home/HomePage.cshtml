@@ -138,50 +138,33 @@
 
 
     <div class="homeDashboard">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Asking Price</th>
-                    <th>Bedrooms</th>
-                    <th>Bathrooms</th>
-                    <th>Home Size</th>
-                    <th>Street</th>
-                    <th>City</th>
-                    <th>State</th>
-                    <th>ZipCode</th>
-                </tr>
-            </thead>
-            <tbody>
-                @if (ViewBag.HomesList != null && ((List<Finial_Project_RealEstateWebPage.Models.Home>)ViewBag.HomesList).Count > 0)
+            <div class="row">
+                @foreach (var home in (List<Finial_Project_RealEstateWebPage.Models.Home>)ViewBag.HomesList)
                 {
-                    foreach (var home in ViewBag.HomesList)
-                    {
-                        <tr>
-                            <td>@home.AskingPrice.ToString("C2")</td>
-                            <td>@home.BedRooms</td>
-                            <td>@home.BathRooms</td>
-                            <td>@home.HomeSize</td>
-                            <td>@home.Street</td>
-                            <td>@home.City</td>
-                            <td>@home.State</td>
-                            <td>@home.ZipCode</td>
-                            <td>
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">@home.Street, @home.City</h5>
+                                <p class="card-text">
+                                    <strong>Asking Price:</strong> @home.AskingPrice.ToString("C2")<br />
+                                    <strong>Bedrooms:</strong> @home.BedRooms<br />
+                                    <strong>Bathrooms:</strong> @home.BathRooms<br />
+                                    <strong>Home Size:</strong> @home.HomeSize<br />
+                                    <strong>State:</strong> @home.State<br />
+                                    <strong>ZipCode:</strong> @home.ZipCode
+                                </p>
+                            </div>
+                            <div class="card-footer text-center">
                                 <form asp-action="ViewDetails" asp-controller="Home" method="get">
                                     <input type="hidden" name="id" @* value="@home.PropertyID" *@ />
-                                    <button type="submit">View More</button>
+                                    <button type="submit" class="btn btn-primary">View More</button>
                                 </form>
-                            </td>
-                        </tr>
-                    }
+                            </div>
+                        </div>
+                    </div>
                 }
-                else
-                {
-                    <tr>
-                        <td colspan="8">No data available.</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+            </div>
+        }
     </div>
 </body>
 </html>
