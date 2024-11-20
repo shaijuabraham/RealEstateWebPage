@@ -1,5 +1,7 @@
-﻿using Finial_Project_RealEstateWebPage.Models;
+﻿using Elfie.Serialization;
+using Finial_Project_RealEstateWebPage.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ViewEngines;
 using System.Security.Cryptography.X509Certificates;
 
 namespace Finial_Project_RealEstateWebPage.Controllers
@@ -16,8 +18,10 @@ namespace Finial_Project_RealEstateWebPage.Controllers
 
             if (loginStatus == true)
             {
+                var options = new CookieOptions { Expires = DateTime.Now.AddDays(1) };
+                Response.Cookies.Append("UserID", UserID,options);
                 ViewBag.ErrorMessage = "Login Accepted";
-                return View("~/Views/Login&SignUp/LoginPage.cshtml");
+                return View("~/Views/RealtorPage/RealtorMainPage.cshtml");
             }
             else
             {
@@ -27,24 +31,8 @@ namespace Finial_Project_RealEstateWebPage.Controllers
 
             }
             //return View();
-            //Hsbsbhwbihbqhiqibhibabcbhachakaakbakcckas
-            //New way commit
-            //New way commit
-            //New way commit
-            //New way commit
-            //New way commit
-            //New way commit
         }
-        // Adding new commita jasks
-        //New way commit
-        //New way commit
-        // Hi this is Ankit here 
-        // Tell me if you can see this
-        // New trying to merge 
 
-
-        //This is the last fucking brach im going to make!!
-        //This is the secondlast fucking brach im going to make!!
 
 
         [HttpGet]
@@ -58,35 +46,43 @@ namespace Finial_Project_RealEstateWebPage.Controllers
             return View("~/Views/Login&SignUp/SignUpPage.cshtml");
         }
 
+        public IActionResult SignUpPage()
+        {
+            return View(new AccountRegistration());
+        }
+
 
         [HttpPost]
-        public IActionResult SignUp(string BrokerType) { 
-        
+        public IActionResult SignUp(AccountRegistration signUp) {
 
-          AccountRegistration signUp = new AccountRegistration();
+            string Username = signUp.UserID;
 
-            signUp.UserAccountSignUp(signUp.UserID, signUp.CompanyName, 
+            signUp.UserAccountSignUp(Username, signUp.CompanyName, 
                                      signUp.CompanyStreet,
                                      signUp.CompanyCity, signUp.CompanyState, 
                                      signUp.CompanyZipCode,
                                      signUp.CompanyPhoneNumber, signUp.CompanyEmail, 
                                      signUp.LicenseNumber,
-                                     BrokerType, signUp.Password);
+                                     signUp.BrokerType, signUp.Password);
 
-            signUp.AccountPersonalInfoSignUp(signUp.UserID, 
+            signUp.AccountPersonalInfoSignUp(Username, 
                                              signUp.FirstName,  
                                              signUp.LastName,
                                              signUp.Street, 
                                              signUp.City,
                                              signUp.State,
                                              signUp.ZipCode, 
-                                             signUp.PhoneNumber, signUp.Email);
+                                             signUp.PhoneNumber,
+                                             signUp.Email);
 
-            signUp.AccountContactInfoSignUp(signUp.UserID, signUp.ContactFirstName, 
+            signUp.AccountContactInfoSignUp(Username, 
+                                            signUp.ContactFirstName, 
                                             signUp.ContactLastName,
-                                            signUp.ContactStreet, signUp.ContactCity, 
+                                            signUp.ContactStreet, 
+                                            signUp.ContactCity, 
                                             signUp.ContactState,
-                                            signUp.ContactZipCode, signUp.ContactPhoneNumber, 
+                                            signUp.ContactZipCode, 
+                                            signUp.ContactPhoneNumber, 
                                             signUp.ContactEmail);
 
             return View("~/Views/Login&SignUp/SignUpPage.cshtml");
