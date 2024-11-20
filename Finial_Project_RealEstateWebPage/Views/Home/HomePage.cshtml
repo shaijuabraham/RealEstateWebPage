@@ -40,59 +40,148 @@
                 <button type="submit" class="btnAccount">Sign Up</button>
             </form>
         </div>
-
     </div>
+
+    <div class="Container">
+        <div class="Search">
+            <form asp-action="SearchHomes" asp-controller="Home" method="post">
+                <div id="SearchTab">
+                    <input type="text" id="txtSearchTab" name="txtSearchTab" placeholder="Enter City or Zipcode" />
+                    <button type="submit">Search</button>
+                </div>
+                <br />
+                <div id="Options">
+                    <div id="HomeType">
+                        <label for="rdbHomeType">Home Type</label>
+                        <div id="rdbHomeType">
+                            <input type="radio" id="House" name="HomeType" value="House" />
+                            <label for="House">House</label>
+                            <input type="radio" id="Townhomes" name="HomeType" value="Townhomes" />
+                            <label for="Townhomes">Townhomes</label>
+                            <input type="radio" id="Multi-family" name="HomeType" value="Multi-family" />
+                            <label for="Multi-family">Multi-family</label>
+                            <input type="radio" id="Apartments" name="HomeType" value="Apartments" />
+                            <label for="Apartments">Apartments</label>
+                            <input type="radio" id="Manufactured" name="HomeType" value="Manufactured" />
+                            <label for="Manufactured">Manufactured</label>
+                            <input type="radio" id="Condos" name="HomeType" value="Condos" />
+                            <label for="Condos">Condos</label>
+                        </div>
+                    </div>
+                    <div id="PriceList">
+                        <label for="txtMiniumAmount">Price Range</label>
+                        <br />
+                        <input type="number" id="txtMiniumAmount" name="txtMiniumAmount" placeholder="Minimum Amount" />
+                        <input type="number" id="txtMaxAmount" name="txtMaxAmount" placeholder="Maximum Amount" />
+                        <br />
+                        <br />
+                    </div>
+                    <div id="NoOfBedrooms">
+                        <label for="Bedrooms">Number of Bedrooms</label>
+                        <br />
+                        <input type="radio" id="rd1" name="Bedrooms" value="1" />
+                        <label for="rd1">1+</label>
+                        <input type="radio" id="rd2" name="Bedrooms" value="2" />
+                        <label for="rd2">2+</label>
+                        <input type="radio" id="rd3" name="Bedrooms" value="3" />
+                        <label for="rd3">3+</label>
+                        <input type="radio" id="rd4" name="Bedrooms" value="4" />
+                        <label for="rd4">4+</label>
+                        <input type="radio" id="rd5" name="Bedrooms" value="5" />
+                        <label for="rd5">5+</label>
+                    </div>
+                    <div id="NoOfBathrooms">
+                        <label for="Bathrooms">Number of Bathrooms</label>
+                        <br />
+                        <input type="radio" id="rad1" name="Bathrooms" value="1" />
+                        <label for="rad1">1+</label>
+                        <input type="radio" id="rad2" name="Bathrooms" value="2" />
+                        <label for="rad2">2+</label>
+                        <input type="radio" id="rad3" name="Bathrooms" value="3" />
+                        <label for="rad3">3+</label>
+                        <input type="radio" id="rad4" name="Bathrooms" value="4" />
+                        <label for="rad4">4+</label>
+                    </div>
+                    <div id="Amenities">
+                        <label for="Amenities">Amenities</label>
+                        <br />
+                        <div id="CheckboxList1">
+                            <input type="checkbox" id="Electricity" name="Amenities" value="Electricity" />
+                            <label for="Electricity">Electricity</label>
+                            <input type="checkbox" id="WaterSupply" name="Amenities" value="WaterSupply" />
+                            <label for="WaterSupply">Water Supply</label>
+                            <input type="checkbox" id="GasSupply" name="Amenities" value="GasSupply" />
+                            <label for="GasSupply">Gas Supply</label>
+                            <input type="checkbox" id="SewageSystem" name="Amenities" value="SewageSystem" />
+                            <label for="SewageSystem">Sewage System</label>
+                            <input type="checkbox" id="HeatingSystem" name="Amenities" value="HeatingSystem" />
+                            <label for="HeatingSystem">Heating System</label>
+                            <input type="checkbox" id="CoolingSystem" name="Amenities" value="CoolingSystem" />
+                            <label for="CoolingSystem">Cooling System</label>
+                            <input type="checkbox" id="InternetAccess" name="Amenities" value="InternetAccess" />
+                            <label for="InternetAccess">Internet Access</label>
+                            <input type="checkbox" id="HotWaterHeater" name="Amenities" value="HotWaterHeater" />
+                            <label for="HotWaterHeater">Hot Water Heater</label>
+                            <input type="checkbox" id="TrashDisposal" name="Amenities" value="TrashDisposal" />
+                            <label for="TrashDisposal">Trash Disposal</label>
+                            <input type="checkbox" id="SmokeAlarm" name="Amenities" value="SmokeAlarm" />
+                            <label for="SmokeAlarm">Smoke Alarm</label>
+                            <input type="checkbox" id="SwimmingPool" name="Amenities" value="SwimmingPool" />
+                            <label for="SwimmingPool">Swimming Pool</label>
+                        </div>
+                        <br />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
 
     <div class="homeDashboard">
         <table class="table">
             <thead>
-            <tr>
-                <th>PropertyImages:</th>
-                <th>AskingPrice:</th>
-                <th>BedRooms:</th>
-                <th>BathRooms:</th>
-                <th>HomeSize:</th>
-                <th>Street:</th>
-                <th>City:</th>
-                <th>State:</th>
-                <th>Zip:</th>
-
-            </tr>
+                <tr>
+                    <th>Asking Price</th>
+                    <th>Bedrooms</th>
+                    <th>Bathrooms</th>
+                    <th>Home Size</th>
+                    <th>Street</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>ZipCode</th>
+                </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>
-                        <img src="Model.PropertyImages" class="img-homeFront" />
-                    </td>
-                    <td>
-                        @Model.AskingPrice.ToString("C2")
-                    </td>
-                    <td>
-                        @Model.BedRooms
-                    </td>
-                    <td>
-                        @Model.BathRooms
-                    </td>
-                    <td>
-                        @Model.HomeSize
-                    </td>
-                    <td>
-                        @Model.Street
-                    </td>
-                    <td>
-                        @Model.City
-                    </td>
-                    <td>
-                        @Model.State
-                    </td>
-                    <td>
-                        @Model.Zip
-                    </td>
-                </tr>
+                @if (ViewBag.HomesList != null && ((List<Finial_Project_RealEstateWebPage.Models.Home>)ViewBag.HomesList).Count > 0)
+                {
+                    foreach (var home in ViewBag.HomesList)
+                    {
+                        <tr>
+                            <td>@home.AskingPrice.ToString("C2")</td>
+                            <td>@home.BedRooms</td>
+                            <td>@home.BathRooms</td>
+                            <td>@home.HomeSize</td>
+                            <td>@home.Street</td>
+                            <td>@home.City</td>
+                            <td>@home.State</td>
+                            <td>@home.ZipCode</td>
+                            <td>
+                                <form asp-action="ViewDetails" asp-controller="Home" method="get">
+                                    <input type="hidden" name="id" @* value="@home.PropertyID" *@ />
+                                    <button type="submit">View More</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="8">No data available.</td>
+                    </tr>
+                }
             </tbody>
         </table>
     </div>
-
 </body>
-
 </html>

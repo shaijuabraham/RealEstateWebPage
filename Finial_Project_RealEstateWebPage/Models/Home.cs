@@ -9,13 +9,15 @@
         private string street;
         private string city;
         private string state;
-        private int zip;
+        private int zipCode;
 
         public Home()
         {
 
         }
-        public Home(double askingPrice, int bedRooms, int bathRooms, string homeSize, string street, string city, string state, int zip)
+
+        public Home(double askingPrice, int bedRooms, int bathRooms, string homeSize, 
+            string street, string city, string state, int zipCode)
         {
             this.askingPrice = askingPrice;
             this.bedRooms = bedRooms;
@@ -24,9 +26,8 @@
             this.street = street;
             this.city = city;
             this.state = state;
-            this.zip = zip;
+            this.zipCode = zipCode;
         }
-
         public double AskingPrice
         {
             get { return askingPrice; }
@@ -45,13 +46,13 @@
             set { bathRooms = value; }
         }
 
-        public String HomeSize
+        public string HomeSize
         {
             get { return homeSize; }
             set { homeSize = value; }
         }
 
-        public String Street
+        public string Street
         {
             get { return street; }
             set { street = value; }
@@ -69,10 +70,11 @@
             set { state = value; }
         }
 
-        public int Zip
+        public int ZipCode
         {
-            get { return zip; }
-            set { zip = value; }
+            get { return zipCode; }
+            set { zipCode = value; }
         }
+
     }
 }
