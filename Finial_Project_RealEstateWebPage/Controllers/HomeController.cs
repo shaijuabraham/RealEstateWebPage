@@ -9,6 +9,7 @@ namespace Finial_Project_RealEstateWebPage.Controllers
 {
     public class HomeController : Controller
     {
+        // Checkig if the comit works
 
         [HttpGet]
         public IActionResult HomePageRun()
@@ -70,7 +71,7 @@ namespace Finial_Project_RealEstateWebPage.Controllers
                 Console.WriteLine("Error retrieving data: " + ex.Message);
             }
 
-            ViewBag.HomesList = homes; // Pass the list of homes to the view using ViewBag
+            ViewBag.HomesList = homes; 
             return View("~/Views/Home/HomePage.cshtml");
 
         }
