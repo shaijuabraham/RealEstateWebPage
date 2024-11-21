@@ -106,6 +106,7 @@ namespace Finial_Project_RealEstateWebPage.Models
                         if (record.Table.Rows.Count > 0)
                         {
                             home.AskingPrice = double.Parse(record["AskingPrice"].ToString());
+                            home.BuildingNumber = record["BuildingNumber"].ToString();
                             home.BedRooms = int.Parse(record["BedRooms"].ToString());
                             home.BathRooms = int.Parse(record["Bathrooms"].ToString());
                             home.HomeSize = record["HomeSize"].ToString();
@@ -132,27 +133,23 @@ namespace Finial_Project_RealEstateWebPage.Models
             return homes;
         }
 
-        DBConnect objDB = new DBConnect();
-        SqlCommand objCommand = new SqlCommand();
-
-        /*Get property data based on realtoruserid 
-         when relator login in the data*/
-        public DataSet GetPropertyData(string userId)
-        {
-            objCommand.CommandType = CommandType.StoredProcedure;
-            objCommand.CommandText = "GetRealtorPropertyList";
-            objCommand.Parameters.Clear();
-            objCommand.Parameters.AddWithValue("@UserID", userId);
-            return objDB.GetDataSetUsingCmdObj(objCommand);
-        }
+       
         /*get the partal data from the database when relator userid 
          match the datatable*/
         public List<Home> GetPartalHomedata(string userId)
         {
+            DBConnect objDB = new DBConnect();
+            SqlCommand objCommand = new SqlCommand();
+            Console.WriteLine("Available in the result set.1");
             List<Home> homes = new List<Home>();
             try
             {
-                DataSet ds = GetPropertyData(userId);
+
+                objCommand.CommandType = CommandType.StoredProcedure;
+                objCommand.CommandText = "GetRealtorPropertyList";
+                objCommand.Parameters.Clear();
+                objCommand.Parameters.AddWithValue("@UserID", userId);
+                DataSet ds = objDB.GetDataSetUsingCmdObj(objCommand);
 
                 if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                 {
@@ -163,6 +160,7 @@ namespace Finial_Project_RealEstateWebPage.Models
                         if (record.Table.Rows.Count > 0)
                         {
                             home.AskingPrice = double.Parse(record["AskingPrice"].ToString());
+                            home.BuildingNumber = record["BuildingNumber"].ToString();
                             home.BedRooms = int.Parse(record["BedRooms"].ToString());
                             home.BathRooms = int.Parse(record["Bathrooms"].ToString());
                             home.HomeSize = record["HomeSize"].ToString();
@@ -173,6 +171,7 @@ namespace Finial_Project_RealEstateWebPage.Models
                         }
 
                         homes.Add(home);
+                        Console.WriteLine("Available in the result set.2");
                     }
                 }
                 else

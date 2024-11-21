@@ -21,7 +21,7 @@ namespace Finial_Project_RealEstateWebPage.Controllers
                 var options = new CookieOptions { Expires = DateTime.Now.AddDays(1) };
                 Response.Cookies.Append("UserID", UserID,options);
                 ViewBag.ErrorMessage = "Login Accepted";
-                return View("~/Views/RealtorPage/RealtorMainPage.cshtml");
+                return RedirectToAction("Index", "Realtor");
             }
             else
             {

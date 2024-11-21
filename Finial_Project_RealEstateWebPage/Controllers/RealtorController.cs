@@ -8,15 +8,16 @@ namespace Finial_Project_RealEstateWebPage.Controllers
     public class RealtorController : Controller
     {
 
-        [HttpGet]
+       [HttpGet]
         public IActionResult Index()
         {
+            Console.WriteLine("indexPage.");
             string userId = Request.Cookies["UserID"];
             Home home = new Home();
             List<Home> homes = home.GetPartalHomedata(userId);
             if (homes != null && homes.Count > 0)
             {
-                ViewBag.HomesList = homes;
+                ViewBag.RelatorHomesList = homes;  
             }
             else
             {

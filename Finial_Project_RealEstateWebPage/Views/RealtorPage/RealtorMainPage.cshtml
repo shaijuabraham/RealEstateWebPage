@@ -10,6 +10,7 @@
 
     ViewData["Title"] = "RelatorPage";
 }
+
 <!DOCTYPE html>
 
 <html>
@@ -37,7 +38,7 @@
                 @if (ViewBag.RelatorHomesList != null && ViewBag.RelatorHomesList.Count > 0)
                 {
                     <div class="row">
-                        @foreach (var home in (List<Finial_Project_RealEstateWebPage.Models.Home>)ViewBag.HomesList)
+                        @foreach (var home in (List<Finial_Project_RealEstateWebPage.Models.Home>)ViewBag.RelatorHomesList)
                         {
                             <div class="property">
                                 <div class="card-body">
