@@ -93,7 +93,7 @@ namespace Finial_Project_RealEstateWebPage.Models
                     CommandType = CommandType.StoredProcedure,
                     CommandText = "GetPropertyData"
                 };
-
+                command.Parameters.Clear();
                 DataSet ds = objDB.GetDataSetUsingCmdObj(command);
 
                 if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
@@ -130,6 +130,61 @@ namespace Finial_Project_RealEstateWebPage.Models
             return homes;
         }
 
+        DBConnect objDB = new DBConnect();
+        SqlCommand objCommand = new SqlCommand();
+
+        /*Get property data based on realtoruserid 
+         when relator login in the data*/
+        public DataSet GetPropertyData(string userId)
+        {
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "GetRealtorPropertyList";
+            objCommand.Parameters.Clear();
+            objCommand.Parameters.AddWithValue("@UserID", userId);
+            return objDB.GetDataSetUsingCmdObj(objCommand);
+        }
+        /*get the partal data from the database when relator userid 
+         match the datatable*/
+        public List<Home> GetPartalHomedata(string userId)
+        {
+            List<Home> homes = new List<Home>();
+            try
+            {
+                DataSet ds = GetPropertyData(userId);
+
+                if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow record in ds.Tables[0].Rows)
+                    {
+                        Home home = new Home();
+
+                        if (record.Table.Rows.Count > 0)
+                        {
+                            home.AskingPrice = double.Parse(record["AskingPrice"].ToString());
+                            home.BedRooms = int.Parse(record["BedRooms"].ToString());
+                            home.BathRooms = int.Parse(record["Bathrooms"].ToString());
+                            home.HomeSize = record["HomeSize"].ToString();
+                            home.Street = record["Street"].ToString();
+                            home.City = record["City"].ToString();
+                            home.State = record["State"].ToString();
+                            home.ZipCode = int.Parse(record["ZipCode"].ToString());
+                        }
+
+                        homes.Add(home);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("No data available in the result set.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error retrieving data: " + ex.Message);
+            }
+
+            return homes;
+        }
 
     }
 }

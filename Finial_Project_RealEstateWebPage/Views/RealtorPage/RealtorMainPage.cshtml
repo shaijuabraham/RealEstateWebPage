@@ -1,0 +1,75 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model Finial_Project_RealEstateWebPage.Models.Home
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    Layout = null;
+
+    ViewData["Title"] = "RelatorPage";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>
+        DashBord
+    </title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <br />
+    <br/>
+
+      <div class="titleContainer">
+        <div id="PageName">
+            <h1>Mr.Home's</h1>
+            <p>The best deals in town!!</p>
+        </div>
+
+        <div class="homeDashboard">
+            <div class="row">
+                @if (ViewBag.HomesList != null && ViewBag.HomesList.Count > 0)
+                {
+                    <div class="row">
+                        @foreach (var home in (List<Finial_Project_RealEstateWebPage.Models.Home>)ViewBag.HomesList)
+                        {
+                            <div class="property">
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        @home.AskingPrice.ToString("C2")<br>
+                                        @home.Street @home.City @home.ZipCode<br />
+                                        <strong>Bed:</strong> @home.BedRooms <strong>Bath:</strong> @home.BathRooms<br />
+                                        <strong>Home Size:</strong> @home.HomeSize<br />
+                                    </p>
+                                </div>
+                                <div class="card-footer text-center">
+                                    <form asp-action="ViewDetails" asp-controller="Home" method="get">
+                                        <input type="hidden" name="id" @* value="@home.PropertyID" *@ />
+                                        <button type="submit" class="btn btn-primary">View More</button>
+                                    </form>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <p>No homes available to display.</p>
+                }
+
+            </div>
+        </div>
+
+</body>
+
+
+
+</html>
+
+

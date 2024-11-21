@@ -141,8 +141,8 @@
             <div class="row">
                 @foreach (var home in (List<Finial_Project_RealEstateWebPage.Models.Home>)ViewBag.HomesList)
                 {
-                    <div class="col-md-4 mb-4">
-                        <div class="card h-100">
+                    <div class="property">
+                       
                             <div class="card-body">
                                 <p class="card-text">
                                     @home.AskingPrice.ToString("C2")<br>
@@ -157,7 +157,6 @@
                                     <button type="submit" class="btn btn-primary">View More</button>
                                 </form>
                             </div>
-                        </div>
                     </div>
                 }
             </div>
