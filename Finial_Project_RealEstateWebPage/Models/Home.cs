@@ -7,6 +7,7 @@ namespace Finial_Project_RealEstateWebPage.Models
     public class Home
     {
         private double askingPrice;
+        public string BuildingNumber {  get; set; }
         private int bedRooms;
         private int bathRooms;
         private string homeSize;
@@ -112,6 +113,7 @@ namespace Finial_Project_RealEstateWebPage.Models
                             home.City = record["City"].ToString();
                             home.State = record["State"].ToString();
                             home.ZipCode = int.Parse(record["ZipCode"].ToString());
+                            home.BuildingNumber = record["BuildingNumber"].ToString();
                         }
 
                         homes.Add(home);

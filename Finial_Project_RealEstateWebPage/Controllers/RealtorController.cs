@@ -11,15 +11,16 @@ namespace Finial_Project_RealEstateWebPage.Controllers
         [HttpGet]
         public IActionResult Index()
         {
+            string userId = Request.Cookies["UserID"];
             Home home = new Home();
-            List<Home> homes = home.GetPartalHomedata();
+            List<Home> homes = home.GetPartalHomedata(userId);
             if (homes != null && homes.Count > 0)
             {
                 ViewBag.HomesList = homes;
             }
             else
             {
-                ViewBag.HomesList = new List<Home>();  //empty list to avoid null reference
+                ViewBag.RelatorHomesList = new List<Home>();  //empty list to avoid null reference
             }
 
             return View("~/Views/RealtorPage/RealtorMainPage.cshtml");

@@ -34,7 +34,7 @@
 
         <div class="homeDashboard">
             <div class="row">
-                @if (ViewBag.HomesList != null && ViewBag.HomesList.Count > 0)
+                @if (ViewBag.RelatorHomesList != null && ViewBag.RelatorHomesList.Count > 0)
                 {
                     <div class="row">
                         @foreach (var home in (List<Finial_Project_RealEstateWebPage.Models.Home>)ViewBag.HomesList)
@@ -43,7 +43,7 @@
                                 <div class="card-body">
                                     <p class="card-text">
                                         @home.AskingPrice.ToString("C2")<br>
-                                        @home.Street @home.City @home.ZipCode<br />
+                                        @home.BuildingNumber @home.Street @home.City @home.ZipCode<br />
                                         <strong>Bed:</strong> @home.BedRooms <strong>Bath:</strong> @home.BathRooms<br />
                                         <strong>Home Size:</strong> @home.HomeSize<br />
                                     </p>
