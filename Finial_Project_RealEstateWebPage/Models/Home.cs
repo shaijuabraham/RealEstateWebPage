@@ -1,4 +1,8 @@
-﻿namespace Finial_Project_RealEstateWebPage.Models
+﻿using System.Data.SqlClient;
+using System.Data;
+using Utilities;
+
+namespace Finial_Project_RealEstateWebPage.Models
 {
     public class Home
     {
@@ -75,6 +79,57 @@
             get { return zipCode; }
             set { zipCode = value; }
         }
+
+
+        public List<Home> GetPartalHomedata()
+        {
+            List<Home> homes = new List<Home>();
+
+            try
+            {
+                DBConnect objDB = new DBConnect();
+                SqlCommand command = new SqlCommand
+                {
+                    CommandType = CommandType.StoredProcedure,
+                    CommandText = "GetPropertyData"
+                };
+
+                DataSet ds = objDB.GetDataSetUsingCmdObj(command);
+
+                if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow record in ds.Tables[0].Rows)
+                    {
+                        Home home = new Home();
+
+                        if (record.Table.Rows.Count > 0)
+                        {
+                            home.AskingPrice = double.Parse(record["AskingPrice"].ToString());
+                            home.BedRooms = int.Parse(record["BedRooms"].ToString());
+                            home.BathRooms = int.Parse(record["Bathrooms"].ToString());
+                            home.HomeSize = record["HomeSize"].ToString();
+                            home.Street = record["Street"].ToString();
+                            home.City = record["City"].ToString();
+                            home.State = record["State"].ToString();
+                            home.ZipCode = int.Parse(record["ZipCode"].ToString());
+                        }
+
+                        homes.Add(home);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("No data available in the result set.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error retrieving data: " + ex.Message);
+            }
+
+            return homes;
+        }
+
 
     }
 }
