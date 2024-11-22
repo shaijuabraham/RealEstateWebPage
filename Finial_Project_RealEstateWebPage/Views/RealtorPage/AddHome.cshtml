@@ -1,7 +1,6 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@model Finial_Project_RealEstateWebPage.Models.HomeInfo
 
 @{
     Layout = null;
@@ -41,51 +40,51 @@
     <br />
 
     <label for="txtBuildingNumber">Building Number</label>
-    <input type="text" id="txtBuildingNumber" name="BuildingNumber" value="@Model.BuildingNumber" class="form-control" />
+    <input type="text" id="txtBuildingNumber" name="BuildingNumber" class="form-control" />
     <br />
 
     <label for="txtStreet">Street Address</label>
-            <input type="text" id="txtStreet" name="Street" value="@Model.Street" class="form-control" />
+            <input type="text" id="txtStreet" name="Street" class="form-control" />
     <br />
 
     <label for="txtCity">City</label>
-            <input type="text" id="txtCity" name="City" value="@Model.City" class="form-control" />
+            <input type="text" id="txtCity" name="City" class="form-control" />
     <br />
 
     <label for="txtState">State</label>
-            <input type="text" id="txtState" name="State" value="@Model.State" class="form-control" />
+            <input type="text" id="txtState" name="State" class="form-control" />
     <br />
 
     <label for="txtZipCode">Zip Code</label>
-            <input type="number" id="txtZipCode" name="ZipCode" value="@Model.ZipCode" class="form-control" value="0" />
+            <input type="number" id="txtZipCode" name="ZipCode" class="form-control" value="0" />
     <br />
 
     <label>Property Type</label>
     <div>
-        <input type="radio" id="House" name="HomeType" value="House" />
+                <input type="radio" id="House" name="PropertyType" value="House" />
         <label for="House">House</label>
-        <input type="radio" id="Townhomes" name="HomeType" value="Townhomes" />
+                <input type="radio" id="Townhomes" name="PropertyType" value="Townhomes" />
         <label for="Townhomes">Townhomes</label>
-        <input type="radio" id="Multi-family" name="HomeType" value="Multi-family" />
+                <input type="radio" id="Multi-family" name="PropertyType" value="Multi-family" />
         <label for="Multi-family">Multi-family</label>
-        <input type="radio" id="Apartments" name="HomeType" value="Apartments" />
+                <input type="radio" id="Apartments" name="PropertyType" value="Apartments" />
         <label for="Apartments">Apartments</label>
-        <input type="radio" id="Manufactured" name="HomeType" value="Manufactured" />
+                <input type="radio" id="Manufactured" name="PropertyType" value="Manufactured" />
         <label for="Manufactured">Manufactured</label>
-        <input type="radio" id="Condos" name="HomeType" value="Condos" />
+                <input type="radio" id="Condos" name="PropertyType" value="Condos" />
         <label for="Condos">Condos</label>
     </div>
     <br />
     @* different Methode *@
     <div id="Rooms">
         <label for="txtNoBedrooms">Number of Bedrooms</label>
-        <input type="number" id="txtNoBedrooms" name="NoBedrooms" class="form-control"/>
+        <input type="number" id="txtNoBedrooms" name="Bedrooms" class="form-control"/>
         <br />
 
         <label for="txtNoBathrooms">Number of Bathrooms</label>
-        <input type="number" id="txtNoBathrooms" name="NoBathrooms" class="form-control"/>
+        <input type="number" id="txtNoBathrooms" name="Bathrooms" class="form-control"/>
         <br />
-
+@* Room Info *@
         <label for="ddlRoomName">Select Room</label>
         <select id="ddlRoomName" name="RoomName" class="form-control">
             <option>Select Room</option>
@@ -115,30 +114,30 @@
     </div> 
     <br />
     @* different Methode *@
-    <label for="fileUpload">Add Front Image:</label>
+    @* <label for="fileUpload">Add Front Image:</label>
     <input type="file" id="fileUpload" name="mainImages" class="form-control" />
     <br />
     <label for="fileUpload">Add Room Images:</label>
     <input type="file" id="fileUpload" name="roomsImages" class="form-control" multiple="multiple" />
-    <br /><br />
+    <br /><br /> *@
 
     <label>Amenities</label>
     <div>
-        <input type="checkbox" id="SwimmingPool" name="Amenities" value="SwimmingPool" />
+                <input type="checkbox" id="SwimmingPool" name="HomeAmenities" value="SwimmingPool" />
         <label for="SwimmingPool">Swimming Pool</label>
-        <input type="checkbox" id="Gym" name="Amenities" value="Gym" />
+                <input type="checkbox" id="Gym" name="HomeAmenities" value="Gym" />
         <label for="Gym">Gym</label>
-        <input type="checkbox" id="Garden" name="Amenities" value="Garden" />
+                <input type="checkbox" id="Garden" name="HomeAmenities" value="Garden" />
         <label for="Garden">Garden</label>
-        <input type="checkbox" id="Fireplace" name="Amenities" value="Fireplace" />
+                <input type="checkbox" id="Fireplace" name="HomeAmenities" value="Fireplace" />
         <label for="Fireplace">Fireplace</label>
-        <input type="checkbox" id="AirConditioning" name="Amenities" value="AirConditioning" />
+                <input type="checkbox" id="AirConditioning" name="HomeAmenities" value="AirConditioning" />
         <label for="AirConditioning">Air Conditioning</label>
-        <input type="checkbox" id="Internet" name="Amenities" value="Internet" />
+                <input type="checkbox" id="Internet" name="HomeAmenities" value="Internet" />
         <label for="Internet">Internet</label>
-        <input type="checkbox" id="SecuritySystem" name="Amenities" value="SecuritySystem" />
+                <input type="checkbox" id="SecuritySystem" name="HomeAmenities" value="SecuritySystem" />
         <label for="SecuritySystem">Security System</label>
-        <input type="checkbox" id="SmockAlarm" name="Amenities" value="Smock Alarm" />
+                <input type="checkbox" id="SmockAlarm" name="HomeAmenities" value="Smock Alarm" />
         <label for="SmockAlarm">Smock Alarm</label>
     </div>
     <br />
@@ -162,7 +161,7 @@
     <br />
 
     <label for="txtYearBuilt">Year Built</label>
-    <input type="number" id="txtYearBuilt" name="YearBuilt" value="@Model.YearBuilt" class="form-control" value="0" />
+    <input type="number" id="txtYearBuilt" name="YearBuilt" class="form-control" value="0" />
     <br />
 
     <label for="ddlGarage">Garage</label>
@@ -177,28 +176,33 @@
 
     <label>Utilities</label>
     <div>
-        <input type="checkbox" id="Electricity" name="Utilities" value="Electricity" />
+                <input type="checkbox" id="Electricity" name="HomeUtility" value="Electricity" />
         <label for="Electricity">Electricity</label>
-        <input type="checkbox" id="WaterSupply" name="Utilities" value="WaterSupply" />
+                <input type="checkbox" id="WaterSupply" name="HomeUtility" value="WaterSupply" />
         <label for="WaterSupply">Water Supply</label>
-        <input type="checkbox" id="GasSupply" name="Utilities" value="GasSupply" />
+                <input type="checkbox" id="GasSupply" name="HomeUtility" value="GasSupply" />
         <label for="GasSupply">Gas Supply</label>
-        <input type="checkbox" id="SewageSystem" name="Utilities" value="SewageSystem" />
+                <input type="checkbox" id="SewageSystem" name="HomeUtility" value="SewageSystem" />
         <label for="SewageSystem">Sewage System</label>
-        <input type="checkbox" id="TrashDisposal" name="Utilities" value="TrashDisposal" />
+                <input type="checkbox" id="TrashDisposal" name="HomeUtility" value="TrashDisposal" />
         <label for="TrashDisposal">Trash Disposal</label>
-        <input type="checkbox" id="SwimmingPoolUtility" name="Utilities" value="SwimmingPool" />
+                <input type="checkbox" id="SwimmingPoolUtility" name="HomeUtility" value="SwimmingPool" />
         <label for="SwimmingPoolUtility">Swimming Pool</label>
     </div>
     <br />
 
     <label for="txtAskingPrice">Asking Price</label>
-    <input type="number" id="txtAskingPrice" name="AskingPrice" class="form-control" value="@Model.AskingPrice" />
+    <input type="number" id="txtAskingPrice" name="AskingPrice" class="form-control"/>
     <br />
 
     <label for="txtDescription">Description</label>
     <textarea id="txtDescription" name="Description" class="form-control" rows="4">N/A</textarea>
     <br />
+
+            <div>
+                <span class="text-danger">@ViewBag.ErrorMessage</span>
+            </div>
+
 
     <button id="btnAddProperty" name="btnAddProperty" class="btn btn-success">Add Property</button>
     </div>
