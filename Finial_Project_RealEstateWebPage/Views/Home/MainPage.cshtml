@@ -1,0 +1,56 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+
+    ViewData["Title"] = "RelatorPage";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>
+        DashBord
+    </title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="~/css/nav.css" />
+</head>
+
+<body>
+    <header>
+        <nav class="custom-navbar">
+            <div class="container">
+                <a class="brand" href="#">Mr. Home's'</a>
+                <ul class="nav-links">
+                    <li><a href="#"> Buy </a></li>
+                    <li><a href="#"> Rent</a></li>
+                </ul>
+                <div class="buttonContainer">
+                    <form asp-action="Login" asp-controller="Account" method="get" style="display: inline;">
+                        <button type="submit" class="btnAccount">Login</button>
+                    </form>
+                    <form asp-action="SignUp" asp-controller="Account" method="get" style="display: inline;">
+                        <button type="submit" class="btnAccount">Sign Up</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="titleContainer">
+        <div id="PageName">
+            <h1>Mr.Home's</h1>
+            <p>The best deals in town!!</p>
+        </div>
+    </div>
+
+       
+
+</body>
+
+
+
+</html>
