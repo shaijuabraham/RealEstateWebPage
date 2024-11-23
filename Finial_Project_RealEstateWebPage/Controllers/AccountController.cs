@@ -85,7 +85,7 @@ namespace Finial_Project_RealEstateWebPage.Controllers
                                             signUp.ContactPhoneNumber, 
                                             signUp.ContactEmail);
 
-            return View("~/Views/Login&SignUp/SignUpPage.cshtml");
+            return View("~/Views/Login&SignUp/LoginPage.cshtml");
         }
     }
 }

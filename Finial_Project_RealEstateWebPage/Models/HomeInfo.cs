@@ -30,7 +30,10 @@ namespace Finial_Project_RealEstateWebPage.Models
             private List<PropertyImage> propertyImages;//List of Property Images
                                                        // Constructor to initialize the fields, including those from Property
 
+        public HomeInfo()
+        {
 
+        }
         public HomeInfo(string buildingNumber, string propertyID, string agentID, string street, string city, string state, int zipCode,
                         string propertyType, int yearBuilt, int bedRooms, int bathRooms, string heating, string cooling,
                         decimal askingPrice, string homeSize, string description, string garage,

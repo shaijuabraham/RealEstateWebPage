@@ -156,10 +156,9 @@
                                 </p>
                             </div>
                             <div class="card-footer text-center">
-                                <form asp-action="ViewDetails" asp-controller="Home" method="get">
-                                    <input type="hidden" name="id" @* value="@home.PropertyID" *@ />
-                                    <button type="submit" class="btn btn-primary">View More</button>
-                                </form>
+                            <a asp-action="ViewPropertyInfo" asp-controller="ViewHome" asp-route-id="@home.PropertyID" class="btn btn-primary">
+                                View More
+                            </a>
                             </div>
                     </div>
                 }

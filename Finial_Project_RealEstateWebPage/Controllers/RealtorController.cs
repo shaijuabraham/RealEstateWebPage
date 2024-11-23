@@ -11,6 +11,7 @@ namespace Finial_Project_RealEstateWebPage.Controllers
        [HttpGet]
         public IActionResult Index()
         {
+
             Console.WriteLine("indexPage.");
             string userId = Request.Cookies["UserID"];
             Home home = new Home();

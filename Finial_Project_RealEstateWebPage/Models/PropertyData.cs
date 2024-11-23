@@ -22,31 +22,49 @@ namespace Finial_Project_RealEstateWebPage.Models
             string totalSquareFeetStr = totalSquareFeet.ToString();
             return totalSquareFeetStr;
         }
+
+        public DataSet PropertyDataInfo(string propertyID)
+        {
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "GetPropertyInfo";
+            objCommand.Parameters.Clear();
+            objCommand.Parameters.AddWithValue("@PropertyID", propertyID);
+            return objDB.GetDataSetUsingCmdObj(objCommand);
+        }
         /*get the property data from the database tables based on the propertyid
          * and sent to the home class */
         public HomeInfo GetHomeData(string propertyID)
         {
-            DataSet propertyData = PropertyDataInfo(propertyID);
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "GetPropertyInfo";
+            objCommand.Parameters.Clear();
+            objCommand.Parameters.AddWithValue("@PropertyID", propertyID);
+            DataSet propertyData = objDB.GetDataSetUsingCmdObj(objCommand);
+            HomeInfo homeInfo = new HomeInfo();
             DataRow propertyRow = propertyData.Tables[0].Rows[0];
-            string buildingNumber = propertyRow["BuildingNumber"].ToString();
-            string agentID = propertyRow["AgentID"].ToString();
-            string street = propertyRow["Street"].ToString();
-            string city = propertyRow["City"].ToString();
-            string state = propertyRow["State"].ToString();
+            homeInfo.BuildingNumber = propertyRow["BuildingNumber"].ToString();
+            homeInfo.AgentID = propertyRow["AgentID"].ToString();
+            homeInfo.Street = propertyRow["Street"].ToString();
+            homeInfo.City = propertyRow["City"].ToString();
+            homeInfo.State = propertyRow["State"].ToString();
             // converts the value stored in the propertyRow["ZipCode"] to an integer(int).
-            int zipCode = Convert.ToInt32(propertyRow["ZipCode"]);
-            string propertyType = propertyRow["PropertyType"].ToString();
+            homeInfo.ZipCode = Convert.ToInt32(propertyRow["ZipCode"]);
+            homeInfo.PropertyType = propertyRow["PropertyType"].ToString();
             // converts the value stored in the propertyRow[] to an integer(int).
-            int yearBuilt = Convert.ToInt32(propertyRow["YearBuilt"]);
-            int bedRooms = Convert.ToInt32(propertyRow["BedRooms"]);
-            int bathRooms = Convert.ToInt32(propertyRow["Bathrooms"]);
-            string heating = propertyRow["Heating"].ToString();
-            string cooling = propertyRow["Cooling"].ToString();
+            homeInfo.YearBuilt = Convert.ToInt32(propertyRow["YearBuilt"]);
+            homeInfo.BedRooms = Convert.ToInt32(propertyRow["BedRooms"]);
+            homeInfo.BathRooms = Convert.ToInt32(propertyRow["Bathrooms"]);
+            homeInfo.Heating = propertyRow["Heating"].ToString();
+            homeInfo.Cooling = propertyRow["Cooling"].ToString();
             // converts the value stored in the propertyRow["AskingPrice"] to an integer(int).
-            decimal askingPrice = Convert.ToDecimal(propertyRow["AskingPrice"]);
-            string homeSize = propertyRow["HomeSize"].ToString();
-            string description = propertyRow["Description"].ToString();
-            string garage = propertyRow["Garage"].ToString();
+            homeInfo.AskingPrice = Convert.ToDecimal(propertyRow["AskingPrice"]);
+            homeInfo.HomeSize = propertyRow["HomeSize"].ToString();
+            homeInfo.Description = propertyRow["Description"].ToString();
+            homeInfo.Garage = propertyRow["Garage"].ToString();
+
+            Console.WriteLine("Available in the result set.1");
+           
+
             List<string> utilities = new List<string>();
             if (propertyData.Tables.Count > 2)
             {
@@ -79,19 +97,11 @@ namespace Finial_Project_RealEstateWebPage.Models
                 }
             }
             List<PropertyImage> images = new List<PropertyImage>();
-            HomeInfo home = new HomeInfo(buildingNumber, propertyID, agentID, street, city, state, zipCode,
+           /* homes = new HomeInfo(buildingNumber, propertyID, agentID, street, city, state, zipCode,
                                   propertyType, yearBuilt, bedRooms, bathRooms, heating, cooling,
                                   askingPrice, homeSize, description, garage, utilities, amenities,
-                                  rooms, images);
-            return home;
-        }
-        public DataSet PropertyDataInfo(string propertyID)
-        {
-            objCommand.CommandType = CommandType.StoredProcedure;
-            objCommand.CommandText = "GetPropertyInfo";
-            objCommand.Parameters.Clear();
-            objCommand.Parameters.AddWithValue("@PropertyID", propertyID);
-            return objDB.GetDataSetUsingCmdObj(objCommand);
+                                  rooms, images);*/
+            return homeInfo;
         }
         /*methode to get the partial data from the user and show it to the homepage
          */
