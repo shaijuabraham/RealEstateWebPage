@@ -1,7 +1,7 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@model Finial_Project_RealEstateWebPage.Models.HomeInfo
+@model Finial_Project_RealEstateWebPage.Models.PropertyDetails
 
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
@@ -33,31 +33,127 @@
                         <li><a href="#" class="active">Add New Property</a></li>
                         <li><a href="#"> Schedule Home Showing </a></li>
                         <li><a href="#"> Make an Offers</a></li>
+
                     </ul>
                 </div>
             </nav>
         </header>
 
-        <div class="propertyDetails">
-        @if (ViewBag.RelatorHomesList != null && ViewBag.RelatorHomesList.Count > 0)
-        {
-            <div class="row">
+    <div class="homeDashboard">
+        <div class="row">
+            @if (Model.HomeInfo.BuildingNumber != null)
+            {
+                // var home = (HomeInfo)ViewBag.RelatorHome;
+                <!-- Explicitly cast ViewBag -->
+                <div class="property">
+                    <div class="card-body">
+                        <p>
+                            <a asp-controller="Realtor" asp-action="EditProperty" asp-route-id="@Model.HomeInfo.PropertyID" class="btn btn-primary">Edit Property</a>
+                        </p>
 
-                    <div class="property">
-                        <div class="card-body">
-                            <p class="card-text">
-                                @Model.AskingPrice.ToString("C2")<br>
-                                @Model.BedRooms<strong> bds |</strong> @Model.BathRooms <strong> ba |</strong> @Model.HomeSize <strong>sqft |</strong> <br />
-                                @Model.BuildingNumber @Model.Street, @Model.City,@Model.State, @Model.ZipCode<br />
-                            </p>
-                        </div>
+                        <p class="card-text">
+                            <h1>@Model.HomeInfo.AskingPrice.ToString("C2") </h1>
+                            <h2> @Model.HomeInfo.BuildingNumber @Model.HomeInfo.Street, @Model.HomeInfo.City, @Model.HomeInfo.State, @Model.HomeInfo.ZipCode</h2>
+                            <h3>
+                                @Model.HomeInfo.BedRooms <strong>beds </strong> @Model.HomeInfo.BathRooms <strong>baths </strong> @Model.HomeInfo.HomeSize <strong>sqft </strong> <br />
+                            </h3>
+
+                        </p>
+                        <p class="card-text">
+                            Property Type: @Model.HomeInfo.PropertyType <br />
+                            Built in @Model.HomeInfo.YearBuilt <br />
+                            Heating Type: @Model.HomeInfo.Heating<br />
+                            Cooling Type: @Model.HomeInfo.Cooling<br />
+                            Grage: @Model.HomeInfo.Garage<br>
+                        </p>
+
+                        <h4>Available Amenities</h4>
+                        @if (Model.HomeInfo.HomeAmenities != null)
+                        {
+                            <ul>
+                                @foreach (var amenity in Model.HomeInfo.HomeAmenities.SelectedAmenities)
+                                {
+                                    <li>@amenity</li>
+                                }
+                            </ul>
+                        }
+                        else
+                        {
+                            <p>No amenities available.</p>
+                        }
+                        <h4>Available Utility</h4>
+                        @if (Model.HomeInfo.HomeUtility != null)
+                        {
+                            <ul>
+                                @foreach (var utility in Model.HomeInfo.HomeUtility.SelectedUtility)
+                                {
+                                    <li>@utility</li>
+                                }
+                            </ul>
+                        }
+                        else
+                        {
+                            <p>No utility available.</p>
+                        }
+                        @if (Model.HomeInfo.HomeRooms != null)
+                        {
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Room Name</th>
+                                        <th>Length</th>
+                                        <th>Width</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var room in Model.HomeInfo.HomeRooms)
+                                    {
+                                        <tr>
+                                            <td>@room.RoomName</td>
+                                            <td>@room.Length</td>
+                                            <td>@room.Width</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                        else
+                        {
+                            <p>No rooms available.</p>
+                        }
+
+                        <p>
+                            Description<br />
+                            @Model.HomeInfo.Description
+                        </p>
+
+
+                        <p>
+                            Agent Info:<br />
+                            Name: @Model.AgentInfo.firstName @Model.AgentInfo.lastName
+                            Address:  @Model.AgentInfo.street @Model.AgentInfo.city @Model.AgentInfo.state, @Model.AgentInfo.zipCode
+                            Phone Number:   @Model.AgentInfo.phoneNumber
+                            Email: @Model.AgentInfo.email
+                        </p>
+
+                        <p>
+                            Agent Company Info:<br />
+                            Company Name: @Model.AgentCompanyInfo.CompanyName
+                            Address:  @Model.AgentCompanyInfo.Street @Model.AgentCompanyInfo.City @Model.AgentCompanyInfo.State, @Model.AgentCompanyInfo.ZipCode
+                            Phone Number: @Model.AgentCompanyInfo.PhoneNumber
+                            Email: @Model.AgentCompanyInfo.Email
+                        </p>
+
+
                     </div>
-            </div>
-        }
-        else
-        {
-            <p>No homes available to display.</p>
-        }
+                </div>
+            }
+            else
+            {
+                <p>No home data available to display.</p>
+            }
         </div>
-    </body>
+    </div>
+
+</body>
 </html>

@@ -1,4 +1,5 @@
 ﻿using Finial_Project_RealEstateWebPage.Models;
+using Finial_Project_RealEstateWebPage.Models.associateclass;
 using Microsoft.AspNetCore.Mvc;
 using System.Drawing.Text;
 using System.Security.Cryptography.Pkcs;
@@ -34,35 +35,38 @@ namespace Finial_Project_RealEstateWebPage.Controllers
         }
 
         [HttpGet]
-        public IActionResult ViewPropertyInfo(string id)
+        public IActionResult ViewRealtorSelectedPropertyInfo(string id)
         {
 
-                Console.WriteLine("ViewPropertyInfo.");
+            Console.WriteLine("ViewRealtorSelectedPropertyInfo.");
 
-                PropertyDataInfo propertyData = new PropertyDataInfo();
-                HomeInfo home = propertyData.GetHomeData(id);
+            PropertyDataInfo propertyData = new PropertyDataInfo();
+            AgentInfo agent = new AgentInfo();
+            AgentCompanyInfo agentCompanyInfo = new AgentCompanyInfo();
 
-                if (home != null)
+            HomeInfo home = propertyData.GetHomeData(id);
+            AgentInfo agentInfo = agent.AgentContactInfo(id);
+            AgentCompanyInfo agentCompany = agentCompanyInfo.RelatorCompanyInfo(id);
+
+
+            if (home != null)
+            {
+                var viewModel = new PropertyDetails
                 {
-                    if (home.HomeAmenities != null && home.HomeAmenities.SelectedAmenities.Count > 0)
-                    {
-                        string.Join(", ", home.HomeAmenities.SelectedAmenities);
-                    }
-                    if (home.HomeUtility != null && home.HomeUtility.SelectedUtility.Count > 0)
-                    {
-                        string.Join(", ", home.HomeUtility.SelectedUtility);
-                    }
+                    HomeInfo = home,
+                    AgentInfo = agentInfo,
+                    AgentCompanyInfo = agentCompany,
+                };
 
-
-                    return View("~/Views/Home/ViewRealtorProperty.cshtml", home);
-                }
-                else
-                {
-                    ViewBag.RelatorHome = null;
-                }
-
-                return View("~/Views/Home/HomePage.cshtml");
+                return View("~/Views/RealtorPage/ViewRealtorProperty.cshtml", viewModel);
             }
+            else
+            {
+                ViewBag.RelatorHome = null;
+            }
+
+            return View("~/Views/RealtorPage/RealtorMainPage.cshtml");
+        }
 
     }
 }
