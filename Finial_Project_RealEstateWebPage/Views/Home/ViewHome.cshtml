@@ -61,7 +61,7 @@
                           Grage: @Model.Garage<br>
                         </p>
 
-                        <h4>Avliable Amenities</h4>
+                        <h4>Available Amenities</h4>
                         @if (Model.HomeAmenities != null)
                         {
                             <ul>
@@ -75,7 +75,7 @@
                         {
                             <p>No amenities available.</p>
                         }
-                        <h4>Avliable Utility</h4>
+                        <h4>Available Utility</h4>
                         @if (Model.HomeUtility != null)
                         {
                             <ul>
@@ -88,6 +88,32 @@
                         else
                         {
                             <p>No utility available.</p>
+                        }
+                        @if (Model.HomeRooms != null)
+                        {
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Room Name</th>
+                                        <th>Length</th>
+                                        <th>Width</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var room in Model.HomeRooms)
+                                    {
+                                        <tr>
+                                            <td>@room.RoomName</td>
+                                            <td>@room.Length</td>
+                                            <td>@room.Width</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                        else
+                        {
+                            <p>No rooms available.</p>
                         }
 
                         <p>
