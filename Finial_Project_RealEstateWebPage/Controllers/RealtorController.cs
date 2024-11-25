@@ -32,5 +32,37 @@ namespace Finial_Project_RealEstateWebPage.Controllers
         {
             return View("~/Views/RealtorPage/RealtorMainPage.cshtml");
         }
+
+        [HttpGet]
+        public IActionResult ViewPropertyInfo(string id)
+        {
+
+                Console.WriteLine("ViewPropertyInfo.");
+
+                PropertyDataInfo propertyData = new PropertyDataInfo();
+                HomeInfo home = propertyData.GetHomeData(id);
+
+                if (home != null)
+                {
+                    if (home.HomeAmenities != null && home.HomeAmenities.SelectedAmenities.Count > 0)
+                    {
+                        string.Join(", ", home.HomeAmenities.SelectedAmenities);
+                    }
+                    if (home.HomeUtility != null && home.HomeUtility.SelectedUtility.Count > 0)
+                    {
+                        string.Join(", ", home.HomeUtility.SelectedUtility);
+                    }
+
+
+                    return View("~/Views/Home/ViewRealtorProperty.cshtml", home);
+                }
+                else
+                {
+                    ViewBag.RelatorHome = null;
+                }
+
+                return View("~/Views/Home/HomePage.cshtml");
+            }
+
     }
 }
