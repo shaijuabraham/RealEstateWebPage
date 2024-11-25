@@ -23,14 +23,14 @@ namespace Finial_Project_RealEstateWebPage.Controllers
 
             if (home != null)
             {
-                if (home.HomeAmenities != null && home.HomeAmenities.SelectedAmenities.Count > 0)
+                /*if (home.HomeAmenities != null && home.HomeAmenities.SelectedAmenities.Count > 0)
                 {
                      string.Join(", ", home.HomeAmenities.SelectedAmenities);
                 }
                 if (home.HomeUtility != null && home.HomeUtility.SelectedUtility.Count > 0)
                 {
                     string.Join(", ", home.HomeUtility.SelectedUtility);
-                }
+                }*/
 
                 // Create and populate view model
                 var viewModel = new PropertyDetails
