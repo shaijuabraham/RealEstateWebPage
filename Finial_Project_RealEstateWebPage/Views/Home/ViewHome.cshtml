@@ -46,10 +46,55 @@
                 <div class="property">
                     <div class="card-body">
                         <p class="card-text">
-                            @Model.AskingPrice.ToString("C2")<br>
-                            @Model.BedRooms <strong>bds |</strong> @Model.BathRooms <strong>ba |</strong> @Model.HomeSize <strong>sqft |</strong> <br />
-                            @Model.BuildingNumber @Model.Street, @Model.City, @Model.State, @Model.ZipCode<br />
+                            <h1>@Model.AskingPrice.ToString("C2") </h1>
+                            <h2> @Model.BuildingNumber @Model.Street, @Model.City, @Model.State, @Model.ZipCode</h2>
+                            <h3>
+                                @Model.BedRooms <strong>beds </strong> @Model.BathRooms <strong>baths </strong> @Model.HomeSize <strong>sqft </strong> <br />
+                            </h3>
+
                         </p>
+                        <p class="card-text">
+                          Property Type: @Model.PropertyType <br/>
+                          Built in @Model.YearBuilt <br/>
+                          Heating Type: @Model.Heating<br/>
+                          Cooling Type: @Model.Cooling<br/>
+                          Grage: @Model.Garage<br>
+                        </p>
+
+                        <h4>Avliable Amenities</h4>
+                        @if (Model.HomeAmenities != null)
+                        {
+                            <ul>
+                                @foreach (var amenity in Model.HomeAmenities.SelectedAmenities)
+                                {
+                                    <li>@amenity</li>
+                                }
+                            </ul>
+                        }
+                        else
+                        {
+                            <p>No amenities available.</p>
+                        }
+                        <h4>Avliable Utility</h4>
+                        @if (Model.HomeUtility != null)
+                        {
+                            <ul>
+                                @foreach (var utility in Model.HomeUtility.SelectedUtility)
+                                {
+                                    <li>@utility</li>
+                                }
+                            </ul>
+                        }
+                        else
+                        {
+                            <p>No utility available.</p>
+                        }
+
+                        <p>
+                         Description<br/>
+                         @Model.Description
+                        </p>
+
                     </div>
                 </div>
             }
