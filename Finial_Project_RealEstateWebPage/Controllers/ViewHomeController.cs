@@ -24,11 +24,6 @@ namespace Finial_Project_RealEstateWebPage.Controllers
                 {
                     string.Join(", ", home.HomeUtility.SelectedUtility);
                 }
-                if (home.HomeRooms != null && home.HomeRooms.Count > 0)
-                {
-                    string.Join(", ", home.HomeRooms);
-                }
-
 
                 return View("~/Views/Home/ViewHome.cshtml",home);
             }
