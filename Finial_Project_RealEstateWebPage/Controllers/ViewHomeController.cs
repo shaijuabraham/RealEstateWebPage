@@ -16,14 +16,14 @@ namespace Finial_Project_RealEstateWebPage.Controllers
 
             if (home != null)
             {
-                ViewBag.RelatorHome = home; // Pass the single object
+                return View("~/Views/Home/ViewHome.cshtml",home);
             }
             else
             {
                 ViewBag.RelatorHome = null; // Handle null case
             }
 
-            return View("~/Views/Home/ViewHome.cshtml",home);
+            return View("~/Views/Home/HomePage.cshtml");
         }
     }
 }

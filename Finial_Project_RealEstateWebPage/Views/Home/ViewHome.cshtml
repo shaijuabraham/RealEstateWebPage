@@ -39,16 +39,16 @@
 
     <div class="homeDashboard">
         <div class="row">
-            @if (ViewBag.RelatorHome != null)
+            @if (Model.BuildingNumber != null)
             {
-                var home = (HomeInfo)ViewBag.RelatorHome;
+               // var home = (HomeInfo)ViewBag.RelatorHome;
                 <!-- Explicitly cast ViewBag -->
                 <div class="property">
                     <div class="card-body">
                         <p class="card-text">
-                            @home.AskingPrice.ToString("C2")<br>
-                            @home.BedRooms <strong>bds |</strong> @home.BathRooms <strong>ba |</strong> @home.HomeSize <strong>sqft |</strong> <br />
-                            @home.BuildingNumber @home.Street, @home.City, @home.State, @home.ZipCode<br />
+                            @Model.AskingPrice.ToString("C2")<br>
+                            @Model.BedRooms <strong>bds |</strong> @Model.BathRooms <strong>ba |</strong> @Model.HomeSize <strong>sqft |</strong> <br />
+                            @Model.BuildingNumber @Model.Street, @Model.City, @Model.State, @Model.ZipCode<br />
                         </p>
                     </div>
                 </div>
