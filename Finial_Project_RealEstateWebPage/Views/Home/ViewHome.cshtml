@@ -1,7 +1,7 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@model Finial_Project_RealEstateWebPage.Models.HomeInfo
+@model Finial_Project_RealEstateWebPage.Models.PropertyDetails
 
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
@@ -39,33 +39,33 @@
 
     <div class="homeDashboard">
         <div class="row">
-            @if (Model.BuildingNumber != null)
+            @if (Model.HomeInfo.BuildingNumber != null)
             {
                // var home = (HomeInfo)ViewBag.RelatorHome;
                 <!-- Explicitly cast ViewBag -->
                 <div class="property">
                     <div class="card-body">
                         <p class="card-text">
-                            <h1>@Model.AskingPrice.ToString("C2") </h1>
-                            <h2> @Model.BuildingNumber @Model.Street, @Model.City, @Model.State, @Model.ZipCode</h2>
+                            <h1>@Model.HomeInfo.AskingPrice.ToString("C2") </h1>
+                            <h2> @Model.HomeInfo.BuildingNumber @Model.HomeInfo.Street, @Model.HomeInfo.City, @Model.HomeInfo.State, @Model.HomeInfo.ZipCode</h2>
                             <h3>
-                                @Model.BedRooms <strong>beds </strong> @Model.BathRooms <strong>baths </strong> @Model.HomeSize <strong>sqft </strong> <br />
+                                @Model.HomeInfo.BedRooms <strong>beds </strong> @Model.HomeInfo.BathRooms <strong>baths </strong> @Model.HomeInfo.HomeSize <strong>sqft </strong> <br />
                             </h3>
 
                         </p>
                         <p class="card-text">
-                          Property Type: @Model.PropertyType <br/>
-                          Built in @Model.YearBuilt <br/>
-                          Heating Type: @Model.Heating<br/>
-                          Cooling Type: @Model.Cooling<br/>
-                          Grage: @Model.Garage<br>
+                            Property Type: @Model.HomeInfo.PropertyType <br />
+                            Built in @Model.HomeInfo.YearBuilt <br />
+                            Heating Type: @Model.HomeInfo.Heating<br />
+                            Cooling Type: @Model.HomeInfo.Cooling<br />
+                            Grage: @Model.HomeInfo.Garage<br>
                         </p>
 
                         <h4>Available Amenities</h4>
-                        @if (Model.HomeAmenities != null)
+                        @if (Model.HomeInfo.HomeAmenities != null)
                         {
                             <ul>
-                                @foreach (var amenity in Model.HomeAmenities.SelectedAmenities)
+                                @foreach (var amenity in Model.HomeInfo.HomeAmenities.SelectedAmenities)
                                 {
                                     <li>@amenity</li>
                                 }
@@ -76,10 +76,10 @@
                             <p>No amenities available.</p>
                         }
                         <h4>Available Utility</h4>
-                        @if (Model.HomeUtility != null)
+                        @if (Model.HomeInfo.HomeUtility != null)
                         {
                             <ul>
-                                @foreach (var utility in Model.HomeUtility.SelectedUtility)
+                                @foreach (var utility in Model.HomeInfo.HomeUtility.SelectedUtility)
                                 {
                                     <li>@utility</li>
                                 }
@@ -89,7 +89,7 @@
                         {
                             <p>No utility available.</p>
                         }
-                        @if (Model.HomeRooms != null)
+                        @if (Model.HomeInfo.HomeRooms != null)
                         {
                             <table class="table">
                                 <thead>
@@ -100,7 +100,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach (var room in Model.HomeRooms)
+                                    @foreach (var room in Model.HomeInfo.HomeRooms)
                                     {
                                         <tr>
                                             <td>@room.RoomName</td>
@@ -118,8 +118,26 @@
 
                         <p>
                          Description<br/>
-                         @Model.Description
+                            @Model.HomeInfo.Description
                         </p>
+
+
+                        <p>
+                            Agent Info:<br />
+                          Name: @Model.AgentInfo.firstName @Model.AgentInfo.lastName
+                          Address:  @Model.AgentInfo.street @Model.AgentInfo.city @Model.AgentInfo.state, @Model.AgentInfo.zipCode
+                          Phone Number:   @Model.AgentInfo.phoneNumber
+                          Email: @Model.AgentInfo.email
+                        </p>
+
+                        <p>
+                            Agent Company Info:<br />
+                            Company Name: @Model.AgentCompanyInfo.CompanyName
+                            Address:  @Model.AgentCompanyInfo.Street @Model.AgentCompanyInfo.City @Model.AgentCompanyInfo.State, @Model.AgentCompanyInfo.ZipCode
+                            Phone Number: @Model.AgentCompanyInfo.PhoneNumber
+                            Email: @Model.AgentCompanyInfo.Email
+                        </p>
+
 
                     </div>
                 </div>

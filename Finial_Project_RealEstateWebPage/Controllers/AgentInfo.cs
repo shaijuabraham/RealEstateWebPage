@@ -19,7 +19,10 @@ namespace Finial_Project_RealEstateWebPage.Controllers
         public string phoneNumber { get; set; }
         public string email { get; set; }
 
+        public AgentInfo()
+        {
 
+        }
 
         public AgentInfo(string userID, string firstName, string lastName, string street, string city, string state, int zipCode, string phoneNumber, string email)
         {

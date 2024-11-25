@@ -1,4 +1,5 @@
 ﻿using Finial_Project_RealEstateWebPage.Models;
+using Finial_Project_RealEstateWebPage.Models.associateclass;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Finial_Project_RealEstateWebPage.Controllers
@@ -9,10 +10,18 @@ namespace Finial_Project_RealEstateWebPage.Controllers
         public IActionResult ViewPropertyInfo(string id)
         {
 
+
+
             Console.WriteLine("ViewPropertyInfo.");
 
             PropertyDataInfo propertyData = new PropertyDataInfo();
+            AgentInfo agent = new AgentInfo();
+            AgentCompanyInfo agentCompanyInfo = new AgentCompanyInfo();
+
             HomeInfo home = propertyData.GetHomeData(id);
+            AgentInfo agentInfo = agent.AgentContactInfo(id);
+            AgentCompanyInfo agentCompany = agentCompanyInfo.RelatorCompanyInfo(id);
+
 
             if (home != null)
             {
@@ -25,7 +34,16 @@ namespace Finial_Project_RealEstateWebPage.Controllers
                     string.Join(", ", home.HomeUtility.SelectedUtility);
                 }
 
-                return View("~/Views/Home/ViewHome.cshtml",home);
+                // Create and populate view model
+                var viewModel = new PropertyDetails
+                {
+                    HomeInfo = home,
+                    AgentInfo = agentInfo,
+                    AgentCompanyInfo = agentCompany,
+                };
+
+
+                return View("~/Views/Home/ViewHome.cshtml", viewModel);
             }
             else
             {

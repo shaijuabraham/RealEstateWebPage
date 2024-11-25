@@ -16,6 +16,7 @@ namespace Finial_Project_RealEstateWebPage.Models.associateclass
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
 
+        public AgentCompanyInfo() { }
         public AgentCompanyInfo(string companyName, string street, string city, string state, int zipCode, string phoneNumber, string email)
         {
             CompanyName = companyName;
@@ -62,3 +63,4 @@ namespace Finial_Project_RealEstateWebPage.Models.associateclass
         }
     }
 }
+ 
