@@ -86,7 +86,7 @@ namespace Finial_Project_RealEstateWebPage.Controllers
             }
 
             ViewBag.QuestionList = question;
-            return View("~/Views/Home/HomePage.cshtml");
+            return View("~/Views/Home/HomePage.cshtml",question);
 
         }
     }

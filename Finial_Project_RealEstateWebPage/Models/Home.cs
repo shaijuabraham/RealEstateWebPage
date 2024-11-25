@@ -21,19 +21,6 @@ namespace Finial_Project_RealEstateWebPage.Models
         {
 
         }
-
-        public Home(double askingPrice, int bedRooms, int bathRooms, string homeSize, 
-            string street, string city, string state, int zipCode)
-        {
-            this.askingPrice = askingPrice;
-            this.bedRooms = bedRooms;
-            this.bathRooms = bathRooms;
-            this.homeSize = homeSize;
-            this.street = street;
-            this.city = city;
-            this.state = state;
-            this.zipCode = zipCode;
-        }
         public double AskingPrice
         {
             get { return askingPrice; }
@@ -170,6 +157,7 @@ namespace Finial_Project_RealEstateWebPage.Models
                             home.City = record["City"].ToString();
                             home.State = record["State"].ToString();
                             home.ZipCode = int.Parse(record["ZipCode"].ToString());
+                            home.PropertyID = record["PropertyID"].ToString();
                         }
 
                         homes.Add(home);
