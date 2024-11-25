@@ -9,17 +9,16 @@ namespace Finial_Project_RealEstateWebPage.Controllers
     public class AccountController : Controller
     {
         [HttpPost]
-        public IActionResult AddLogin(string UserID, string Password)
+        public IActionResult AddLogin(Login login)
         {
-            Login login = new Login();
-            login.UserID = UserID;
-            login.Password = Password;
+            //Login login = new Login();
+            
             bool loginStatus = login.User_Login();
 
             if (loginStatus == true)
             {
                 var options = new CookieOptions { Expires = DateTime.Now.AddDays(1) };
-                Response.Cookies.Append("UserID", UserID,options);
+                Response.Cookies.Append("UserID", login.UserID,options);
                 ViewBag.ErrorMessage = "Login Accepted";
                 return RedirectToAction("Index", "Realtor");
             }
