@@ -10,8 +10,6 @@ namespace Finial_Project_RealEstateWebPage.Controllers
         public IActionResult ViewPropertyInfo(string id)
         {
 
-
-
             Console.WriteLine("ViewPropertyInfo.");
 
             PropertyDataInfo propertyData = new PropertyDataInfo();
@@ -51,6 +49,13 @@ namespace Finial_Project_RealEstateWebPage.Controllers
             }
 
             return View("~/Views/Home/HomePage.cshtml");
+        }
+
+/*this is the For teh home Shoing NAv Bar */
+        public IActionResult SechduleHomeShowing(string id)
+        {
+            
+            return View();
         }
     }
 }
