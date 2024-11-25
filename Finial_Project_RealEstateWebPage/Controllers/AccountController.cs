@@ -17,7 +17,7 @@ namespace Finial_Project_RealEstateWebPage.Controllers
 
             if (loginStatus == true)
             {
-                var options = new CookieOptions { Expires = DateTime.Now.AddDays(1) };
+                var options = new CookieOptions { Expires = DateTime.Now.AddMinutes(2) };
                 Response.Cookies.Append("UserID", login.UserID,options);
                 ViewBag.ErrorMessage = "Login Accepted";
                 return RedirectToAction("Index", "Realtor");

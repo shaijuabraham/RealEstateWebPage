@@ -27,5 +27,10 @@ namespace Finial_Project_RealEstateWebPage.Controllers
 
             return View("~/Views/RealtorPage/RealtorMainPage.cshtml");
         }
+
+        public IActionResult Index2()
+        {
+            return View("~/Views/RealtorPage/RealtorMainPage.cshtml");
+        }
     }
 }

@@ -34,7 +34,7 @@
 
     <form asp-controller="Verification" asp-action="VerifyUser" method="POST" class="loginPage">
 
-        <label for="SecurityQuestion1"></label>
+       @*  <label for="SecurityQuestion1"></label>
         Answer 1: <input type="text" name="AnswerSecurityQuestion1" /> <br />
 
         <label for="SecurityQuestion2"></label>
@@ -48,9 +48,31 @@
             <span class="text-danger">@ViewBag.ErrorMessage</span>
         </div>
 
-        <button type="submit" class="loginPage" style="width: 91px;">Submit</button>
+        <button type="submit" class="loginPage" style="width: 91px;">Submit</button> *@
 
     </form>
+
+    <div class="homeDashboard">
+        <div class="row">
+            @foreach (var home in (List<Finial_Project_RealEstateWebPage.Models.Question>)ViewBag.QuestionList)
+            {
+                <div class="questions">
+
+                    <div class="card-body">
+                        <p class="card-text">
+                            @home.Question1<br>
+                            Answer 1: <input type="text" name="AnswerSecurityQuestion1" /> <br />
+                        </p>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a asp-action="ViewPropertyInfo" asp-controller="ViewHome" @* asp-route-id="@home.PropertyID" *@ class="btn btn-primary">
+                            View More
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
 
 </body>
 
