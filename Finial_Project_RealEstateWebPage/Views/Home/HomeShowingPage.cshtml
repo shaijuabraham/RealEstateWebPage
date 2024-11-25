@@ -2,6 +2,87 @@
 @{
     ViewData["Title"] = "HomeShowingPage";
 }
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
-<h1>HomeShowingPage</h1>
+@{
+    Layout = null;
 
+    ViewData["Title"] = "Login";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>
+        Home Showing
+    </title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="~/css/nav.css" />
+
+</head>
+<body>
+
+    <header>
+        <nav class="custom-navbar">
+            <div class="container">
+                <a class="brand">Mr.Home's</a>
+                <ul class="nav-links">
+                    <li><a href="javascript:history.back()">Property Info</a></li>
+                    <li><a href="/ViewHome/SechduleHomeShowing"> Schedule Home Showing </a></li>
+                    <li><a href="#"> Make an Offers</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <h1>
+        Schedule Home Visit!!!
+    </h1>
+    <br />
+    <br />
+
+    <form asp-controller="ViewHome" asp-action="SechduleHomeShowingReq" method="post" class="loginPage">
+
+        <div class="input">
+           Full Name:  <input type="text" name="FullName" placeholder="Enter Your Full Name." />
+        </div>
+
+        <div class="input">
+            Phone Number <input type="number" name="PhoneNumber" placeholder="Enter Phone Number." />
+        </div>
+
+        <div class="input">
+            Email <input type="email" name="Email" placeholder="Enter Your email." />
+        </div>
+
+        <div class="input">
+            Date <input type="date" name="Date" placeholder="10/25/2024" />
+        </div>
+        <div class="input">
+            Select Time <select name="time" id="time">
+                <option value="9:00 AM">9:00 AM</option>
+                <option value="10:00 AM">10:00 AM</option>
+                <option value="11:00 AM">11:00 AM</option>               
+                <option value="12:00 PM">12:00 PM</option>
+                <option value="1:00 PM">1:00 PM</option>               
+                <option value="2:00 PM">2:00 PM</option>              
+                <option value="3:00 PM">3:00 PM</option>             
+                <option value="4:00 PM">4:00 PM</option>             
+                <option value="5:00 PM">5:00 PM</option>             
+                <option value="6:00 PM">6:00 PM</option>
+            </select>
+        </div>
+
+        <div>
+            <span class="text-danger">@ViewBag.ErrorMessage</span>
+        </div>
+
+        <button type="submit" class="loginPage" style="width: 91px;"> Sent Request</button>
+
+    </form>
+
+</body>
+
+</html>
