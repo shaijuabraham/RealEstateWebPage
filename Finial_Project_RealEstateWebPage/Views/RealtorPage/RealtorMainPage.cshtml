@@ -1,0 +1,85 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model Finial_Project_RealEstateWebPage.Models.Home
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    Layout = null;
+
+    ViewData["Title"] = "RelatorPage";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>
+        DashBord
+    </title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="~/css/nav.css" />
+</head>
+
+<body>
+    <header>
+      <nav class="custom-navbar">
+          <div class="container">
+            <a class="brand" href="#">Mr.Home's</a>
+            <ul class="nav-links">
+               <li><a href="/AddHome/AddProperty" class="active">Add New Property</a></li>
+              <li><a href="#"> Home Showing </a></li>
+              <li><a href="#"> Current Offers</a></li>
+              <li><a href="#">Sign Out</a></li>
+            </ul>
+          </div>
+        </nav>
+    </header>
+      <div class="titleContainer">
+        <div id="PageName">
+            <h1>Mr.Home's</h1>
+            <p>The best deals in town!!</p>
+        </div>
+
+        <div class="homeDashboard">
+            <div class="row">
+                @if (ViewBag.RelatorHomesList != null && ViewBag.RelatorHomesList.Count > 0)
+                {
+                    <div class="row">
+                        @foreach (var home in (List<Finial_Project_RealEstateWebPage.Models.Home>)ViewBag.RelatorHomesList)
+                        {
+                            <div class="property">
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        @home.AskingPrice.ToString("C2")<br>
+                                        @home.BedRooms<strong> bds |</strong> @home.BathRooms <strong> ba |</strong> @home.HomeSize <strong>sqft |</strong> <br />
+                                        @home.BuildingNumber @home.Street, @home.City,@home.State, @home.ZipCode<br />
+                                    </p>
+                                </div>
+                                <div class="card-footer text-center">
+                                    <a asp-action="ViewPropertyInfo" asp-controller="ViewHome" asp-route-id="@home.PropertyID" class="btn btn-primary">
+                                        View More
+                                    </a>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <p>No homes available to display.</p>
+                }
+
+            </div>
+        </div>
+
+</body>
+
+
+
+</html>
+
+

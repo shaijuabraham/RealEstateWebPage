@@ -1,0 +1,64 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model Finial_Project_RealEstateWebPage.Models.HomeInfo
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    Layout = null;
+
+    ViewData["Title"] = "RelatorPage";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>
+        DashBord
+    </title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="~/css/nav.css" />
+</head>
+
+<body>
+    <header>
+        <nav class="custom-navbar">
+            <div class="container">
+                <a class="brand">Mr.Home's</a>
+                <ul class="nav-links">
+                    <li><a href="#"> Schedule Home Showing </a></li>
+                    <li><a href="#"> Make an Offers</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="homeDashboard">
+        <div class="row">
+            @if (ViewBag.RelatorHome != null)
+            {
+                var home = (HomeInfo)ViewBag.RelatorHome;
+                <!-- Explicitly cast ViewBag -->
+                <div class="property">
+                    <div class="card-body">
+                        <p class="card-text">
+                            @home.AskingPrice.ToString("C2")<br>
+                            @home.BedRooms <strong>bds |</strong> @home.BathRooms <strong>ba |</strong> @home.HomeSize <strong>sqft |</strong> <br />
+                            @home.BuildingNumber @home.Street, @home.City, @home.State, @home.ZipCode<br />
+                        </p>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <p>No home data available to display.</p>
+            }
+        </div>
+    </div>
+
+</body>
+</html>

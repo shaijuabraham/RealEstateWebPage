@@ -21,6 +21,8 @@
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="~/css/LoginPage.css" />
+
     </head>
     <body>
         <h1>
@@ -29,23 +31,23 @@
         <br/>
         <br />
 
-        <form asp-controller="Account" asp-action="AddLogin" method="post">
-        <!-- Username -->
-        <div class="form-group">
-            <label asp-for="UserID" class="form-label"></label>
-            <input asp-for="UserID" class="form-control" />
+    <form asp-controller="Account" asp-action="AddLogin" method="post" class="loginPage">
+
+        <div class="input">
+            <label asp-for="UserID"></label>
+            <input asp-for="UserID" value="David" />
         </div>
-        <!-- Password -->
-        <div class="form-group">
-            <label asp-for="Password" class="form-label"></label>
-            <input asp-for="Password" type="password" class="form-control" />
+
+        <div class="input">
+            <label asp-for="Password"></label>
+            <input asp-for="Password" type="password" value="Password" />
         </div>
-        <!-- Message -->
+        
         <div>
             <span class="text-danger">@ViewBag.ErrorMessage</span>
         </div>
-        <!-- Login Button -->
-        <button type="submit" class="btn btn-primary" style="width: 91px;">Login</button>
+
+        <button type="submit" class="loginPage" style="width: 91px;">Login</button>
         </form>
 
     </body>
