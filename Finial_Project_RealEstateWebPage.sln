@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35506.116 d17.12
+VisualStudioVersion = 17.12.35506.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Finial_Project_RealEstateWebPage", "Finial_Project_RealEstateWebPage\Finial_Project_RealEstateWebPage.csproj", "{BA492914-6BA9-44DE-9979-BD35C4F5974E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilities", "Utilities\Utilities.csproj", "{16BA4FA9-239C-4FA0-AF83-F7A35A284E20}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{BA492914-6BA9-44DE-9979-BD35C4F5974E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA492914-6BA9-44DE-9979-BD35C4F5974E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA492914-6BA9-44DE-9979-BD35C4F5974E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16BA4FA9-239C-4FA0-AF83-F7A35A284E20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16BA4FA9-239C-4FA0-AF83-F7A35A284E20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16BA4FA9-239C-4FA0-AF83-F7A35A284E20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16BA4FA9-239C-4FA0-AF83-F7A35A284E20}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

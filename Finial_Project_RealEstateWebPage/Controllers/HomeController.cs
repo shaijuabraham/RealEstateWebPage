@@ -100,6 +100,7 @@ namespace Finial_Project_RealEstateWebPage.Controllers
                     }
                     else
                     {
+                        // Search by city or state if not a zip code
                         command.Parameters.Add(new SqlParameter("@City", search));
                         command.Parameters.Add(new SqlParameter("@State", search));
                     }
@@ -118,6 +119,7 @@ namespace Finial_Project_RealEstateWebPage.Controllers
                     {
                         Home home = new Home();
 
+                        // Populate home properties from DataRow
                         if (!record.IsNull("AskingPrice"))
                             home.AskingPrice = Convert.ToDouble(record["AskingPrice"]);
 
@@ -151,9 +153,11 @@ namespace Finial_Project_RealEstateWebPage.Controllers
                 Console.WriteLine("Error during search: " + ex.Message);
             }
 
+            // Pass the list of homes to the view
             ViewBag.HomesList = homes;
             return View("~/Views/Search/SearchResults.cshtml");
         }
+
 
 
     }

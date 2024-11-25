@@ -14,14 +14,14 @@ namespace Finial_Project_RealEstateWebPage.Controllers
             //PropertyData propertyData = new PropertyData();
             //HomeInfo home = propertyData.GetHomeData(id); 
 
-            if (home != null)
-            {
-                ViewBag.RelatorHome = home; // Pass the single object
-            }
-            else
-            {
-                ViewBag.RelatorHome = null; // Handle null case
-            }
+            //if (home != null)
+            //{
+            //    ViewBag.RelatorHome = home; // Pass the single object
+            //}
+            //else
+            //{
+            //    ViewBag.RelatorHome = null; // Handle null case
+            //}
 
             return View("~/Views/RealtorPage/RealtorMainPage.cshtml");
         }
