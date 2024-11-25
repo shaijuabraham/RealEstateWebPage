@@ -37,31 +37,32 @@ namespace Finial_Project_RealEstateWebPage.Controllers
         public IActionResult ViewPropertyInfo(string id)
         {
 
-            Console.WriteLine("ViewPropertyInfo.");
+                Console.WriteLine("ViewPropertyInfo.");
 
-            PropertyDataInfo propertyData = new PropertyDataInfo();
-            HomeInfo home = propertyData.GetHomeData(id);
+                PropertyDataInfo propertyData = new PropertyDataInfo();
+                HomeInfo home = propertyData.GetHomeData(id);
 
-            if (home != null)
-            {
-                if (home.HomeAmenities != null && home.HomeAmenities.SelectedAmenities.Count > 0)
+                if (home != null)
                 {
-                    string.Join(", ", home.HomeAmenities.SelectedAmenities);
+                    if (home.HomeAmenities != null && home.HomeAmenities.SelectedAmenities.Count > 0)
+                    {
+                        string.Join(", ", home.HomeAmenities.SelectedAmenities);
+                    }
+                    if (home.HomeUtility != null && home.HomeUtility.SelectedUtility.Count > 0)
+                    {
+                        string.Join(", ", home.HomeUtility.SelectedUtility);
+                    }
+
+
+                    return View("~/Views/Home/ViewRealtorProperty.cshtml", home);
                 }
-                if (home.HomeUtility != null && home.HomeUtility.SelectedUtility.Count > 0)
+                else
                 {
-                    string.Join(", ", home.HomeUtility.SelectedUtility);
+                    ViewBag.RelatorHome = null;
                 }
 
-
-                return View("~/Views/Home/ViewHome.cshtml", home);
-            }
-            else
-            {
-                ViewBag.RelatorHome = null;
+                return View("~/Views/Home/HomePage.cshtml");
             }
 
-            return View("~/Views/Home/HomePage.cshtml");
-        }
     }
 }
