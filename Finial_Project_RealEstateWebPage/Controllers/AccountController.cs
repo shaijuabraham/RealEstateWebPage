@@ -50,6 +50,11 @@ namespace Finial_Project_RealEstateWebPage.Controllers
             return View(new AccountRegistration());
         }
 
+        [HttpGet]
+        public IActionResult PasswordReset()
+        {
+            return View("~/Views/PasswordReset/PasswordReset.cshtml");
+        }
 
         [HttpPost]
         public IActionResult SignUp(AccountRegistration signUp) {
