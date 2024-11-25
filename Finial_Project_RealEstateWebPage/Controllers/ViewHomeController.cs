@@ -11,7 +11,7 @@ namespace Finial_Project_RealEstateWebPage.Controllers
 
             Console.WriteLine("ViewPropertyInfo.");
 
-            PropertyData propertyData = new PropertyData();
+            //PropertyData propertyData = new PropertyData();
             HomeInfo home = propertyData.GetHomeData(id); 
 
             if (home != null)
