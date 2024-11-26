@@ -1,0 +1,72 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model Finial_Project_RealEstateWebPage.Models.associateclass.OfferClass
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    Layout = null;
+
+    ViewData["Title"] = "User Make Property Offer";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>
+        Login
+    </title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="~/css/LoginPage.css" />
+
+</head>
+<body>
+    <h1>
+        Make an Offer!!
+    </h1>
+    <br />
+    <br />
+
+    <form asp-controller="PropertyOffer" asp-action="AgentViewOffer" method="post" class="loginPage">
+
+        <div class="input">
+            offer Amount: <input type="number" asp-for="OfferAmount"/>
+        </div>
+
+        <div class="input">
+            Sales Type <input asp-for="SaleType" type="text"/>
+        </div>
+        <div class="input">
+            Do you need to seel your property before buying? <input type="text" asp-for="NeedToSell" />
+        </div>
+
+        <div class="input">
+            Contingencies <input asp-for="Contingencies" type="text" />
+        </div>
+         
+        <h3>Contact Informanation</h3>
+        <div class="input">
+            Full Name <input asp-for="FullName" type="text" />
+        </div>
+        <div class="input">
+            Phone Number <input asp-for="BuyerPhone" type="text" />
+        </div>
+        <div class="input">
+            Email <input asp-for="BuyerEmail" type="text" />
+        </div>
+
+        <div>
+            <span class="text-danger">@ViewBag.ErrorMessage</span>
+        </div>
+
+        <button type="submit" class="loginPage" style="width: 91px;">Summit Offer</button>
+
+    </form>
+
+</body>
+
+</html>
