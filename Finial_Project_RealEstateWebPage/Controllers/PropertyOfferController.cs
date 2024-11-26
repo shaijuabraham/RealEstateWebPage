@@ -24,10 +24,24 @@ namespace Finial_Project_RealEstateWebPage.Controllers
             return View("~/Views/RealtorPage/AgentOfferShowing.cshtml");
         }
 
-
-        public IActionResult MakePropertyOffer(OfferClass offerClass)
+        public IActionResult MakePropertyOffer(string id)
         {
-            string propertyID = offerClass.PropertyID;
+            if (id != null)
+            {
+                Console.WriteLine($"{id}");
+                var options = new CookieOptions { Expires = DateTime.Now.AddMinutes(10) };
+                Response.Cookies.Append("SelectedPropertyID", id, options);
+                return View("~/Views/Home/UserMakeOffer.cshtml");
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult MakePropertyOfferReq(OfferClass offerClass)
+        {
+
+            string propertyID = Request.Cookies["SelectedPropertyID"];
+
             string fullName = offerClass.FullName;
             string buyerPhone = offerClass.BuyerPhone;
             string email = offerClass.BuyerEmail;
@@ -36,10 +50,28 @@ namespace Finial_Project_RealEstateWebPage.Controllers
             string contingencies = offerClass.Contingencies;
             string needToSell = offerClass.NeedToSell;
             string moveInDate = offerClass.MoveInDate;
-            offerClass.MakeOffer(propertyID, fullName,buyerPhone, email,
-                                 offerAmount,saleType,
-                                 contingencies, needToSell, moveInDate);
-            return View("~/Views/Home/UserMakeOffer.cshtml");  
+
+            Console.WriteLine(propertyID, fullName, buyerPhone, email,
+                                                offerAmount, saleType,
+                                                contingencies, needToSell, moveInDate);
+            //if (propertyID != null && offerClass != null)
+            if (ModelState.IsValid)
+            {
+                offerClass.MakeOffer(propertyID, fullName, buyerPhone, email,
+                                                offerAmount, saleType,
+                                                contingencies, needToSell, moveInDate);
+                return RedirectToAction("ViewPropertyInfo", "ViewHome", new { id = propertyID });
+            }
+            else
+            {
+                Console.WriteLine("Having error to sent request plese refresh the page");
+                ViewBag.ErrorMessage = "Having error to sent request plese refresh the page";
+
+                return View("~/Views/Home/UserMakeOffer.cshtml");
+            }
+
+           // return RedirectToAction("ViewPropertyInfo", "ViewHome", new { id = propertyID });
+
         }
     }
 }

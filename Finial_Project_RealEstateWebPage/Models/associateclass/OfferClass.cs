@@ -94,7 +94,7 @@ namespace Finial_Project_RealEstateWebPage.Models.associateclass
             objCommand.CommandType = CommandType.StoredProcedure;
             objCommand.CommandText = "InsertOfferRequest";
             objCommand.Parameters.Clear();
-            objCommand.Parameters.AddWithValue("@PropertyId", propertyID);
+            objCommand.Parameters.AddWithValue("@PropertyID", propertyID);
             objCommand.Parameters.AddWithValue("@FullName", fullName);
             objCommand.Parameters.AddWithValue("@OfferAmount", offerAmount);
             objCommand.Parameters.AddWithValue("@SaleType", saleType);
