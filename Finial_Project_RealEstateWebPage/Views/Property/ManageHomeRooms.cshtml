@@ -1,0 +1,73 @@
+﻿@model Finial_Project_RealEstateWebPage.Models.HomeInfo
+
+<div class="container mt-4">
+    <h1>Manage Rooms for Property</h1>
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger">@TempData["Error"]</div>
+    }
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">@TempData["Success"]</div>
+    }
+
+    <h3>Existing Rooms</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Room Name</th>
+                <th>Width</th>
+                <th>Length</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.HomeRooms != null && Model.HomeRooms.Count > 0)
+            {
+                foreach (var room in Model.HomeRooms)
+                {
+                    <tr>
+                        <td>@room.RoomName</td>
+                        <td>@room.Width</td>
+                        <td>@room.Length</td>
+                        <td>
+                            <form asp-action="DeleteRoom" method="post">
+                                <input type="hidden" name="roomId" value="@room.ID" />
+                                <input type="hidden" name="propertyID" value="@Model.PropertyID" />
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="4">No rooms available.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <h3>Add a New Room</h3>
+    <form asp-action="AddRoom" method="post">
+        <input type="hidden" name="propertyID" value="@Model.PropertyID" />
+
+        <div class="form-group">
+            <label>Room Name</label>
+            <input name="roomName" class="form-control" required />
+        </div>
+        <div class="form-group">
+            <label>Width</label>
+            <input name="width" type="number" class="form-control" required />
+        </div>
+        <div class="form-group">
+            <label>Length</label>
+            <input name="length" type="number" class="form-control" required />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add Room</button>
+    </form>
+</div>

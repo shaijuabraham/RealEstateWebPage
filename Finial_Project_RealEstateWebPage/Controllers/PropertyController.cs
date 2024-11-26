@@ -11,26 +11,26 @@ namespace Finial_Project_RealEstateWebPage.Controllers
 
         public PropertyController()
         {
-            manageProperty = new ManageProperty(); 
+            manageProperty = new ManageProperty();
         }
+
         public IActionResult Index()
         {
             return View();
         }
 
+        // GET: Manage Property
         [HttpGet]
-        public IActionResult ManageProperty(string PropertyID)
+        public IActionResult ManageProperty(string propertyID)
         {
-            if (string.IsNullOrEmpty(PropertyID))
+            if (string.IsNullOrEmpty(propertyID))
             {
                 TempData["Error"] = "No property selected.";
                 return RedirectToAction("Index", "Realtor");
             }
 
-            Console.WriteLine($"PropertyID received: {PropertyID}");
-
             var propertyData = new PropertyDataInfo();
-            var home = propertyData.GetHomeData(PropertyID);
+            var home = propertyData.GetHomeData(propertyID);
 
             if (home == null)
             {
@@ -41,33 +41,25 @@ namespace Finial_Project_RealEstateWebPage.Controllers
             var propertyDetails = new PropertyDetails
             {
                 HomeInfo = home,
-                AgentInfo = new AgentInfo().AgentContactInfo(PropertyID),
-                AgentCompanyInfo = new AgentCompanyInfo().RelatorCompanyInfo(PropertyID)
+                AgentInfo = new AgentInfo().AgentContactInfo(propertyID),
+                AgentCompanyInfo = new AgentCompanyInfo().RelatorCompanyInfo(propertyID)
             };
 
             return View(propertyDetails);
         }
 
-
+        // POST: Update Property Info
         [HttpPost]
-        public IActionResult UpdateProperty(PropertyDetails model, List<string> selectedUtilities, List<string> selectedAmenities)
+        public IActionResult ManageProperty(PropertyDetails model)
         {
-            if (!ModelState.IsValid)
+            if (model == null || model.HomeInfo == null)
             {
-                TempData["Error"] = "Invalid data. Please check the form and try again.";
-                return View("ManageProperty", model); // Return to the same view
+                TempData["Error"] = "Invalid data provided.";
+                return RedirectToAction("ManageProperty", new { propertyID = model?.HomeInfo?.PropertyID });
             }
 
             try
             {
-                // Log values for debugging
-                Console.WriteLine($"Updating Property: {model.HomeInfo.PropertyID}");
-                Console.WriteLine($"Building Number: {model.HomeInfo.BuildingNumber}");
-                Console.WriteLine($"Street: {model.HomeInfo.Street}");
-                Console.WriteLine($"City: {model.HomeInfo.City}");
-                // Add similar logs for other fields...
-
-                // Update property details
                 manageProperty.UpdatedatePropertyInfo(
                     model.HomeInfo.PropertyID,
                     model.HomeInfo.BuildingNumber,
@@ -82,57 +74,76 @@ namespace Finial_Project_RealEstateWebPage.Controllers
                     model.HomeInfo.Heating,
                     model.HomeInfo.Cooling,
                     model.HomeInfo.AskingPrice,
-                    int.Parse(model.HomeInfo.HomeSize), // Ensure HomeSize is an integer
+                    int.Parse(model.HomeInfo.HomeSize),
                     model.HomeInfo.Description,
                     model.HomeInfo.Garage
                 );
 
-                // Update amenities and utilities
-                manageProperty.UpdatePropertyListInfo(model.HomeInfo.PropertyID); // Clear existing data
-                manageProperty.AddUtilities(model.HomeInfo.PropertyID, selectedUtilities);
-                manageProperty.AddAmenities(model.HomeInfo.PropertyID, selectedAmenities);
-
                 TempData["Success"] = "Property updated successfully!";
-                return RedirectToAction("ManageProperty", new { PropertyID = model.HomeInfo.PropertyID });
+                return RedirectToAction("ManageProperty", new { propertyID = model.HomeInfo.PropertyID });
             }
             catch (Exception ex)
             {
-                TempData["Error"] = $"An error occurred: {ex.Message}";
-                return View("ManageProperty", model);
+                TempData["Error"] = "An error occurred: " + ex.Message;
+                return View(model);
             }
         }
 
+        // GET: Manage Home Rooms
+        [HttpGet]
+        public IActionResult ManageHomeRooms(string propertyID)
+        {
+            if (string.IsNullOrEmpty(propertyID))
+            {
+                TempData["Error"] = "No property selected.";
+                return RedirectToAction("Index", "Realtor");
+            }
 
+            var propertyData = new PropertyDataInfo();
+            var home = propertyData.GetHomeData(propertyID);
+
+            if (home == null)
+            {
+                TempData["Error"] = "Property data not found.";
+                return RedirectToAction("Index", "Realtor");
+            }
+
+            return View(home); // Pass HomeInfo model with rooms data to the view
+        }
+
+        // POST: Add Room
         [HttpPost]
-        public IActionResult AddRoom(string PropertyID, string roomName, int width, int length)
+        public IActionResult AddRoom(string propertyID, string roomName, int width, int length)
         {
             try
             {
-                manageProperty.UpdatePropertyRoomsInfo(PropertyID, roomName, width, length);
+                manageProperty.UpdatePropertyRoomsInfo(propertyID, roomName, width, length);
                 TempData["Success"] = "Room added successfully!";
-                return RedirectToAction("ManageProperty", new { PropertyID });
+                return RedirectToAction("ManageHomeRooms", new { propertyID });
             }
             catch (Exception ex)
             {
-                TempData["Error"] = $"An error occurred: {ex.Message}";
-                return RedirectToAction("ManageProperty", new { PropertyID });
+                TempData["Error"] = "An error occurred: " + ex.Message;
+                return RedirectToAction("ManageHomeRooms", new { propertyID });
             }
         }
 
+        // POST: Delete Room
         [HttpPost]
-        public IActionResult DeleteRoom(int roomId, string PropertyID)
+        public IActionResult DeleteRoom(int roomId, string propertyID)
         {
             try
             {
                 manageProperty.DeleteRoominfo(roomId);
                 TempData["Success"] = "Room deleted successfully!";
-                return RedirectToAction("ManageProperty", new { PropertyID });
+                return RedirectToAction("ManageHomeRooms", new { propertyID });
             }
             catch (Exception ex)
             {
-                TempData["Error"] = $"An error occurred: {ex.Message}";
-                return RedirectToAction("ManageProperty", new { PropertyID });
+                TempData["Error"] = "An error occurred: " + ex.Message;
+                return RedirectToAction("ManageHomeRooms", new { propertyID });
             }
         }
+
     }
 }
