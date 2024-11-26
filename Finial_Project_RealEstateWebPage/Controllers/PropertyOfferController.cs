@@ -18,17 +18,28 @@ namespace Finial_Project_RealEstateWebPage.Controllers
             }
             else
             {
-                ViewBag.RelatorProertyOffers = new List<Home>();  //empty list to avoid null reference
+                ViewBag.RelatorProertyOffers = new List<Home>();  //avoid null reference
             }
 
             return View("~/Views/RealtorPage/AgentOfferShowing.cshtml");
         }
 
 
-        [HttpPost]
-        public IActionResult MakePropertyOffer()
+        public IActionResult MakePropertyOffer(OfferClass offerClass)
         {
-            return View();  
+            string propertyID = offerClass.PropertyID;
+            string fullName = offerClass.FullName;
+            string buyerPhone = offerClass.BuyerPhone;
+            string email = offerClass.BuyerEmail;
+            string offerAmount = offerClass.OfferAmount;
+            string saleType = offerClass.SaleType;
+            string contingencies = offerClass.Contingencies;
+            string needToSell = offerClass.NeedToSell;
+            string moveInDate = offerClass.MoveInDate;
+            offerClass.MakeOffer(propertyID, fullName,buyerPhone, email,
+                                 offerAmount,saleType,
+                                 contingencies, needToSell, moveInDate);
+            return View("~/Views/Home/UserMakeOffer.cshtml");  
         }
     }
 }

@@ -25,11 +25,13 @@
 
 </head>
 <body>
+
     <h1>
         Make an Offer!!
     </h1>
     <br />
-    <br />
+
+    <a href="javascript:history.back()">Back</a>
 
     <form asp-controller="PropertyOffer" asp-action="AgentViewOffer" method="post" class="loginPage">
 
@@ -41,7 +43,11 @@
             Sales Type <input asp-for="SaleType" type="text"/>
         </div>
         <div class="input">
-            Do you need to seel your property before buying? <input type="text" asp-for="NeedToSell" />
+            <label asp-for="NeedToSell">Do you need to sell your property before buying?</label>
+            <select asp-for="NeedToSell" class="form-control">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
         </div>
 
         <div class="input">

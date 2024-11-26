@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using Utilities;
+using System.Data.Common;
 
 namespace Finial_Project_RealEstateWebPage.Models.associateclass
 {
@@ -38,12 +39,12 @@ namespace Finial_Project_RealEstateWebPage.Models.associateclass
             BuyerEmail = buyerEmail;
         }
 
+        DBConnect objDB = new DBConnect();
+        SqlCommand objCommand = new SqlCommand();
         /*Get the list of property offcer baseed on the agentID*/
 
         public List<OfferClass> GetPropertyOffer(string userId)
         {
-            DBConnect objDB = new DBConnect();
-            SqlCommand objCommand = new SqlCommand();
             Console.WriteLine("Available in the result set.1");
             List<OfferClass> homes = new List<OfferClass>();
             try
@@ -84,5 +85,26 @@ namespace Finial_Project_RealEstateWebPage.Models.associateclass
             return homes;
 
         }
+
+        /*Add the makeoffer informanation to the database*/
+        public void MakeOffer(string propertyID, string fullName, string buyerPhone, string email,
+                                string offerAmount, string saleType,
+                                string contingencies, string needToSell, string moveInDate)
+        {
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "InsertOfferRequest";
+            objCommand.Parameters.Clear();
+            objCommand.Parameters.AddWithValue("@PropertyId", propertyID);
+            objCommand.Parameters.AddWithValue("@FullName", fullName);
+            objCommand.Parameters.AddWithValue("@OfferAmount", offerAmount);
+            objCommand.Parameters.AddWithValue("@SaleType", saleType);
+            objCommand.Parameters.AddWithValue("@Contingencies", contingencies);
+            objCommand.Parameters.AddWithValue("@NeedToSell", needToSell);
+            objCommand.Parameters.AddWithValue("@MoveInDate", moveInDate);
+            objCommand.Parameters.AddWithValue("@BuyerPhone", buyerPhone);
+            objCommand.Parameters.AddWithValue("@BuyerEmail", email);
+            objDB.DoUpdateUsingCmdObj(objCommand);
+        }
+
     }
 }
