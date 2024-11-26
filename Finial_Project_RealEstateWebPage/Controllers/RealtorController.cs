@@ -79,7 +79,7 @@ namespace Finial_Project_RealEstateWebPage.Controllers
             {
                 Response.Cookies.Delete("PropertyID");
             }
-            return RedirectToAction("Login", "Account");
+            return RedirectToAction("HomePageRun", "Home");
         }
 
 

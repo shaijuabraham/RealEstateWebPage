@@ -28,11 +28,10 @@
         <header>
             <nav class="custom-navbar">
                 <div class="container">
-                    <a class="brand" >Mr.Home's</a>
+                <a href="javascript:history.back()" class="brand">Mr.Home's</a>
                     <ul class="nav-links">
-                        <li><a href="#" class="active">Add New Property</a></li>
-                        <li><a href="#"> Schedule Home Showing </a></li>
-                        <li><a href="#"> Make an Offers</a></li>
+                        <li><a href="javascript:history.back()">DashBord</a></li>
+                        <li><a asp-controller="Realtor" asp-action="EditProperty" asp-route-id="@Model.HomeInfo.PropertyID" class="btn btn-primary"> Manage Property</a></li>
                         <li><a asp-action="SignOut" asp-controller="Realtor">Sign Out</a></li>
                     </ul>
                 </div>
@@ -46,11 +45,7 @@
                 // var home = (HomeInfo)ViewBag.RelatorHome;
                 <!-- Explicitly cast ViewBag -->
                 <div class="property">
-                    <div class="card-body">
-                        <p>
-                            <a asp-controller="Realtor" asp-action="EditProperty" asp-route-id="@Model.HomeInfo.PropertyID" class="btn btn-primary">Edit Property</a>
-                        </p>
-
+                    <div class="card-body">                    
                         <p class="card-text">
                             <h1>@Model.HomeInfo.AskingPrice.ToString("C2") </h1>
                             <h2> @Model.HomeInfo.BuildingNumber @Model.HomeInfo.Street, @Model.HomeInfo.City, @Model.HomeInfo.State, @Model.HomeInfo.ZipCode</h2>
