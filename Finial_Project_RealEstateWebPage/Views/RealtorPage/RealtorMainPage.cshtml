@@ -33,7 +33,7 @@
                <li><a href="/AddHome/AddProperty" class="active">Add New Property</a></li>
               <li><a href="#"> Home Showing </a></li>
               <li><a href="#"> Current Offers</a></li>
-              <li><a href="#">Sign Out</a></li>
+              <li><a asp-action="SignOut" asp-controller="Realtor">Sign Out</a></li>
             </ul>
           </div>
         </nav>
@@ -44,38 +44,38 @@
             <p>The best deals in town!!</p>
         </div>
 
-        <div class="homeDashboard">
-            <div class="row">
+        <div class="homeDashboard container mt-4">
+            <div class="row gx-3 gy-5">
                 @if (ViewBag.RelatorHomesList != null && ViewBag.RelatorHomesList.Count > 0)
                 {
-                    <div class="row">
                         @foreach (var home in (List<Finial_Project_RealEstateWebPage.Models.Home>)ViewBag.RelatorHomesList)
                         {
-                            <div class="property">
+                        <div class="col-md-4 d-flex align-items-stretch">
+                            <div class="card h-100 d-flex flex-column">
                                 <div class="card-body">
+                                    <h5 class="card-title">@home.AskingPrice.ToString("C2")</h5>
                                     <p class="card-text">
-                                        @home.AskingPrice.ToString("C2")<br>
-                                        @home.BedRooms<strong> bds |</strong> @home.BathRooms <strong> ba |</strong> @home.HomeSize <strong>sqft |</strong> <br />
-                                        @home.BuildingNumber @home.Street, @home.City,@home.State, @home.ZipCode<br />
+                                        <strong>@home.BedRooms</strong> bds | <strong>@home.BathRooms</strong> ba |
+                                        <strong>@home.HomeSize</strong> sqft
+                                        <br />
+                                        @home.BuildingNumber @home.Street, @home.City, @home.State, @home.ZipCode
                                     </p>
                                 </div>
-                                <div class="card-footer text-center">
-                                    <a asp-action="ViewRealtorSelectedPropertyInfo" asp-controller="Realtor" asp-route-id="@home.PropertyID" class="btn btn-primary">
+                                <div class="card-footer mt-auto text-center">
+                                    <a asp-action="ViewRealtorSelectedPropertyInfo" asp-controller="Realtor" asp-route-id="@home.PropertyID" class="btn btn-primary w-100">
                                         View More
                                     </a>
                                 </div>
                             </div>
-                        }
-                    </div>
+                        </div>
+                    }
                 }
                 else
                 {
                     <p>No homes available to display.</p>
                 }
-
             </div>
         </div>
-
 </body>
 
 

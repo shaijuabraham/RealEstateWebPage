@@ -15,7 +15,6 @@ body, ul, li {
     justify-content: space-between;
 }
 
-/* Brand styling */
 .custom-navbar .brand {
     color: #ecf0f1;
     text-decoration: none;
@@ -23,34 +22,88 @@ body, ul, li {
     font-weight: bold;
 }
 
-    .custom-navbar .brand:hover {
-        color: #f39c12;
-    }
+.card {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    margin: 0; /* Remove extra margins from Bootstrap */
+}
 
-/* Navigation links styling */
+.card-body {
+    padding: 15px;
+}
+
+.card-footer {
+    text-align: center;
+    background-color: #f8f9fa;
+    padding: 10px;
+}
+
+/* Ensure consistent spacing between rows and columns */
+.homeDashboard .row {
+    gap: 20px; /* Add uniform spacing between cards */
+}
+
+.card-footer .btn {
+    width: 100%;
+}
+
+
+/* Extra spacing between rows of cards */
+.homeDashboard .row {
+    row-gap: 40px; /* Adds additional vertical space between rows */
+}
+
+
+.homeDashboard .col-md-4 {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    margin-bottom: 20px;
+}
+
+
+.custom-navbar .brand:hover {
+    color: #f39c12;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .card {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .card-title {
+        font-size: 16px;
+    }
+}
+
 .nav-links {
     list-style: none;
     display: flex;
 }
 
-    .nav-links li {
-        margin-left: 20px;
-    }
+.nav-links li {
+    margin-left: 20px;
+}
 
-    .nav-links a {
-        color: #ecf0f1;
-        text-decoration: none;
-        font-size: 16px;
-        padding: 8px 12px;
-        border-radius: 4px;
-    }
+.nav-links a {
+   color: #ecf0f1;
+   text-decoration: none;
+   font-size: 16px;
+   padding: 8px 12px;
+   border-radius: 4px;
+}
 
-        .nav-links a:hover {
-            background-color: #f39c12;
-            color: #ffffff;
-        }
+.nav-links a:hover {
+   background-color: #f39c12;
+   color: #ffffff;
+}
 
-        .nav-links a.active {
-            background-color: #f39c12;
-            color: #ffffff;
-        }
+.nav-links a.active {
+     background-color: #f39c12;
+     color: #ffffff;
+}

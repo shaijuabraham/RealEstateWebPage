@@ -68,5 +68,20 @@ namespace Finial_Project_RealEstateWebPage.Controllers
             return View("~/Views/RealtorPage/RealtorMainPage.cshtml");
         }
 
+        [HttpGet]
+        public IActionResult SignOut()
+        {
+            if (Request.Cookies["UserID"] != null)
+            {
+                Response.Cookies.Delete("UserID");
+            }
+            if (Request.Cookies["PropertyID"] != null)
+            {
+                Response.Cookies.Delete("PropertyID");
+            }
+            return RedirectToAction("Login", "Account");
+        }
+
+
     }
 }
