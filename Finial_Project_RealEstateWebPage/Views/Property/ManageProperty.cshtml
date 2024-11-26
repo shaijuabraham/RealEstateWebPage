@@ -1,0 +1,179 @@
+﻿@model Finial_Project_RealEstateWebPage.Models.PropertyDetails
+
+<div class="container mt-4">
+    <h1>Manage Property</h1>
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger">@TempData["Error"]</div>
+    }
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">@TempData["Success"]</div>
+    }
+
+    <form asp-action="UpdateProperty" method="post">
+        <input type="hidden" asp-for="HomeInfo.PropertyID" />
+
+        <div class="form-group">
+            <label>Building Number</label>
+            <input asp-for="HomeInfo.BuildingNumber" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>Street</label>
+            <input asp-for="HomeInfo.Street" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>City</label>
+            <input asp-for="HomeInfo.City" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>State</label>
+            <input asp-for="HomeInfo.State" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>Zip Code</label>
+            <input asp-for="HomeInfo.ZipCode" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>Property Type</label>
+            <select asp-for="HomeInfo.PropertyType" class="form-control">
+                <option value="House">House</option>
+                <option value="Townhomes">Townhomes</option>
+                <option value="Multi-family">Multi-family</option>
+                <option value="Apartments">Apartments</option>
+                <option value="Manufactured">Manufactured</option>
+                <option value="Condos">Condos</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Year Built</label>
+            <input asp-for="HomeInfo.YearBuilt" type="number" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>Bedrooms</label>
+            <input asp-for="HomeInfo.BedRooms" type="number" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>Bathrooms</label>
+            <input asp-for="HomeInfo.BathRooms" type="number" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>Heating</label>
+            <select asp-for="HomeInfo.Heating" class="form-control">
+                <option value="Central Heating">Central Heating</option>
+                <option value="Radiant Heating">Radiant Heating</option>
+                <option value="None">None</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Cooling</label>
+            <select asp-for="HomeInfo.Cooling" class="form-control">
+                <option value="Central Air">Central Air</option>
+                <option value="Window Unit">Window Unit</option>
+                <option value="None">None</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Garage</label>
+            <select asp-for="HomeInfo.Garage" class="form-control">
+                <option value="None">None</option>
+                <option value="1 Car">1 Car</option>
+                <option value="2 Car">2 Car</option>
+                <option value="3 Car">3 Car</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Asking Price</label>
+            <input asp-for="HomeInfo.AskingPrice" type="number" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>Home Size</label>
+            <input asp-for="HomeInfo.HomeSize" type="number" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>Description</label>
+            <textarea asp-for="HomeInfo.Description" class="form-control"></textarea>
+        </div>
+
+        <h3>Rooms</h3>
+        @if (Model.HomeInfo != null && Model.HomeInfo.HomeRooms != null && Model.HomeInfo.HomeRooms.Count > 0)
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Room Name</th>
+                        <th>Width</th>
+                        <th>Length</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var room in Model.HomeInfo.HomeRooms)
+                    {
+                        <tr>
+                            <td>@room.RoomName</td>
+                            <td>@room.Width</td>
+                            <td>@room.Length</td>
+                            <td>
+                                <form asp-action="DeleteRoom" method="post">
+                                    <input type="hidden" name="roomId" value="@room.ID" />
+                                    <input type="hidden" name="propertyId"
+                                           value="@(Model.HomeInfo != null ? Model.HomeInfo.PropertyID : string.Empty)" />
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p>No rooms available.</p>
+        }
+
+        <h3>Add Room</h3>
+        <form asp-action="AddRoom" method="post">
+            @if (Model.HomeInfo != null && Model.HomeInfo.PropertyID != null)
+            {
+                <input type="hidden" name="propertyId" value="@Model.HomeInfo.PropertyID" />
+            }
+            else
+            {
+                <input type="hidden" name="propertyId" value="" />
+            }
+            <div class="form-group">
+                <label>Room Name</label>
+                <input name="roomName" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Width</label>
+                <input name="width" type="number" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Length</label>
+                <input name="length" type="number" class="form-control" />
+            </div>
+            <button type="submit" class="btn btn-primary">Add Room</button>
+        </form>
+
+        <button type="submit" class="btn btn-primary mt-3">Update Property</button>
+
+    </form>
+</div>
