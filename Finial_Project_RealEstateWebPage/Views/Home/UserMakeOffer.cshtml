@@ -36,33 +36,36 @@
     <form asp-controller="PropertyOffer" asp-action="MakePropertyOfferReq" method="post" class="loginPage">
 
         <div class="input">
-            offer Amount: <input type="number" asp-for="OfferAmount"/>
+            offer Amount: <input type="text" name="OfferAmount"/>
         </div>
 
         <div class="input">
-            Sales Type <input asp-for="SaleType" type="text"/>
+            Sales Type <input name="SaleType" type="text" />
         </div>
         <div class="input">
-            <label asp-for="NeedToSell">Do you need to sell your property before buying?</label>
-            <select asp-for="NeedToSell" class="form-control">
+            <label for="NeedToSell">Do you need to sell your property before buying?</label>
+            <select name="NeedToSell" class="form-control">
                 <option value="Yes">Yes</option>
                 <option value="No">No</option>
             </select>
         </div>
+        <div class="input">
+            Planning to Move In: <input name="MoveInDate" type="date" />
+        </div>
 
         <div class="input">
-            Contingencies <input asp-for="Contingencies" type="text" />
+            Contingencies <input name="Contingencies" type="text" />
         </div>
          
         <h3>Contact Informanation</h3>
         <div class="input">
-            Full Name <input asp-for="FullName" type="text" />
+            Full Name <input name="FullName" type="text" />
         </div>
         <div class="input">
-            Phone Number <input asp-for="BuyerPhone" type="text" />
+            Phone Number <input name="BuyerPhone" type="text" />
         </div>
         <div class="input">
-            Email <input asp-for="BuyerEmail" type="text" />
+            Email <input name="BuyerEmail" type="text" />
         </div>
 
         <div>
