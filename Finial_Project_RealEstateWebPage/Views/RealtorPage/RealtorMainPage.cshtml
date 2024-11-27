@@ -64,6 +64,9 @@
                                 <div class="card-footer mt-auto text-center">
                                     <a asp-action="ViewRealtorSelectedPropertyInfo" asp-controller="Realtor" asp-route-id="@home.PropertyID" class="btn btn-primary w-100">
                                         View More
+                                    </a> <br />
+                                    <a asp-action="ManageProperty" asp-controller="Property" asp-route-PropertyID="@home.PropertyID" class="btn btn-primary w-100">
+                                        Manage Property
                                     </a>
                                 </div>
                             </div>
