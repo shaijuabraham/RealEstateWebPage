@@ -95,5 +95,14 @@ namespace Finial_Project_RealEstateWebPage.Models
 
             }
         }
+
+        public void DeleteProperty(string propertyId)
+        {
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "DeleteProperty";
+            objCommand.Parameters.Clear();
+            objCommand.Parameters.AddWithValue("@PropertyID", propertyId);
+            objDB.DoUpdateUsingCmdObj(objCommand);
+        }
     }
 }

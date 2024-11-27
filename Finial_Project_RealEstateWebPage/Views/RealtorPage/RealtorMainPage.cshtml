@@ -68,6 +68,10 @@
                                     <a asp-action="ManageProperty" asp-controller="Property" asp-route-PropertyID="@home.PropertyID" class="btn btn-primary w-100">
                                         Manage Property
                                     </a>
+                                    <form asp-action="DeleteProperty" asp-controller="Realtor" method="post" class="mt-2">
+                                        <input type="hidden" name="propertyID" value="@home.PropertyID" />
+                                        <button type="submit" class="btn btn-danger w-100">Delete Property</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>

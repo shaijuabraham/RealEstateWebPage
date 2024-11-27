@@ -82,6 +82,31 @@ namespace Finial_Project_RealEstateWebPage.Controllers
             return RedirectToAction("HomePageRun", "Home");
         }
 
+        [HttpPost]
+        public IActionResult DeleteProperty(string propertyID)
+        {
+            if (string.IsNullOrEmpty(propertyID))
+            {
+                TempData["Error"] = "Property ID is missing.";
+                return RedirectToAction("Index");
+            }
+
+            try
+            {
+                ManageProperty manageProperty = new ManageProperty();
+                manageProperty.DeleteProperty(propertyID);
+
+                TempData["Success"] = "Property deleted successfully.";
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = "An error occurred while deleting the property: " + ex.Message;
+            }
+
+            return RedirectToAction("Index");
+        }
+
+
 
     }
 }
