@@ -139,8 +139,8 @@
                         <form asp-controller="Home" asp-action="GetReview" method="post" class="loginPage">
                             <div id="addDescription">
                                 <h4>Add Review</h4>
-                                <input name="description" type="text" TextMode="MultiLine" />
-                                <input type="hidden" name="id" value="@Model.HomeInfo.PropertyID" />
+                                <textarea name="description"></textarea>
+                                <input type="hidden" name="id" value="@Model.HomeInfo.PropertyID" /> <br>
                                 <button type="submit" class="addreview" style="width: 91px;">Add Review</button>
                             </div>
                         </form>
