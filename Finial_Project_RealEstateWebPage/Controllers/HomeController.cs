@@ -1,6 +1,7 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
+using ClassLibrary;
 using Finial_Project_RealEstateWebPage.Models;
 using Microsoft.AspNetCore.Mvc;
 using Utilities;
@@ -115,6 +116,15 @@ namespace Finial_Project_RealEstateWebPage.Controllers
         }
 
 
+        [HttpPost]
+        public IActionResult GetReview(string id, string description)
+        {
+            string propertyid = id; 
+            DateTime dateTime = DateTime.Now;
+            Home home = new Home();
+            home.AddPropertyReview(id, description, dateTime); 
+            return RedirectToAction("ViewPropertyInfo", "ViewHome", new { id = propertyid });
+        }
 
     }
 

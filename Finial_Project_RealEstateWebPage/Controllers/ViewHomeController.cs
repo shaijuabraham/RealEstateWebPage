@@ -18,9 +18,24 @@ namespace Finial_Project_RealEstateWebPage.Controllers
             AgentCompanyInfo agentCompanyInfo = new AgentCompanyInfo();
 
             HomeInfo home = propertyData.GetHomeData(id);
+            Home homedata = new Home();
+            // DaysAvliabeOnMarket property in the home class
+            //this will show the propety status and when  its last updated.
+            homedata.DaysAvliabeOnMarket = homedata.GetpropertyDate(id);
+            /*this methode to show the current ststus of the peroperty*/
+            homedata.PropertyStatus = homedata.GetPropertyStatus(id);
+            //pricehistory will show the property price -
+            //history with the date to show when the chnages occured.
+            homedata.PriceHistory = homedata.ShowPriceHistory(id);
+            homedata.UserReview = homedata.GetPropertyReview(id);
+            //this methode will show the agen inforionain based on the property.
             AgentInfo agentInfo = agent.AgentContactInfo(id);
+            //this methode will show the agent company infromanation based on the propert.
             AgentCompanyInfo agentCompany = agentCompanyInfo.RelatorCompanyInfo(id);
-
+            //if the home is not null the date will assigine to the PropertyDetails
+            //class where its called each class and assigined the values.
+            //so this will heples to call multiple @Model in the viewpage,
+            //so its helps to call properties from multiple class.
             if (home != null)
             {
                 // Create and populate view model 
@@ -28,7 +43,8 @@ namespace Finial_Project_RealEstateWebPage.Controllers
                 {
                     HomeInfo = home,
                     AgentInfo = agentInfo,
-                    AgentCompanyInfo = agentCompany
+                    AgentCompanyInfo = agentCompany,
+                    Home = homedata
                 };
                 return View("~/Views/Home/ViewHome.cshtml", viewModel);
             }
@@ -72,6 +88,9 @@ namespace Finial_Project_RealEstateWebPage.Controllers
 
             return View("~/Views/Home/HomeShowingPage.cshtml");
         }
+
+
+
 
     }
 }
