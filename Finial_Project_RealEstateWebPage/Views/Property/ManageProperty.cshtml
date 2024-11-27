@@ -15,6 +15,24 @@
 
     <a asp-action="ManageHomeRooms" asp-route-propertyID="@Model.HomeInfo.PropertyID" class="btn btn-secondary mt-3">Manage Rooms</a>
 
+    <hr />
+    <div class="mt-5">
+        <h3>Price History</h3>
+        @if (ViewBag.PriceHistory != null && !string.IsNullOrEmpty(ViewBag.PriceHistory))
+        {
+            <p>@Html.Raw(ViewBag.PriceHistory)</p>
+        }
+        else
+        {
+            <p>No price history available for this property.</p>
+        }
+    </div>
+
+    <div class="mt-4">
+        <a asp-action="Index" asp-controller="Realtor" class="btn btn-secondary mt-3">Back</a>
+    </div>
+
+
     <form asp-action="ManageProperty" method="post">
         <input type="hidden" asp-for="HomeInfo.PropertyID" />
 
@@ -97,6 +115,54 @@
                 <option value="3 Car">3 Car</option>
             </select>
         </div>
+
+        <div class="form-group">
+            <label>Amenities</label>
+            <div>
+                @foreach (var amenity in new List<string> { "Swimming Pool", "Gym", "Fireplace", "Garden" })
+                {
+                    <div>
+                        @{
+                            string isChecked = "";
+                            if (Model.HomeInfo.HomeAmenities != null && Model.HomeInfo.HomeAmenities.SelectedAmenities != null)
+                            {
+                                if (Model.HomeInfo.HomeAmenities.SelectedAmenities.Contains(amenity))
+                                {
+                                    isChecked = "checked";
+                                }
+                            }
+                        }
+                        <input type="checkbox" name="selectedAmenities" value="@amenity" @isChecked />
+                        <label>@amenity</label>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Utilities</label>
+            <div>
+                @foreach (var utility in new List<string> { "Electricity", "Water Supply", "Gas Supply", "Trash Disposal" })
+                {
+                    <div>
+                        @{
+                            string isChecked = "";
+                            if (Model.HomeInfo.HomeUtility != null && Model.HomeInfo.HomeUtility.SelectedUtility != null)
+                            {
+                                if (Model.HomeInfo.HomeUtility.SelectedUtility.Contains(utility))
+                                {
+                                    isChecked = "checked";
+                                }
+                            }
+                        }
+                        <input type="checkbox" name="selectedUtilities" value="@utility" @isChecked />
+                        <label>@utility</label>
+                    </div>
+                }
+            </div>
+        </div>
+
+
 
         <div class="form-group">
             <label>Asking Price</label>

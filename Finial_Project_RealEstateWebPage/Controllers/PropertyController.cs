@@ -45,12 +45,27 @@ namespace Finial_Project_RealEstateWebPage.Controllers
                 AgentCompanyInfo = new AgentCompanyInfo().RelatorCompanyInfo(propertyID)
             };
 
+            // Fetch price history using GetPriceHistory class
+            try
+            {
+                GetPriceHistory getPriceHistory = new GetPriceHistory();
+                string priceHistory = getPriceHistory.ShowPriceHistory(propertyID);
+                ViewBag.PriceHistory = priceHistory;
+            }
+            catch (Exception ex)
+            {
+                ViewBag.PriceHistory = "An error occurred while fetching price history: " + ex.Message;
+            }
+
             return View(propertyDetails);
         }
 
+
+
+
         // POST: Update Property Info
         [HttpPost]
-        public IActionResult ManageProperty(PropertyDetails model)
+        public IActionResult ManageProperty(PropertyDetails model, List<string> selectedAmenities, List<string> selectedUtilities)
         {
             if (model == null || model.HomeInfo == null)
             {
@@ -60,6 +75,7 @@ namespace Finial_Project_RealEstateWebPage.Controllers
 
             try
             {
+                // Update property info
                 manageProperty.UpdatedatePropertyInfo(
                     model.HomeInfo.PropertyID,
                     model.HomeInfo.BuildingNumber,
@@ -79,15 +95,26 @@ namespace Finial_Project_RealEstateWebPage.Controllers
                     model.HomeInfo.Garage
                 );
 
+                // Update amenities and utilities
+                if (!string.IsNullOrEmpty(model.HomeInfo.PropertyID))
+                {
+                    manageProperty.UpdatePropertyListInfo(model.HomeInfo.PropertyID); // Clear existing lists first
+                    manageProperty.AddAmenities(model.HomeInfo.PropertyID, selectedAmenities);
+                    manageProperty.AddUtilities(model.HomeInfo.PropertyID, selectedUtilities);
+                }
+
                 TempData["Success"] = "Property updated successfully!";
                 return RedirectToAction("ManageProperty", new { propertyID = model.HomeInfo.PropertyID });
             }
             catch (Exception ex)
             {
                 TempData["Error"] = "An error occurred: " + ex.Message;
-                return View(model);
+                return RedirectToAction("ManageProperty", new { propertyID = model.HomeInfo.PropertyID });
             }
         }
+
+
+
 
         // GET: Manage Home Rooms
         [HttpGet]
