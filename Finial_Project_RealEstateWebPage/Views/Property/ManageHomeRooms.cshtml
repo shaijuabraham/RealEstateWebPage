@@ -2,7 +2,8 @@
 
 <div class="container mt-4">
     <h1>Manage Rooms for Property</h1>
-    <a asp-action="Index" asp-controller="Property" class="btn btn-secondary mt-3">Back</a>
+
+    <a asp-action="ManageProperty" asp-controller="Property" asp-route-propertyID="@Model.PropertyID" class="btn btn-secondary mt-3">Back</a>
 
 
     @if (TempData["Error"] != null)

@@ -58,7 +58,7 @@ namespace Finial_Project_RealEstateWebPage.Controllers
 
         // POST: Update Property Info
         [HttpPost]
-        public IActionResult ManageProperty(PropertyDetails model, List<string> selectedAmenities, List<string> selectedUtilities)
+        public IActionResult ManageProperty(PropertyDetails model, List<string> selectedUtilities, List<string> selectedAmenities)
         {
             if (model == null || model.HomeInfo == null)
             {
@@ -68,7 +68,28 @@ namespace Finial_Project_RealEstateWebPage.Controllers
 
             try
             {
+                var propertyData = new PropertyDataInfo();
+                var existingHome = propertyData.GetHomeData(model.HomeInfo.PropertyID);
+
+                if (existingHome == null)
+                {
+                    TempData["Error"] = "Property data not found.";
+                    return RedirectToAction("Index", "Realtor");
+                }
+
+                // Check if the asking price has changed
+                if (existingHome.AskingPrice != model.HomeInfo.AskingPrice)
+                {
+                    var getPriceHistory = new GetPriceHistory();
+                    getPriceHistory.AddPriceHistoryOffer(
+                        model.HomeInfo.PropertyID,
+                        DateTime.Now,
+                        model.HomeInfo.AskingPrice
+                    );
+                }
+
                 // Update property info
+                var manageProperty = new ManageProperty();
                 manageProperty.UpdatedatePropertyInfo(
                     model.HomeInfo.PropertyID,
                     model.HomeInfo.BuildingNumber,
@@ -89,12 +110,9 @@ namespace Finial_Project_RealEstateWebPage.Controllers
                 );
 
                 // Update amenities and utilities
-                if (!string.IsNullOrEmpty(model.HomeInfo.PropertyID))
-                {
-                    manageProperty.UpdatePropertyListInfo(model.HomeInfo.PropertyID); // Clear existing lists first
-                    manageProperty.AddAmenities(model.HomeInfo.PropertyID, selectedAmenities);
-                    manageProperty.AddUtilities(model.HomeInfo.PropertyID, selectedUtilities);
-                }
+                manageProperty.UpdatePropertyListInfo(model.HomeInfo.PropertyID); // Clear existing data
+                manageProperty.AddUtilities(model.HomeInfo.PropertyID, selectedUtilities);
+                manageProperty.AddAmenities(model.HomeInfo.PropertyID, selectedAmenities);
 
                 TempData["Success"] = "Property updated successfully!";
                 return RedirectToAction("ManageProperty", new { propertyID = model.HomeInfo.PropertyID });
@@ -105,6 +123,7 @@ namespace Finial_Project_RealEstateWebPage.Controllers
                 return RedirectToAction("ManageProperty", new { propertyID = model.HomeInfo.PropertyID });
             }
         }
+
 
 
 
