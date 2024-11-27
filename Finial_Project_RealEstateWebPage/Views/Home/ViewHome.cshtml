@@ -53,8 +53,13 @@
                             <h3>
                                 @Model.HomeInfo.BedRooms <strong>beds </strong> @Model.HomeInfo.BathRooms <strong>baths </strong> @Model.HomeInfo.HomeSize <strong>sqft </strong> <br />
                             </h3>
-
                         </p>
+                        <div id="days">
+                            @Model.Home.DaysAvliabeOnMarket
+                        </div>
+                        <div id="status">
+                            @Model.Home.PropertyStatus
+                        </div>
                         <p class="card-text">
                             Property Type: @Model.HomeInfo.PropertyType <br />
                             Built in @Model.HomeInfo.YearBuilt <br />
@@ -117,15 +122,31 @@
                         {
                             <p>No rooms available.</p>
                         }
-
+                        <div id="priceHistory">
+                            @Model.Home.PriceHistory
+                        </div>
                         <p>
                          Description<br/>
                             @Model.HomeInfo.Description
                         </p>
 
+                        <p>
+                            <h3>
+                                User Review.
+                            </h3>
+                            @Model.Home.UserReview
+                        </p>
+                        <form asp-controller="Home" asp-action="GetReview" method="post" class="loginPage">
+                            <div id="addDescription">
+                                <h4>Add Review</h4>
+                                <input name="description" type="text" TextMode="MultiLine" />
+                                <input type="hidden" name="id" value="@Model.HomeInfo.PropertyID" />
+                                <button type="submit" class="addreview" style="width: 91px;">Add Review</button>
+                            </div>
+                        </form>
 
                         <p>
-                            Agent Info:<br />
+                          <h3>Agent Info</h3><br />
                           Name: @Model.AgentInfo.firstName @Model.AgentInfo.lastName
                           Address:  @Model.AgentInfo.street @Model.AgentInfo.city @Model.AgentInfo.state, @Model.AgentInfo.zipCode
                           Phone Number:   @Model.AgentInfo.phoneNumber
@@ -133,7 +154,7 @@
                         </p>
 
                         <p>
-                            Agent Company Info:<br />
+                            <h3>Agent Company Info</h3><br />
                             Company Name: @Model.AgentCompanyInfo.CompanyName
                             Address:  @Model.AgentCompanyInfo.Street @Model.AgentCompanyInfo.City @Model.AgentCompanyInfo.State, @Model.AgentCompanyInfo.ZipCode
                             Phone Number: @Model.AgentCompanyInfo.PhoneNumber
@@ -141,7 +162,11 @@
                         </p>
 
 
+
+
                     </div>
+
+
                 </div>
             }
             else
