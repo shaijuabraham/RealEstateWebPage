@@ -45,19 +45,12 @@ namespace Finial_Project_RealEstateWebPage.Controllers
                 AgentCompanyInfo = new AgentCompanyInfo().RelatorCompanyInfo(propertyID)
             };
 
-            // Fetch price history using GetPriceHistory class
-            try
-            {
-                GetPriceHistory getPriceHistory = new GetPriceHistory();
-                string priceHistory = getPriceHistory.ShowPriceHistory(propertyID);
-                ViewBag.PriceHistory = priceHistory;
-            }
-            catch (Exception ex)
-            {
-                ViewBag.PriceHistory = "An error occurred while fetching price history: " + ex.Message;
-            }
+            // Fetch and add price history as a list
+            var getPriceHistory = new GetPriceHistory();
+            ViewBag.PriceHistory = getPriceHistory.GetPriceHistoryList(propertyID);
 
             return View(propertyDetails);
+
         }
 
 

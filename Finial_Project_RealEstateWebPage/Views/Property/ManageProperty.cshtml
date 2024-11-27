@@ -16,17 +16,24 @@
     <a asp-action="ManageHomeRooms" asp-route-propertyID="@Model.HomeInfo.PropertyID" class="btn btn-secondary mt-3">Manage Rooms</a>
 
     <hr />
+
     <div class="mt-5">
         <h3>Price History</h3>
-        @if (ViewBag.PriceHistory != null && !string.IsNullOrEmpty(ViewBag.PriceHistory))
+        @if (ViewBag.PriceHistory != null && ((List<string>)ViewBag.PriceHistory).Count > 0)
         {
-            <p>@Html.Raw(ViewBag.PriceHistory)</p>
+            <ul>
+                @foreach (var line in (List<string>)ViewBag.PriceHistory)
+                {
+                    <li>@line</li>
+                }
+            </ul>
         }
         else
         {
             <p>No price history available for this property.</p>
         }
     </div>
+
 
     <div class="mt-4">
         <a asp-action="Index" asp-controller="Realtor" class="btn btn-secondary mt-3">Back</a>

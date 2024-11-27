@@ -48,5 +48,29 @@ namespace Finial_Project_RealEstateWebPage.Models
                 return "No price change for this property.";
             }
         }
+
+        public List<string> GetPriceHistoryList(string propertyID)
+        {
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "GetPropertyPriceHistory";
+            objCommand.Parameters.Clear();
+            objCommand.Parameters.AddWithValue("@PropertyId", propertyID);
+
+            DataSet ds = objDB.GetDataSetUsingCmdObj(objCommand);
+            List<string> priceHistory = new List<string>();
+
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow row in ds.Tables[0].Rows)
+                {
+                    string price = Convert.ToDecimal(row["Price"]).ToString("C");
+                    string date = Convert.ToDateTime(row["Date"]).ToString("MM-dd-yyyy");
+                    priceHistory.Add($"{date}: {price}");
+                }
+            }
+
+            return priceHistory;
+        }
+
     }
 }
