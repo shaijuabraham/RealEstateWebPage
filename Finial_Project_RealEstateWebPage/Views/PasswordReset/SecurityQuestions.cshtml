@@ -1,80 +1,73 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     Layout = null;
-
     ViewData["Title"] = "Security Questions";
 }
 
 <!DOCTYPE html>
-
 <html>
 <head>
-    <title>
-        Security Questions
-    </title>
-
+    <title>Security Questions</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="~/css/LoginPage.css" />
-
 </head>
 <body>
-    <h1>
-        Security Questions
-    </h1>
+    <h1>Please answer your security questions.</h1>
     <br />
     <br />
 
-    <form asp-controller="Verification" asp-action="VerifyUser" method="POST" class="loginPage">
-
-       @*  <label for="SecurityQuestion1"></label>
-        Answer 1: <input type="text" name="AnswerSecurityQuestion1" /> <br />
-
-        <label for="SecurityQuestion2"></label>
-        Answer 2: <input type="text" name="AnswerSecurityQuestion2" /> <br />
-
-        <label for="SecurityQuestion3"></label>
-        Answer 3: <input type="text" name="AnswerSecurityQuestion3" /> <br />
-
-
-        <div>
-            <span class="text-danger">@ViewBag.ErrorMessage</span>
+@*         <div class="homeDashboard">
+            <div class="row">
+                @foreach (var question in (List<Finial_Project_RealEstateWebPage.Models.Question>)ViewBag.QuestionList)
+                {
+                    <div class="questions">
+                        <div class="card-body">
+                            <p class="card-text">
+                                @question.Questions<br>
+                                <input type="text" name="AnswerSecurityQuestion" /> <br />
+                            </p>
+                        </div>
+                    </div>
+                }
+            </div>
         </div>
 
-        <button type="submit" class="loginPage" style="width: 91px;">Submit</button> *@
 
+ *@
+    <form asp-controller="AccountVerification" asp-action="VerifyUser" method="post" class="loginPage">
+        <div class="homeDashboard">
+            <div class="row">
+                @if (ViewBag.QuestionList is List<Finial_Project_RealEstateWebPage.Models.Question> questions)
+                {
+                    for (int i = 0; i < questions.Count; i++)
+                    {
+                        var question = questions[i];
+                        <div class="questions">
+                            <div class="card-body">
+                                <p class="card-text">
+                                    @question.Questions<br>
+                                    <input type="hidden" name="Questions[@i].QuestionId" value="@question.QuestionId" />
+                                    <input type="hidden" name="Questions[@i].Questions" value="@question.Questions" />
+                                    <input type="text" name="Questions[@i].Answer" placeholder="Your answer..." required /><br />
+                                </p>
+                            </div>
+                        </div>
+                    }
+                    @if (ViewBag.ErrorMessage != null)
+                    {
+                        <div class="alert alert-danger">
+                            @ViewBag.ErrorMessage
+                        </div>
+                    }
+
+                }
+            </div>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">Submit Answers</button>
+        </div>
     </form>
 
-    <div class="homeDashboard">
-        <div class="row">
-            @foreach (var home in (List<Finial_Project_RealEstateWebPage.Models.Question>)ViewBag.QuestionList)
-            {
-                <div class="questions">
-
-                    <div class="card-body">
-                        <p class="card-text">
-                            @home.Question1<br>
-                            Answer 1: <input type="text" name="AnswerSecurityQuestion1" /> <br />
-                        </p>
-                    </div>
-                    <div class="card-footer text-center">
-                        <a asp-action="ViewPropertyInfo" asp-controller="ViewHome" @* asp-route-id="@home.PropertyID" *@ class="btn btn-primary">
-                            View More
-                        </a>
-                    </div>
-                </div>
-            }
-        </div>
-    </div>
 
 </body>
-
 </html>
-

@@ -1,23 +1,70 @@
-﻿namespace Finial_Project_RealEstateWebPage.Models
+﻿using Microsoft.AspNetCore.Mvc;
+using System.Data.SqlClient;
+using System.Data;
+using Utilities;
+
+namespace Finial_Project_RealEstateWebPage.Models
 {
     public class Question
     {
-        private string question1;
-   
+        public int QuestionId { get; set; }
+        public string Questions {  get; set; }
+        public string Answer {  get; set; }
+
+
 
         public Question()
         {
 
         }
 
-        
 
-        public String Question1
+
+        public bool GetQuestionsAnswer(int questionId, string questions, string answers)
         {
-            get { return this.question1; }
-            set { this.question1 = value; }
+            try
+            {
+                DBConnect objDB = new DBConnect();
+                SqlCommand command = new SqlCommand
+                {
+                    CommandType = CommandType.StoredProcedure,
+                    CommandText = "GetSecurityQuestionsAnswers"
+                };
+
+                command.Parameters.Clear();
+                command.Parameters.AddWithValue("@id", questionId);  
+                command.Parameters.AddWithValue("@Question", questions);
+                command.Parameters.AddWithValue("@Answer", answers);
+
+                DataSet ds = objDB.GetDataSetUsingCmdObj(command);
+
+                // If a matching row exists, return true
+                if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                {
+                    DataRow record = ds.Tables[0].Rows[0]; 
+                    int ID = int.Parse(record["id"].ToString());
+                    string questionOne = record["Question"].ToString();
+                    string answer = record["Answer"].ToString();
+
+                    // Compare values (use case-insensitive comparison for strings if necessary)
+                    if (ID == questionId && questionOne == questions && answer == answers)
+                    {
+                        return true;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("No matching question and answer found.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error retrieving data: " + ex.Message);
+            }
+
+            return false;
         }
 
-        
+
     }
 }
