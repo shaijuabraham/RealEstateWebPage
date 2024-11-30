@@ -9,7 +9,7 @@ namespace Finial_Project_RealEstateWebPage.Models
     {
         public int QuestionId { get; set; }
         public string Questions {  get; set; }
-        public string Answer {  get; set; }
+        public string Answer {  get; set; } 
 
 
 
@@ -28,7 +28,7 @@ namespace Finial_Project_RealEstateWebPage.Models
                 SqlCommand command = new SqlCommand
                 {
                     CommandType = CommandType.StoredProcedure,
-                    CommandText = "GetSecurityQuestionsAnswers"
+                    CommandText = "GetSecurityQuestionsAnswers" 
                 };
                 command.Parameters.Clear();
                 command.Parameters.AddWithValue("@id", questionId);  
