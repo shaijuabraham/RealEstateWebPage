@@ -23,7 +23,6 @@ namespace Finial_Project_RealEstateWebPage.Controllers
         public IActionResult GetSecurityQuestions()
         {
             string userId = Request.Cookies["PasswordRestUserID"];
-
             return View("~/Views/PasswordReset/SecurityQuestions.cshtml");
         }
 

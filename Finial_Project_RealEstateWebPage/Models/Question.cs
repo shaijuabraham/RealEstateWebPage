@@ -30,7 +30,6 @@ namespace Finial_Project_RealEstateWebPage.Models
                     CommandType = CommandType.StoredProcedure,
                     CommandText = "GetSecurityQuestionsAnswers"
                 };
-
                 command.Parameters.Clear();
                 command.Parameters.AddWithValue("@id", questionId);  
                 command.Parameters.AddWithValue("@Question", questions);
