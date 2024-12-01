@@ -122,8 +122,21 @@
                         {
                             <p>No rooms available.</p>
                         }
-                        <div id="priceHistory">
-                            @Model.Home.PriceHistory
+                        <div class="mt-5">
+                            <h3>Price History</h3>
+                            @if (ViewBag.PriceHistory != null && ((List<string>)ViewBag.PriceHistory).Count > 0)
+                            {
+                                <ul>
+                                    @foreach (var line in (List<string>)ViewBag.PriceHistory)
+                                    {
+                                        <li>@line</li>
+                                    }
+                                </ul>
+                            }
+                            else
+                            {
+                                <p>No price history available for this property.</p>
+                            }
                         </div>
                         <p>
                          Description<br/>
