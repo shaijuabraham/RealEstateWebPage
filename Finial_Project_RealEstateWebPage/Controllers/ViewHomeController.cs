@@ -1,4 +1,5 @@
-﻿using Finial_Project_RealEstateWebPage.Models;
+﻿using ClassLibrary;
+using Finial_Project_RealEstateWebPage.Models;
 using Finial_Project_RealEstateWebPage.Models.associateclass;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages;
@@ -26,7 +27,8 @@ namespace Finial_Project_RealEstateWebPage.Controllers
             homedata.PropertyStatus = homedata.GetPropertyStatus(id);
             //pricehistory will show the property price -
             //history with the date to show when the chnages occured.
-            homedata.PriceHistory = homedata.ShowPriceHistory(id);
+            var getPriceHistory = new GetPriceHistory();
+            ViewBag.PriceHistory = getPriceHistory.GetPriceHistoryList(id);
             homedata.UserReview = homedata.GetPropertyReview(id);
             //this methode will show the agen inforionain based on the property.
             AgentInfo agentInfo = agent.AgentContactInfo(id);

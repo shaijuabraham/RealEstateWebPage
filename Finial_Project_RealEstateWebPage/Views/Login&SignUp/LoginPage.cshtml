@@ -22,16 +22,23 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="~/css/LoginPage.css" />
+        <link rel="stylesheet" href="~/css/nav.css" />
 
     </head>
     <body>
+
+    <header>
+        <nav class="custom-navbar">
+            <div class="container">
+                <a href="/Home/HomePageRun" class="brand">Mr. Home's</a>
+            </div>
+        </nav>
+    </header>
+     
+    <form asp-controller="Account" asp-action="AddLogin" method="post" class="loginPage">
         <h1>
             Login
         </h1>
-        <br/>
-        <br />
-
-    <form asp-controller="Account" asp-action="AddLogin" method="post" class="loginPage">
 
         <div class="input">
             <label for="UserID"></label>

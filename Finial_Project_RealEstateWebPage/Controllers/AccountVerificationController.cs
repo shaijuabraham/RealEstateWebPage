@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Data.SqlClient;
 using System.Data;
 using Utilities;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace Finial_Project_RealEstateWebPage.Controllers
 {
@@ -94,28 +95,27 @@ namespace Finial_Project_RealEstateWebPage.Controllers
             if (Questions == null || Questions.Count == 0)
             {
                 ViewBag.ErrorMessage = "No questions were answered. Please try again.";
-                return View();
+                return View("~/Views/PasswordReset/SecurityQuestions.cshtml");
             }
-
-            Question questionModel = new Question();
 
             foreach (var questionItem in Questions)
             {
-                bool isValid = questionModel.GetQuestionsAnswer(questionItem.QuestionId, questionItem.Questions, questionItem.Answer);
-                if (isValid == true)
+                Question questionModel = new Question();
+                if (questionItem.Questions != null && questionItem.Answer != null)
                 {
-                    ViewBag.SuccessMessage = "All answers are correct!";
-                    // Redirect to the next step or perform further actions
-                    return View("~/Views/Login&SignUp/LoginPage.cshtml");
-                }
-                else
-                {
-                    ViewBag.ErrorMessage = $"Invalid answer for Question ID: {questionItem.QuestionId}";
-                    break; // Stop checking further if one is invalid
-                    
+                    bool isValid = questionModel.GetQuestionsAnswer(questionItem.QuestionId, questionItem.Questions, questionItem.Answer);
+
+                    if (!isValid)
+                    {
+                        ViewBag.ErrorMessage = "Your answer is wrong.";
+                        //return RedirectToAction("GetQuestions", "AccountVerification");
+                        return View("~/Views/PasswordReset/SecurityQuestions.cshtml");
+                    }
                 }
             }
-            return View("~/Views/PasswordReset/SecurityQuestions.cshtml");
+
+            ViewBag.SuccessMessage = "All answers are correct!";
+            return View("~/Views/Login&SignUp/LoginPage.cshtml");
         }
 
     }

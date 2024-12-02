@@ -1,67 +1,64 @@
-﻿
-body {
-    display: block;
+﻿body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
+    margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh;
 }
 
 .loginPage {
+    border: solid;
+    border-radius: 8px;
     background-color: #fff;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 300px;
+    text-align: center;
 }
 
 h1 {
-    text-align: center;
+    font-size: 24px;
     margin-bottom: 20px;
-    color: #333;
 }
 
 .input {
     margin-bottom: 15px;
 }
 
-    .input label {
-        display: block;
-        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        font-size: 20px;
-        margin-bottom: 5px;
-    }
-
-    .input input {
-        width: 90%;
-        padding: 10px;
-        font-size: 14px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-    }
-
-button {
+input {
     width: 100%;
-    text-align: center;
-    color: black;
-    padding: 10px;
-    border: solid;
+    padding: 8px;
     font-size: 16px;
-    cursor: pointer;
+    border: 1px solid #ccc;
     border-radius: 4px;
 }
 
+button {
+    background-color: #007bff;
+    color: black;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
     button:hover {
-        background-color: black;
-        color:white;
+        background-color: #0056b3;
     }
 
-/* Error message */
 .text-danger {
     color: red;
-    text-align: center;
     font-size: 14px;
-    display: block;
-    margin-top: 10px;
 }
+
+.password-reset a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+    .password-reset a:hover {
+        text-decoration: underline;
+    }

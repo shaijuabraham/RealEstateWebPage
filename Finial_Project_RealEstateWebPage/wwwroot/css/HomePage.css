@@ -1,0 +1,21 @@
+﻿/* General Container Styling */
+.Container {
+    display:flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Search Form */
+.Search {
+    margin-bottom: 30px;
+}
+
+#SearchTab {
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+
+
