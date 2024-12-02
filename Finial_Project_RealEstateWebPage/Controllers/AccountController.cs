@@ -2,6 +2,7 @@
 using Finial_Project_RealEstateWebPage.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ViewEngines;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
 using System.Security.Cryptography.X509Certificates;
 
 namespace Finial_Project_RealEstateWebPage.Controllers
@@ -18,6 +19,7 @@ namespace Finial_Project_RealEstateWebPage.Controllers
             {
                 var options = new CookieOptions { Expires = DateTime.Now.AddMinutes(2) };
                 Response.Cookies.Append("UserID", login.UserID,options);
+                login.emialSent();               
                 ViewBag.ErrorMessage = "Login Accepted";
                 return RedirectToAction("Index", "Realtor");
             }

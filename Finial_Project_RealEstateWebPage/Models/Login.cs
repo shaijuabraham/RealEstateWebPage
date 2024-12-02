@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using Finial_Project_RealEstateWebPage.Models.associateclass;
+using System.Data;
 using System.Data.SqlClient;
 using Utilities;
 
@@ -53,6 +54,16 @@ namespace Finial_Project_RealEstateWebPage.Models
                 }
             }
             return false;
+        }
+
+
+        public void emialSent()
+        {
+            Email email = new Email();
+            string frm = "tug33775@temple.edu";
+            string msg = "email checking message tral fake ";
+
+            email.SendMail(frm, frm, "87654456", msg);
         }
     }
 }
