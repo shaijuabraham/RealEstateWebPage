@@ -25,29 +25,7 @@ namespace Finial_Project_RealEstateWebPage.Models
         }
         /*this methode show the property pricehistory on Viewhome page 
          when user select teh perioerty by retun it ina string */
-        public string ShowPriceHistory(string propertyID)
-        {
-            objCommand.CommandType = CommandType.StoredProcedure;
-            objCommand.CommandText = "GetPropertyPriceHistory";
-            objCommand.Parameters.Clear();
-            objCommand.Parameters.AddWithValue("@PropertyId", propertyID);
-            DataSet ds = objDB.GetDataSetUsingCmdObj(objCommand);
-            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-            {
-                StringBuilder priceHistory = new StringBuilder();
-                foreach (DataRow row in ds.Tables[0].Rows)
-                {
-                    string price = Convert.ToDecimal(row["Price"]).ToString("C");
-                    string date = Convert.ToDateTime(row["Date"]).ToString("MM-dd-yyyy");
-                    priceHistory.AppendLine($"{date}:  {price} <br/>");
-                }
-                return priceHistory.ToString();
-            }
-            else
-            {
-                return "No price change for this property.";
-            }
-        }
+        
 
         public List<string> GetPriceHistoryList(string propertyID)
         {
