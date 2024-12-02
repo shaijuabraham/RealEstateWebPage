@@ -273,7 +273,7 @@ namespace Finial_Project_RealEstateWebPage.Models
 
         /*methde to get the property review based on the property id
         and retun it in a string*/
-        public string GetPropertyReview(string propertyID)
+        public List<string> GetPropertyReview(string propertyID)
         {
             objCommand.CommandType = CommandType.StoredProcedure;
             objCommand.CommandText = "GetUserReview"; // Stored procedure name
@@ -281,20 +281,23 @@ namespace Finial_Project_RealEstateWebPage.Models
             objCommand.Parameters.AddWithValue("@PropertyID", propertyID);
             objDB.DoUpdateUsingCmdObj(objCommand);
             DataSet ds = objDB.GetDataSetUsingCmdObj(objCommand);
+            List<string> reviews = new List<string>();
+
             if (ds.Tables[0].Rows.Count > 0)
             {
-                StringBuilder reviews = new StringBuilder();
                 foreach (DataRow row in ds.Tables[0].Rows)
                 {
                     string review = row["PropertyReview"].ToString();
                     string date = Convert.ToDateTime(row["Date"]).ToString("MM-dd-yyyy");
-                    reviews.AppendLine($"{date}: {review}");
+                    reviews.Add($"{date}: {review}");
                 }
-                return reviews.ToString();
+                return reviews;
             }
             else
             {
-                return "No reviews found for this property.";
+                string review = "No reviews found for this property.";
+                reviews.Add(review);
+                return reviews;
             }
         }
 

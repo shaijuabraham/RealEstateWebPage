@@ -129,7 +129,8 @@
                                 <ul>
                                     @foreach (var line in (List<string>)ViewBag.PriceHistory)
                                     {
-                                        <li>@line</li>
+                                        @line
+                                        <br></br>
                                     }
                                 </ul>
                             }
@@ -147,7 +148,21 @@
                             <h3>
                                 User Review.
                             </h3>
-                            @Model.Home.UserReview
+                            @if (ViewBag.UserReview != null && ((List<string>)ViewBag.UserReview).Count > 0)
+                            {
+                                <ul>
+                                    @foreach (var line in (List<string>)ViewBag.UserReview)
+                                    {
+                                        @line
+                                        <br></br>
+                                    }
+                                </ul>
+                            }
+                            else
+                            {
+                            <p>No price history available for this property.</p>
+                            }
+
                         </p>
                         <form asp-controller="Home" asp-action="GetReview" method="post" class="loginPage">
                             <div id="addDescription">
@@ -159,23 +174,20 @@
                         </form>
 
                         <p>
-                          <h3>Agent Info</h3><br />
-                          Name: @Model.AgentInfo.firstName @Model.AgentInfo.lastName
-                          Address:  @Model.AgentInfo.street @Model.AgentInfo.city @Model.AgentInfo.state, @Model.AgentInfo.zipCode
-                          Phone Number:   @Model.AgentInfo.phoneNumber
-                          Email: @Model.AgentInfo.email
+                          <h3>Agent Contact Info.</h3>
+                            Name: @Model.AgentInfo.firstName @Model.AgentInfo.lastName  <br></br>
+                            Address:  @Model.AgentInfo.street @Model.AgentInfo.city @Model.AgentInfo.state, @Model.AgentInfo.zipCode <br></br>
+                            Phone Number:   @Model.AgentInfo.phoneNumber <br></br>
+                            Email: @Model.AgentInfo.email <br></br>
                         </p>
 
                         <p>
-                            <h3>Agent Company Info</h3><br />
-                            Company Name: @Model.AgentCompanyInfo.CompanyName
-                            Address:  @Model.AgentCompanyInfo.Street @Model.AgentCompanyInfo.City @Model.AgentCompanyInfo.State, @Model.AgentCompanyInfo.ZipCode
-                            Phone Number: @Model.AgentCompanyInfo.PhoneNumber
-                            Email: @Model.AgentCompanyInfo.Email
+                            <h3>Agent Company Info</h3>
+                            Company Name: @Model.AgentCompanyInfo.CompanyName<br></br>
+                            Address:  @Model.AgentCompanyInfo.Street @Model.AgentCompanyInfo.City @Model.AgentCompanyInfo.State, @Model.AgentCompanyInfo.ZipCode<br></br>
+                            Phone Number: @Model.AgentCompanyInfo.PhoneNumber<br></br>
+                            Email: @Model.AgentCompanyInfo.Email<br></br>
                         </p>
-
-
-
 
                     </div>
 

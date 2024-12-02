@@ -14,7 +14,6 @@ namespace Finial_Project_RealEstateWebPage.Controllers
             //Login login = new Login();
             
             bool loginStatus = login.User_Login();
-
             if (loginStatus == true)
             {
                 var options = new CookieOptions { Expires = DateTime.Now.AddMinutes(2) };
@@ -25,13 +24,11 @@ namespace Finial_Project_RealEstateWebPage.Controllers
             else
             {
                 ViewBag.ErrorMessage = "Invalid username or password.";
-
                 return View("~/Views/Login&SignUp/LoginPage.cshtml");
 
             }
             //return View();
         }
-
 
 
         [HttpGet]

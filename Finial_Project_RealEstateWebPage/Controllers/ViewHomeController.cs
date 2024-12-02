@@ -29,7 +29,7 @@ namespace Finial_Project_RealEstateWebPage.Controllers
             //history with the date to show when the chnages occured.
             var getPriceHistory = new GetPriceHistory();
             ViewBag.PriceHistory = getPriceHistory.GetPriceHistoryList(id);
-            homedata.UserReview = homedata.GetPropertyReview(id);
+            ViewBag.UserReview = homedata.GetPropertyReview(id);
             //this methode will show the agen inforionain based on the property.
             AgentInfo agentInfo = agent.AgentContactInfo(id);
             //this methode will show the agent company infromanation based on the propert.
