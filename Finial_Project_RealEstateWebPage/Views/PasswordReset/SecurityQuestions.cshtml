@@ -14,26 +14,6 @@
 <body>
     <h1>Please answer your security questions.</h1>
     <br />
-    <br />
-
-@*         <div class="homeDashboard">
-            <div class="row">
-                @foreach (var question in (List<Finial_Project_RealEstateWebPage.Models.Question>)ViewBag.QuestionList)
-                {
-                    <div class="questions">
-                        <div class="card-body">
-                            <p class="card-text">
-                                @question.Questions<br>
-                                <input type="text" name="AnswerSecurityQuestion" /> <br />
-                            </p>
-                        </div>
-                    </div>
-                }
-            </div>
-        </div>
-
-
- *@
     <form asp-controller="AccountVerification" asp-action="VerifyUser" method="post" class="loginPage">
         <div class="homeDashboard">
             <div class="row">
@@ -53,14 +33,15 @@
                             </div>
                         </div>
                     }
+                    <p>
+                        <input type="text" name="newpassword" placeholder="Enter your new password..">
+                    </p>
                 }
 
-                @if (ViewBag.ErrorMessage != null)
-                {
                     <div class="alert alert-danger">
-                        @ViewBag.ErrorMessage
+                         @ViewBag.ErrorMessage
+                         <label name="error" ></label>
                     </div>
-                }
             </div>
         </div>
         <div>

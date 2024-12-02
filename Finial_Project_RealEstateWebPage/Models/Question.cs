@@ -2,6 +2,7 @@
 using System.Data.SqlClient;
 using System.Data;
 using Utilities;
+using System.Data.Common;
 
 namespace Finial_Project_RealEstateWebPage.Models
 {
@@ -17,8 +18,6 @@ namespace Finial_Project_RealEstateWebPage.Models
         {
 
         }
-
-
 
         public bool GetQuestionsAnswer(int questionId, string questions, string answers)
         {
@@ -61,6 +60,36 @@ namespace Finial_Project_RealEstateWebPage.Models
                 Console.WriteLine("Error retrieving data: " + ex.Message);
             }
 
+            return false;
+        }
+
+
+        public bool PasswordRest(string password, string userid)
+        {
+            DBConnect objDB = new DBConnect();
+            SqlCommand objCommand = new SqlCommand();
+            /*userID or Password is null or empty*/
+            if (string.IsNullOrEmpty(password))
+            {
+                return false;  //invalid empty
+            }
+
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "UpdatePassword";
+            objCommand.Parameters.Clear();
+            objCommand.Parameters.AddWithValue("@UserID", userid);
+            objCommand.Parameters.AddWithValue("@Password", password);
+            DataSet ds = objDB.GetDataSetUsingCmdObj(objCommand);
+            if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                DataRow row = ds.Tables[0].Rows[0];
+                string dbUserID = row["UserID"].ToString();
+                string dbPassword = row["Password"].ToString();
+                if (dbUserID == userid && dbPassword == password)
+                {
+                    return true;
+                }
+            }
             return false;
         }
 

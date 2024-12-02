@@ -90,8 +90,9 @@ namespace Finial_Project_RealEstateWebPage.Controllers
         }
 
         [HttpPost]
-        public IActionResult VerifyUser(List<Question> Questions)
+        public IActionResult VerifyUser(List<Question> Questions, string newpassword)
         {
+
             if (Questions == null || Questions.Count == 0)
             {
                 ViewBag.ErrorMessage = "No questions were answered. Please try again.";
@@ -103,19 +104,27 @@ namespace Finial_Project_RealEstateWebPage.Controllers
                 Question questionModel = new Question();
                 if (questionItem.Questions != null && questionItem.Answer != null)
                 {
-                    bool isValid = questionModel.GetQuestionsAnswer(questionItem.QuestionId, questionItem.Questions, questionItem.Answer);
+                    bool isValid  = questionModel.GetQuestionsAnswer(questionItem.QuestionId, questionItem.Questions, questionItem.Answer);
 
-                    if (!isValid)
+                    if(isValid == true)
                     {
-                        ViewBag.ErrorMessage = "Your answer is wrong.";
-                        //return RedirectToAction("GetQuestions", "AccountVerification");
-                        return View("~/Views/PasswordReset/SecurityQuestions.cshtml");
+                        string userId = Request.Cookies["PasswordRestUserID"];
+                        if (userId != null) 
+                        {
+                            questionModel.PasswordRest(newpassword, userId);
+                            ViewBag.SuccessMessage = "All answers are correct!";
+                            return View("~/Views/Login&SignUp/LoginPage.cshtml");
+                        }
+                        else
+                        {
+                            ViewBag.SuccessMessage = "Plese Refresh the page ";
+                        }
                     }
                 }
             }
-
-            ViewBag.SuccessMessage = "All answers are correct!";
-            return View("~/Views/Login&SignUp/LoginPage.cshtml");
+            ViewBag.ErrorMessage = "Your answer is wrong.";
+            return RedirectToAction("GetQuestions", "AccountVerification");
+            //return View("~/Views/PasswordReset/SecurityQuestions.cshtml",error);
         }
 
     }
