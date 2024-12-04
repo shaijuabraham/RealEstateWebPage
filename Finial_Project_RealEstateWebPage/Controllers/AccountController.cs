@@ -3,6 +3,7 @@ using Finial_Project_RealEstateWebPage.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ViewEngines;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
+using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 
 namespace Finial_Project_RealEstateWebPage.Controllers
@@ -60,6 +61,12 @@ namespace Finial_Project_RealEstateWebPage.Controllers
 
             string Username = signUp.UserID;
 
+            foreach (var question in signUp.Questions)
+            {
+                Console.WriteLine($"Question: {question.Questions}, Answer: {question.Answer}");
+
+            }
+
             signUp.UserAccountSignUp(Username, signUp.CompanyName, 
                                      signUp.CompanyStreet,
                                      signUp.CompanyCity, signUp.CompanyState, 
@@ -87,6 +94,7 @@ namespace Finial_Project_RealEstateWebPage.Controllers
                                             signUp.ContactZipCode, 
                                             signUp.ContactPhoneNumber, 
                                             signUp.ContactEmail);
+            
 
             return View("~/Views/Login&SignUp/LoginPage.cshtml");
         }

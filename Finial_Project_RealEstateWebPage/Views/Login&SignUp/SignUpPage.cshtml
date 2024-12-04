@@ -3,6 +3,7 @@
 *@
 @model Finial_Project_RealEstateWebPage.Models.AccountRegistration
 
+
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
@@ -115,29 +116,24 @@
             <input type="password" id="txtConfirmPassword" name="ConfirmPassword"/><br />
 
             <h3>Security Questions</h3>
-            <label for="ddlquestionOne"> Question 1</label>
-            <select id="ddlquestionOne" name="QuestionOne">
-                <option value=" What was the name of your first pet?"> What was the name of your first pet?</option>
-                <option value="What is the name of the city where you were born?">What is the name of the city where you were born?</option>
-                <option value="What was your childhood best friend's name?">What was your childhood best friend's name?</option>
-            </select><br />        
-            <input type="text" id="questionOne" name="questionOneAnswer" /><br />
+            @*Showing the Question 3 times with input box using For loop 
+                based on the i it will take the question and the answer for each question
+            *@
+                <div id="questions-container">
+                    @for (int i = 0; i < 3; i++)
+                    {
+                        <label>Question @(i + 1)</label>
+                        <select name="Questions[@i].Questions">
+                            <option value="What was the name of your first pet?">What was the name of your first pet?</option>
+                            <option value="What is the name of the city where you were born?">What is the name of the city where you were born?</option>
+                            <option value="What was your childhood best friend's name?">What was your childhood best friend's name?</option>
+                        </select>
+                        <input type="text" name="Questions[@i].Answer" placeholder="Enter your answer" />
+                        <br />
+                    }
+                </div>
 
-            <label for="ddlquestionTwo"> Question 2</label>
-            <select id="ddlquestionTwo" name="QuestionTwo">
-                <option value=" What was the name of your first pet?"> What was the name of your first pet?</option>
-                <option value="What is the name of the city where you were born?">What is the name of the city where you were born?</option>
-                <option value="What was your childhood best friend's name?">What was your childhood best friend's name?</option>
-            </select><br />
-            <input type="text" id="questionTwo" name="questionTwoAnswer" /><br/>
-
-            <label for="ddlquestionThree"> Question 3</label>
-            <select id="ddlquestionThree" name="QuestionThree">
-                <option value=" What was the name of your first pet?"> What was the name of your first pet?</option>
-                <option value="What is the name of the city where you were born?">What is the name of the city where you were born?</option>
-                <option value="What was your childhood best friend's name?">What was your childhood best friend's name?</option>
-            </select><br />
-            <input type="text" id="questionThree" name="questionThreeAnswer" /><br />
+            <br />
 
             <h3>Additional Information</h3>
             <label for="txtLicenseNumber">License Number</label>

@@ -94,5 +94,27 @@ namespace Finial_Project_RealEstateWebPage.Models
         }
 
 
+
+
+        public void AddQuestionsAnswerFromSiginUpPage(string questions, string answers)
+        {
+            try
+            {
+                DBConnect objDB = new DBConnect();
+                SqlCommand command = new SqlCommand
+                {
+                    CommandType = CommandType.StoredProcedure,
+                    CommandText = "GetSecurityQuestionsAnswers"
+                };
+                command.Parameters.Clear();
+                command.Parameters.AddWithValue("@Question", questions);
+                command.Parameters.AddWithValue("@Answer", answers);
+                objDB.DoUpdate(command);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error retrieving data: " + ex.Message);
+            }
+        }
     }
 }

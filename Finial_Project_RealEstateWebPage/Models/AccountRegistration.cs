@@ -6,6 +6,7 @@ namespace Finial_Project_RealEstateWebPage.Models
 {
     public class AccountRegistration
     {
+        public List<Question> Questions { get; set; }
         public string UserID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

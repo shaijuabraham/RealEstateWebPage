@@ -19,4 +19,5 @@ namespace Finial_Project_RealEstateWebPage.Models
        
 
     }
+
 }
