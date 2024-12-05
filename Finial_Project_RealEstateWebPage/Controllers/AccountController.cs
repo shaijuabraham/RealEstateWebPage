@@ -57,44 +57,57 @@ namespace Finial_Project_RealEstateWebPage.Controllers
         }
 
         [HttpPost]
-        public IActionResult SignUp(AccountRegistration signUp) {
+        public IActionResult SignUp(string FirstName, string LastName,string Street,
+                                    string City, string State, int ZipCode, string PhoneNumber,
+                                    string Email, string ContactFirstName,string ContactLastName,
+                                    string ContactStreet,string ContactCity,string ContactState, int ContactZipCode,
+                                    string ContactPhoneNumber,string ContactEmail, string CompanyName, string CompanyStreet,
+                                    string CompanyCity, string CompanyState,int CompanyZipCode, string CompanyPhoneNumber,
+                                    string CompanyEmail, string Username, string Password, string LicenseNumber,string BrokerType,
+                                     string question1, string answer1, string question2, string answer2, string question3, string answer3) {
+            Question addQuestions = new Question();
+                // Process each question and answer pair
+                if (!string.IsNullOrEmpty(question1) && !string.IsNullOrEmpty(answer1))
+                {
+                    addQuestions.AddQuestionsAnswerFromSiginUpPage(Username, question1, answer1);
+                }
+                if (!string.IsNullOrEmpty(question2) && !string.IsNullOrEmpty(answer2))
+                {
+                    addQuestions.AddQuestionsAnswerFromSiginUpPage(Username, question2, answer2);
+                }
+                if (!string.IsNullOrEmpty(question3) && !string.IsNullOrEmpty(answer3))
+                {
+                    addQuestions.AddQuestionsAnswerFromSiginUpPage(Username, question3, answer3);
+                }
 
-            string Username = signUp.UserID;
+            AccountRegistration signUp = new AccountRegistration();
+            signUp.UserAccountSignUp(Username, CompanyName,
+                                     CompanyStreet,
+                                     CompanyCity, CompanyState,
+                                     CompanyZipCode,
+                                     CompanyPhoneNumber,CompanyEmail,
+                                     LicenseNumber,
+                                     BrokerType,Password);
 
-            foreach (var question in signUp.Questions)
-            {
-                Console.WriteLine($"Question: {question.Questions}, Answer: {question.Answer}");
+            signUp.AccountPersonalInfoSignUp(Username,
+                                             FirstName,
+                                             LastName,
+                                             Street,
+                                             City,
+                                             State,
+                                             ZipCode,
+                                             PhoneNumber,
+                                             Email);
 
-            }
-
-            signUp.UserAccountSignUp(Username, signUp.CompanyName, 
-                                     signUp.CompanyStreet,
-                                     signUp.CompanyCity, signUp.CompanyState, 
-                                     signUp.CompanyZipCode,
-                                     signUp.CompanyPhoneNumber, signUp.CompanyEmail, 
-                                     signUp.LicenseNumber,
-                                     signUp.BrokerType, signUp.Password);
-
-            signUp.AccountPersonalInfoSignUp(Username, 
-                                             signUp.FirstName,  
-                                             signUp.LastName,
-                                             signUp.Street, 
-                                             signUp.City,
-                                             signUp.State,
-                                             signUp.ZipCode, 
-                                             signUp.PhoneNumber,
-                                             signUp.Email);
-
-            signUp.AccountContactInfoSignUp(Username, 
-                                            signUp.ContactFirstName, 
-                                            signUp.ContactLastName,
-                                            signUp.ContactStreet, 
-                                            signUp.ContactCity, 
-                                            signUp.ContactState,
-                                            signUp.ContactZipCode, 
-                                            signUp.ContactPhoneNumber, 
-                                            signUp.ContactEmail);
-            
+            signUp.AccountContactInfoSignUp(Username,
+                                            ContactFirstName,
+                                            ContactLastName,
+                                            ContactStreet,
+                                            ContactCity,
+                                            ContactState,
+                                            ContactZipCode,
+                                            ContactPhoneNumber,
+                                            ContactEmail);
 
             return View("~/Views/Login&SignUp/LoginPage.cshtml");
         }

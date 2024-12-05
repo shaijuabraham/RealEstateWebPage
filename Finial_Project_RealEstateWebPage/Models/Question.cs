@@ -96,7 +96,7 @@ namespace Finial_Project_RealEstateWebPage.Models
 
 
 
-        public void AddQuestionsAnswerFromSiginUpPage(string questions, string answers)
+        public void AddQuestionsAnswerFromSiginUpPage(string userID, string questions, string answers)
         {
             try
             {
@@ -104,9 +104,10 @@ namespace Finial_Project_RealEstateWebPage.Models
                 SqlCommand command = new SqlCommand
                 {
                     CommandType = CommandType.StoredProcedure,
-                    CommandText = "GetSecurityQuestionsAnswers"
+                    CommandText = "AddQuestionsAnswerFromSiginUpPage"
                 };
                 command.Parameters.Clear();
+                command.Parameters.AddWithValue("@UserID", userID);
                 command.Parameters.AddWithValue("@Question", questions);
                 command.Parameters.AddWithValue("@Answer", answers);
                 objDB.DoUpdate(command);

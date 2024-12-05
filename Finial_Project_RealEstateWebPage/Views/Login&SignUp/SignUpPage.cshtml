@@ -40,7 +40,7 @@
 
             <h3>Personal Information</h3>
             <label for="txtFullName">First Name</label>
-            <input type="text" id="txtFullName" name="FullName"/><br />
+            <input type="text" id="txtFullName" name="FirstName" /><br />
             <label for="txtLastName">Last Name</label>
             <input type="text" id="txtLastName" name="LastName" /><br />
 
@@ -119,19 +119,38 @@
             @*Showing the Question 3 times with input box using For loop 
                 based on the i it will take the question and the answer for each question
             *@
-                <div id="questions-container">
-                    @for (int i = 0; i < 3; i++)
-                    {
-                        <label>Question @(i + 1)</label>
-                        <select name="Questions[@i].Questions">
-                            <option value="What was the name of your first pet?">What was the name of your first pet?</option>
-                            <option value="What is the name of the city where you were born?">What is the name of the city where you were born?</option>
-                            <option value="What was your childhood best friend's name?">What was your childhood best friend's name?</option>
-                        </select>
-                        <input type="text" name="Questions[@i].Answer" placeholder="Enter your answer" />
-                        <br />
-                    }
-                </div>
+            <div id="questions-container">
+                <label>Question 1</label>
+                <select name="question1">
+                    <option>Select Security Questions</option>
+                    <option value="What was the name of your first pet?">What was the name of your first pet?</option>
+                    <option value="What is the name of the city where you were born?">What is the name of the city where you were born?</option>
+                    <option value="What was your childhood best friend's name?">What was your childhood best friend's name?</option>
+                </select>
+                <input type="text" name="answer1" placeholder="Enter your answer" />
+                <br />
+
+                <label>Question 2</label>
+                <select name="question2">
+                    <option>Select Security Questions</option>
+                    <option value="What was the name of your first pet?">What was the name of your first pet?</option>
+                    <option value="What is the name of the city where you were born?">What is the name of the city where you were born?</option>
+                    <option value="What was your childhood best friend's name?">What was your childhood best friend's name?</option>
+                </select>
+                <input type="text" name="answer2" placeholder="Enter your answer" />
+                <br />
+
+                <label>Question 3</label>
+                <select name="question3">
+                    <option>Select Security Questions</option>
+                    <option value="What was the name of your first pet?">What was the name of your first pet?</option>
+                    <option value="What is the name of the city where you were born?">What is the name of the city where you were born?</option>
+                    <option value="What was your childhood best friend's name?">What was your childhood best friend's name?</option>
+                </select>
+                <input type="text" name="answer3" placeholder="Enter your answer" />
+                <br />
+            </div>
+
 
             <br />
 
@@ -141,6 +160,7 @@
 
             <label for="ddlBrokerType">Broker Type (e.g., residential, commercial)</label>
             <select id="ddlBrokerType" name="BrokerType">
+                <option>Select</option>
                 <option value="Residential">Residential</option>
                 <option value="Commercial">Commercial</option>
             </select><br />
