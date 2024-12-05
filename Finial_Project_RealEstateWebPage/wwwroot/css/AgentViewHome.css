@@ -1,0 +1,107 @@
+﻿/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+.homeDashboard {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Property Card */
+.property {
+    flex: 0 0 calc(100% - 20px);
+    max-width: 100%;
+    background-color: #ffffff;
+    border: 1px solid #e6e6e6;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+    .property .card-body {
+        padding: 20px;
+    }
+
+    .property h1 {
+        font-size: 2rem;
+        color: #1e90ff;
+        margin-bottom: 10px;
+    }
+
+    .property h2 {
+        font-size: 1.2rem;
+        color: #555;
+        margin-bottom: 10px;
+    }
+
+    .property h3 {
+        font-size: 1rem;
+        color: #777;
+        margin-bottom: 15px;
+    }
+
+    .property p {
+        font-size: 1rem;
+        color: #555;
+        margin-bottom: 10px;
+    }
+
+    .property h4 {
+        font-size: 1.2rem;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+/* Table Styling */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+    .table th, .table td {
+        text-align: left;
+        padding: 8px 10px;
+        border: 1px solid #ddd;
+    }
+
+    .table th {
+        background-color: #f5f5f5;
+        font-weight: bold;
+    }
+
+    .table tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+/* No Data Message */
+.homeDashboard p {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #777;
+    padding: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .property {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
