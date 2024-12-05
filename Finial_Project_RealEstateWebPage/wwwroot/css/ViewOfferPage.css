@@ -1,0 +1,96 @@
+﻿/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+header {
+    background-color: #004e87;
+    padding: 10px 0;
+}
+
+    header .custom-navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+        color: white;
+    }
+
+        header .custom-navbar h2 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+
+        header .custom-navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 1em;
+            font-weight: bold;
+        }
+
+            header .custom-navbar a:hover {
+                text-decoration: underline;
+            }
+
+/* Dashboard Styling */
+.dashboard {
+    padding: 20px;
+}
+
+.showoffer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.card-body {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+}
+
+.card-title {
+    font-size: 1.2em;
+    color: #004e87;
+    margin-bottom: 10px;
+}
+
+.card-footer {
+    background-color: #f8f8f8;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+    text-align: center;
+}
+
+    .card-footer .btn {
+        display: inline-block;
+        background-color: #004e87;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        text-decoration: none;
+        font-size: 0.9em;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+        .card-footer .btn:hover {
+            background-color: #003c6b;
+        }
+
+/* No Homes Message */
+.showoffer p {
+    font-size: 1em;
+    color: #999;
+    text-align: center;
+    margin-top: 20px;
+}

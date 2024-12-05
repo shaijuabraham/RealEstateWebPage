@@ -1,0 +1,96 @@
+﻿/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #004e87;
+    padding: 10px;
+    text-align: left;
+}
+
+    header a {
+        color: white;
+        text-decoration: none;
+        font-size: 1.2em;
+    }
+
+.titleContainer {
+    text-align: center;
+    padding: 20px;
+    background-color: #ffffff;
+    border-bottom: 2px solid #004e87;
+}
+
+#PageName h1 {
+    color: #004e87;
+    margin: 0;
+}
+
+#PageName p {
+    color: #666;
+    font-size: 1.1em;
+}
+
+/* Dashboard Cards */
+.homeDashboard {
+    padding: 20px;
+}
+
+.card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.card-title {
+    color: #004e87;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.card-text {
+    color: #555;
+    font-size: 0.9em;
+    line-height: 1.5;
+}
+
+.card-footer {
+    background-color: #f8f8f8;
+    text-align: center;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+}
+
+    .card-footer .btn {
+        background-color: #004e87;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 0.9em;
+        cursor: pointer;
+    }
+
+        .card-footer .btn:hover {
+            background-color: #003c6b;
+        }
+
+/* No Homes Message */
+.homeDashboard p {
+    text-align: center;
+    color: #999;
+    font-size: 1em;
+    margin-top: 20px;
+}
