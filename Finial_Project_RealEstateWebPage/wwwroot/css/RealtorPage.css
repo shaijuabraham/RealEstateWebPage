@@ -1,0 +1,124 @@
+﻿/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 0;
+}
+
+.titleContainer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #1e90ff;
+    color: white;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+    .titleContainer h1 {
+        font-size: 2.5rem;
+        margin-bottom: 5px;
+    }
+
+    .titleContainer p {
+        font-size: 1.2rem;
+    }
+
+/* Home Dashboard */
+.homeDashboard {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Card Styling */
+.card {
+    border: 1px solid #e6e6e6;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+    .card-body h5 {
+        font-size: 1.5rem;
+        color: #1e90ff;
+        margin-bottom: 10px;
+    }
+
+    .card-body p {
+        font-size: 1rem;
+        color: #555;
+        margin-bottom: 15px;
+    }
+
+.card-footer {
+    padding: 15px;
+    border-top: 1px solid #ddd;
+    margin-top: auto;
+}
+
+    .card-footer .btn {
+        margin-bottom: 10px;
+    }
+
+    .card-footer .btn-primary {
+        border: none;
+    }
+
+        .card-footer .btn-primary:hover {
+            
+        }
+
+    .card-footer .btn-danger {
+        border: none;
+    }
+
+        .card-footer .btn-danger:hover {
+            
+        }
+
+/* Grid System */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.col-md-4 {
+    flex: 0 0 calc(33.333% - 20px);
+    max-width: calc(33.333% - 20px);
+}
+
+@media (max-width: 768px) {
+    .col-md-4 {
+        flex: 0 0 calc(50% - 20px);
+        max-width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 576px) {
+    .col-md-4 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+/* No Homes Message */
+.homeDashboard p {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #777;
+    padding: 20px;
+}

@@ -1,0 +1,157 @@
+﻿/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 0;
+}
+
+.homeDashboard {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Card Styling */
+.property {
+    padding: 20px;
+    border: 1px solid #e6e6e6;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+}
+
+.card-body h1 {
+    font-size: 2rem;
+    color: #1e90ff;
+    margin-bottom: 10px;
+}
+
+.card-body h2 {
+    font-size: 1.5rem;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.card-body h3,
+.card-body h4 {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Highlighted Information */
+#days,
+#status {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-right: 10px;
+    font-size: 0.9rem;
+    color: white;
+}
+
+#days {
+    background-color: #28a745;
+}
+
+#status {
+    background-color: #17a2b8;
+}
+
+/* Section Headings */
+.card-body h4 {
+    font-size: 1.3rem;
+    margin-top: 20px;
+    color: #1e90ff;
+    text-transform: uppercase;
+    border-bottom: 2px solid #e6e6e6;
+    padding-bottom: 5px;
+}
+
+/* Table Styling */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #f9f9f9;
+}
+
+    .table th,
+    .table td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .table th {
+        background-color: #1e90ff;
+        color: white;
+    }
+
+/* Amenities and Utility Lists */
+.card-body ul {
+    list-style-type: square;
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+    .card-body ul li {
+        font-size: 1rem;
+        margin-bottom: 5px;
+    }
+
+/* Forms */
+#addDescription textarea {
+    width: 100%;
+    height: 80px;
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    resize: none;
+}
+
+#addDescription button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+    #addDescription button:hover {
+        background-color: #0056b3;
+    }
+
+/* Contact Information */
+.card-body p {
+    margin-bottom: 15px;
+}
+
+    .card-body p h3 {
+        margin-top: 20px;
+        font-size: 1.5rem;
+        color: #1e90ff;
+        border-bottom: 2px solid #e6e6e6;
+        padding-bottom: 5px;
+    }
+
+/* Footer Links */
+a {
+    text-decoration: none;
+    color: #1e90ff;
+}
+
+    a:hover {
+        text-decoration: underline;
+    }

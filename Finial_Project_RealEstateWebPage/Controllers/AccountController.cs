@@ -20,7 +20,7 @@ namespace Finial_Project_RealEstateWebPage.Controllers
             {
                 var options = new CookieOptions { Expires = DateTime.Now.AddMinutes(2) };
                 Response.Cookies.Append("UserID", login.UserID,options);
-                login.emialSent();               
+                //login.emialSent();               
                 ViewBag.ErrorMessage = "Login Accepted";
                 return RedirectToAction("Index", "Realtor");
             }
