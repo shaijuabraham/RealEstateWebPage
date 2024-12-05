@@ -93,9 +93,6 @@ namespace Finial_Project_RealEstateWebPage.Models
             return false;
         }
 
-
-
-
         public void AddQuestionsAnswerFromSiginUpPage(string userID, string questions, string answers)
         {
             try
