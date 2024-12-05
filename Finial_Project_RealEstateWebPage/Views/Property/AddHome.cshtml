@@ -1,0 +1,183 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model Finial_Project_RealEstateWebPage.Models.HomeInfo
+
+@{
+    ViewData["Title"] = "Add Home";
+}
+
+<div class="AddHomePage">
+    <h2>Property Information Form</h2>
+    <br />
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger">@TempData["Error"]</div>
+    }
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">@TempData["Success"]</div>
+    }
+
+    <form asp-action="AddProperty" method="post">
+        <div>
+            <label>UserId:</label>
+            <span>@ViewBag.UserId</span>
+        </div>
+
+        <div>
+            <label>Property Status</label>
+            <select asp-for="PropertyStatus" class="form-control">
+                <option value="">Select Status</option>
+                <option>Pending</option>
+                <option>Available</option>
+                <option>Coming soon</option>
+                <option>Renovating</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Building Number</label>
+            <input asp-for="BuildingNumber" class="form-control" required />
+        </div>
+
+        <div>
+            <label>Street Address</label>
+            <input asp-for="Street" class="form-control" required />
+        </div>
+
+        <div>
+            <label>City</label>
+            <input asp-for="City" class="form-control" required />
+        </div>
+
+        <div>
+            <label>State</label>
+            <input asp-for="State" class="form-control" required />
+        </div>
+
+        <div>
+            <label>Zip Code</label>
+            <input asp-for="ZipCode" type="number" class="form-control" required />
+        </div>
+
+        <div>
+            <label>Property Type</label>
+            <select asp-for="PropertyType" class="form-control">
+                <option>House</option>
+                <option>Townhomes</option>
+                <option>Multi-family</option>
+                <option>Apartments</option>
+                <option>Manufactured</option>
+                <option>Condos</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Number of Bedrooms</label>
+            <input asp-for="BedRooms" type="number" class="form-control" required />
+        </div>
+
+        <div>
+            <label>Number of Bathrooms</label>
+            <input asp-for="BathRooms" type="number" class="form-control" required />
+        </div>
+
+        <div>
+            <label>Room Name</label>
+            <select asp-for="RoomName" class="form-control">
+                <option>Select Room</option>
+                <option>Main Bedroom</option>
+                <option>Bedroom</option>
+                <option>Living Room</option>
+                <option>Kitchen</option>
+                <option>Bathroom</option>
+                <option>Dining Room</option>
+                <option>Office</option>
+                <option>Basement (Finished)</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Width (ft)</label>
+            <input asp-for="RoomWidth" type="number" class="form-control" placeholder="Enter width in feet" required />
+        </div>
+
+        <div>
+            <label>Length (ft)</label>
+            <input asp-for="RoomLength" type="number" class="form-control" placeholder="Enter length in feet" required />
+        </div>
+
+        <div>
+            <label>Heating</label>
+            <select asp-for="Heating" class="form-control">
+                <option>Central Heating</option>
+                <option>Radiant Heating</option>
+                <option>None</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Cooling</label>
+            <select asp-for="Cooling" class="form-control">
+                <option>Central Air</option>
+                <option>Window Unit</option>
+                <option>None</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Amenities</label>
+            @foreach (var amenity in new List<string> { "Swimming Pool", "Gym", "Garden", "Fireplace", "Air Conditioning", "Internet", "Security System", "Smoke Alarm" })
+            {
+                <div>
+                    <input type="checkbox" name="Amenities" value="@amenity" />
+                    <label>@amenity</label>
+                </div>
+            }
+        </div>
+
+        <div>
+            <label>Utilities</label>
+            @foreach (var utility in new List<string> { "Electricity", "Water Supply", "Gas Supply", "Sewage System", "Trash Disposal", "Swimming Pool" })
+            {
+                <div>
+                    <input type="checkbox" name="Utilities" value="@utility" />
+                    <label>@utility</label>
+                </div>
+            }
+        </div>
+
+        <div>
+            <label>Year Built</label>
+            <input asp-for="YearBuilt" type="number" class="form-control" required />
+        </div>
+
+        <div>
+            <label>Garage</label>
+            <select asp-for="Garage" class="form-control">
+                <option>None</option>
+                <option>1 Car</option>
+                <option>2 Car</option>
+                <option>3 Car</option>
+                <option>4 Car</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Asking Price</label>
+            <input asp-for="AskingPrice" type="number" class="form-control" required />
+        </div>
+
+        <div>
+            <label>Description</label>
+            <textarea asp-for="Description" class="form-control"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

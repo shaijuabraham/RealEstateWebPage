@@ -29,14 +29,14 @@
       <nav class="custom-navbar">
           <div class="container">
             <a class="brand" href="#">Mr.Home's</a>
-            <ul class="nav-links">
-               <li><a href="/AddHome/AddProperty" class="active">Add New Property</a></li>
-               <li><a href="/AgentPropertyShowing/AgentHomeShowing"> Home Showing </a></li>
+                <ul class="nav-links">
+                    <li><a asp-action="AddProperty" asp-controller="Property" class="active">Add New Property</a></li>
+                    <li><a href="/AgentPropertyShowing/AgentHomeShowing"> Home Showing </a></li>
                     <li><a href="/PropertyOffer/AgentViewOffer"> Current Offers</a></li>
-              <li><a asp-action="SignOut" asp-controller="Realtor">Sign Out</a></li>
-            </ul>
+                    <li><a asp-action="SignOut" asp-controller="Realtor">Sign Out</a></li>
+                </ul>
           </div>
-        </nav>
+      </nav>
     </header>
       <div class="titleContainer">
         <div id="PageName">
