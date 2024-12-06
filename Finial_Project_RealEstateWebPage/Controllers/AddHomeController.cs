@@ -18,7 +18,7 @@ namespace Finial_Project_RealEstateWebPage.Controllers
         {
             string userId = Request.Cookies["UserID"];
             ViewBag.UserID = userId;
-            return View("~/Views/RealtorPage/AddHome.cshtml");
+            return View("AddHome");
         }
     }
 }

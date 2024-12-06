@@ -48,14 +48,14 @@ namespace Finial_Project_RealEstateWebPage.Controllers
                     AgentCompanyInfo = agentCompany,
                     Home = homedata
                 };
-                return View("~/Views/Home/ViewHome.cshtml", viewModel);
+                return View("ViewHome", viewModel);
             }
             else
             {
                 ViewBag.RelatorHome = null; 
             }
 
-            return View("~/Views/Home/HomePage.cshtml");
+            return View("HomePage");
         }
 
         /*This will rediret to the Home Showing Page in the nav_bar*/
@@ -66,7 +66,7 @@ namespace Finial_Project_RealEstateWebPage.Controllers
                 Console.WriteLine($"{id}");
                 var options = new CookieOptions { Expires = DateTime.Now.AddMinutes(10) };
                 Response.Cookies.Append("PropertyID", id, options);
-                return View("~/Views/Home/HomeShowingPage.cshtml");
+                return View("HomeShowingPage");
             }
             return View();
         }
@@ -88,7 +88,7 @@ namespace Finial_Project_RealEstateWebPage.Controllers
                // return Re("ViewHome","SechduleHomeShowing");
             }
 
-            return View("~/Views/Home/HomeShowingPage.cshtml");
+            return View("HomeShowingPage");
         }
 
 

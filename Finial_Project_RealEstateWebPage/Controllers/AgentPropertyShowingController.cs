@@ -21,7 +21,7 @@ namespace Finial_Project_RealEstateWebPage.Controllers
                 ViewBag.RelatorHomeShowing = new List<Home>();  //empty list to avoid null reference
             }
 
-            return View("~/Views/RealtorPage/HomeViewing.cshtml");
+            return View("HomeViewing");
 
         }
 

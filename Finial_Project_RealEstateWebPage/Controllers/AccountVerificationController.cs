@@ -24,7 +24,7 @@ namespace Finial_Project_RealEstateWebPage.Controllers
         public IActionResult GetSecurityQuestions()
         {
             string userId = Request.Cookies["PasswordRestUserID"];
-            return View("~/Views/PasswordReset/SecurityQuestions.cshtml");
+            return View("SecurityQuestions");
         }
 
         [HttpPost]
@@ -85,7 +85,7 @@ namespace Finial_Project_RealEstateWebPage.Controllers
             }
 
             ViewBag.QuestionList = question;
-            return View("~/Views/PasswordReset/SecurityQuestions.cshtml");
+            return View("SecurityQuestions");
 
         }
 
@@ -96,7 +96,7 @@ namespace Finial_Project_RealEstateWebPage.Controllers
             if (Questions == null || Questions.Count == 0)
             {
                 ViewBag.ErrorMessage = "No questions were answered. Please try again.";
-                return View("~/Views/PasswordReset/SecurityQuestions.cshtml");
+                return View("SecurityQuestions");
             }
 
             foreach (var questionItem in Questions)
@@ -113,7 +113,7 @@ namespace Finial_Project_RealEstateWebPage.Controllers
                         {
                             questionModel.PasswordRest(newpassword, userId);
                             ViewBag.SuccessMessage = "All answers are correct!";
-                            return View("~/Views/Login&SignUp/LoginPage.cshtml");
+                            return View("LoginPage");
                         }
                         else
                         {

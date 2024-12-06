@@ -26,12 +26,12 @@ namespace Finial_Project_RealEstateWebPage.Controllers
                 ViewBag.RelatorHomesList = new List<Home>();  //empty list to avoid null reference
             }
 
-            return View("~/Views/RealtorPage/RealtorMainPage.cshtml");
+            return View("RealtorMainPage");
         }
 
         public IActionResult Index2()
         {
-            return View("~/Views/RealtorPage/RealtorMainPage.cshtml");
+            return View("RealtorMainPage");
         }
 
         [HttpGet]
@@ -58,14 +58,14 @@ namespace Finial_Project_RealEstateWebPage.Controllers
                     AgentCompanyInfo = agentCompany,
                 };
 
-                return View("~/Views/RealtorPage/ViewRealtorProperty.cshtml", viewModel);
+                return View("ViewRealtorProperty", viewModel);
             }
             else
             {
                 ViewBag.RelatorHome = null;
             }
 
-            return View("~/Views/RealtorPage/RealtorMainPage.cshtml");
+            return View("RealtorMainPage");
         }
 
         [HttpGet]

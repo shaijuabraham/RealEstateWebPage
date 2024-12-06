@@ -27,7 +27,7 @@ namespace Finial_Project_RealEstateWebPage.Controllers
             else
             {
                 ViewBag.ErrorMessage = "Invalid username or password.";
-                return View("~/Views/Login&SignUp/LoginPage.cshtml");
+                return View("LoginPage");
 
             }
             //return View();
@@ -37,12 +37,12 @@ namespace Finial_Project_RealEstateWebPage.Controllers
         [HttpGet]
         public IActionResult Login()
         {
-            return View("~/Views/Login&SignUp/LoginPage.cshtml");
+            return View("LoginPage");
         }
         [HttpGet]
         public IActionResult SignUp()
         {
-            return View("~/Views/Login&SignUp/SignUpPage.cshtml");
+            return View("SignUpPage");
         }
 
         public IActionResult SignUpPage()
@@ -53,7 +53,7 @@ namespace Finial_Project_RealEstateWebPage.Controllers
         [HttpGet]
         public IActionResult PasswordReset()
         {
-            return View("~/Views/PasswordReset/PasswordReset.cshtml");
+            return View("PasswordReset");
         }
 
         [HttpPost]
@@ -109,7 +109,7 @@ namespace Finial_Project_RealEstateWebPage.Controllers
                                             ContactPhoneNumber,
                                             ContactEmail);
 
-            return View("~/Views/Login&SignUp/LoginPage.cshtml");
+            return View("LoginPage");
         }
     }
 }

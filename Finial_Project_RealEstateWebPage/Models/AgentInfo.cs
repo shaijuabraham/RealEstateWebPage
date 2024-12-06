@@ -3,7 +3,7 @@ using System.Data;
 using System.Data.SqlClient;
 using Utilities;
 
-namespace Finial_Project_RealEstateWebPage.Controllers
+namespace Finial_Project_RealEstateWebPage.Models
 {
     public class AgentInfo
     {
@@ -11,7 +11,7 @@ namespace Finial_Project_RealEstateWebPage.Controllers
         public string userID { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }
-        public string street{ get; set; }
+        public string street { get; set; }
         public string city { get; set; }
         public string state { get; set; }
         public int zipCode { get; set; }
@@ -27,7 +27,7 @@ namespace Finial_Project_RealEstateWebPage.Controllers
         public AgentInfo(string userID, string firstName, string lastName, string street, string city, string state, int zipCode, string phoneNumber, string email)
         {
             this.userID = userID;
-            this .firstName = firstName;    
+            this.firstName = firstName;
             this.lastName = lastName;
             this.street = street;
             this.city = city;
@@ -41,7 +41,7 @@ namespace Finial_Project_RealEstateWebPage.Controllers
         DBConnect objDB = new DBConnect();
         SqlCommand objCommand = new SqlCommand();
 
-    
+
         /*get agent informanation based on the propertyID
          retnun the data to the userclass*/
         public AgentInfo AgentContactInfo(string propertyID)

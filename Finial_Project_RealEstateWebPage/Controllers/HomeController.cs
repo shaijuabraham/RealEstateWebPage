@@ -31,7 +31,7 @@ namespace Finial_Project_RealEstateWebPage.Controllers
             }
 
             ViewBag.HomesList = homes; 
-            return View("~/Views/Home/HomePage.cshtml");
+            return View("HomePage");
 
         }
 

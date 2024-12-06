@@ -25,7 +25,7 @@ namespace Finial_Project_RealEstateWebPage.Controllers
                 ViewBag.RelatorProertyOffers = new List<Home>();  //avoid null reference
             }
 
-            return View("~/Views/RealtorPage/AgentOfferShowing.cshtml");
+            return View("AgentOfferShowing");
         }
 
         public IActionResult MakePropertyOffer(string id)
@@ -35,7 +35,7 @@ namespace Finial_Project_RealEstateWebPage.Controllers
                 Console.WriteLine($"{id}");
                 var options = new CookieOptions { Expires = DateTime.Now.AddMinutes(10) };
                 Response.Cookies.Append("SelectedPropertyID", id, options);
-                return View("~/Views/Home/UserMakeOffer.cshtml");
+                return View("UserMakeOffer");
             }
             return View();
         }
@@ -62,7 +62,7 @@ namespace Finial_Project_RealEstateWebPage.Controllers
                 Console.WriteLine("Having error to sent request plese refresh the page");
                 ViewBag.ErrorMessage = "Having error to sent request plese refresh the page";
                  
-                return View("~/Views/Home/UserMakeOffer.cshtml");
+                return View("UserMakeOffer");
             }
 
            // return RedirectToAction("ViewPropertyInfo", "ViewHome", new { id = propertyID });
