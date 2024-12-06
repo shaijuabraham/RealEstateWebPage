@@ -195,8 +195,8 @@ namespace Finial_Project_RealEstateWebPage.Controllers
 
 
         // POST: Add Property
-        [HttpPost]
-        public IActionResult AddProperty(HomeInfo model, string PropertyStatus, string RoomName, int RoomWidth, int RoomLength, List<string> selectedAmenities, List<string> selectedUtilities)
+        //[HttpPost]
+/*        public IActionResult AddProperty(HomeInfo model, string PropertyStatus, string RoomName, int RoomWidth, int RoomLength, List<string> selectedAmenities, List<string> selectedUtilities)
         {
             if (!ModelState.IsValid)
             {
@@ -265,7 +265,7 @@ namespace Finial_Project_RealEstateWebPage.Controllers
                 return View("AddHome", model);
             }
         }
-
+*/
 
 
 
