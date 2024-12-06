@@ -1,5 +1,7 @@
 ﻿using ClassLibrary;
 using FunctionClassLibrary.AssociateClass;
+using System.ComponentModel.DataAnnotations;
+
 
 
 namespace Finial_Project_RealEstateWebPage.Models
@@ -62,125 +64,148 @@ namespace Finial_Project_RealEstateWebPage.Models
                 this.yearBuilt = yearBuilt;
         }
 
-            // Public properties with get and set for the specific fields
+        // Public properties with get and set for the specific fields
+            [Required(ErrorMessage = "Property ID is required.")]
             public string PropertyID
             {
                 get { return propertyID; }
                 set { propertyID = value; }
             }
 
+            [Required(ErrorMessage = "Agent ID is required.")]
             public string AgentID
             {
                 get { return agentID; }
                 set { agentID = value; }
             }
 
+            [Required(ErrorMessage = "Bed Rooms is required.")]
             public int BedRooms
             {
                 get { return bedRooms; }
                 set { bedRooms = value; }
             }
 
+            [Required(ErrorMessage = "Bath Rooms is required.")]
             public int BathRooms
             {
                 get { return bathRooms; }
                 set { bathRooms = value; }
             }
 
+            [Required(ErrorMessage = "Heating is required.")]
             public string Heating
             {
                 get { return heating; }
                 set { heating = value; }
             }
 
+            [Required(ErrorMessage = "Cooling is required.")]
             public string Cooling
             {
                 get { return cooling; }
                 set { cooling = value; }
             }
 
+            [Required(ErrorMessage = "Asking Price is required.")]
             public decimal AskingPrice
             {
                 get { return askingPrice; }
                 set { askingPrice = value; }
             }
 
+            [Required(ErrorMessage = "Home Size is required.")]
             public string HomeSize
             {
                 get { return homeSize; }
                 set { homeSize = value; }
             }
 
+            [Required(ErrorMessage = "Description is required.")]
             public string Description
             {
                 get { return description; }
                 set { description = value; }
             }
 
+            [Required(ErrorMessage = "Garage is required.")]
             public string Garage
             {
                 get { return garage; }
                 set { garage = value; }
             }
 
-            // Property for utility
+            [Required(ErrorMessage = "Home Utility is required.")]
             public Utility HomeUtility
             {
                 get { return utility; }
                 set { utility = value; }
             }
+
+            [Required(ErrorMessage = "Home Amenities is required.")]
             public Amenities HomeAmenities
             {
                 get { return amenities; }
                 set { amenities = value; }
             }
 
+            [Required(ErrorMessage = "Home Rooms is required.")]
             public List<Rooms> HomeRooms
             {
                 get { return rooms; }
                 set { rooms = value; }
             }
+
+            [Required(ErrorMessage = "Property Images is required.")]
             public List<PropertyImage> PropertyImages
             {
                 get { return propertyImages; }
                 set { propertyImages = value; }
             }
 
+            [Required(ErrorMessage = "Building Number is required.")]
             public string BuildingNumber
             {
                 get { return buildingNumber; }
                 set { buildingNumber = value; }
             }
+
+            [Required(ErrorMessage = "Street is required.")]
             public string Street
             {
                 get { return street; }
                 set { street = value; }
             }
 
+            [Required(ErrorMessage = "City is required.")]
             public string City
             {
                 get { return city; }
                 set { city = value; }
             }
 
+            [Required(ErrorMessage = "State is required.")]
             public string State
             {
                 get { return state; }
                 set { state = value; }
             }
 
+            [Required(ErrorMessage = "Zip Code is required.")]
             public int ZipCode
             {
                 get { return zipCode; }
                 set { zipCode = value; }
             }
 
+            [Required(ErrorMessage = "Property Type is required.")]
             public string PropertyType
             {
                 get { return propertyType; }
                 set { propertyType = value; }
             }
 
+            [Required(ErrorMessage = "Year built is required.")]
             public int YearBuilt
             {
                 get { return yearBuilt; }

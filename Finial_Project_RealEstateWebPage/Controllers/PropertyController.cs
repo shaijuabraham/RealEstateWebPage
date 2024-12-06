@@ -2,6 +2,7 @@
 using Finial_Project_RealEstateWebPage.Models;
 using Finial_Project_RealEstateWebPage.Models.associateclass;
 using Microsoft.AspNetCore.Mvc;
+using System.Reflection;
 
 namespace Finial_Project_RealEstateWebPage.Controllers
 {
@@ -183,6 +184,92 @@ namespace Finial_Project_RealEstateWebPage.Controllers
                 return RedirectToAction("ManageHomeRooms", new { propertyID });
             }
         }
+
+
+        // GET: Add Property
+        [HttpGet]
+        public IActionResult AddProperty()
+        {
+            return View("AddHome", new HomeInfo()); // Explicitly render AddHome.cshtml
+        }
+
+
+        // POST: Add Property
+        [HttpPost]
+        public IActionResult AddProperty(HomeInfo model, string PropertyStatus, string RoomName, int RoomWidth, int RoomLength, List<string> selectedAmenities, List<string> selectedUtilities)
+        {
+            if (!ModelState.IsValid)
+            {
+                // Debugging: Log validation errors
+                foreach (var modelState in ModelState.Values)
+                {
+                    foreach (var error in modelState.Errors)
+                    {
+                        Console.WriteLine($"Validation Error: {error.ErrorMessage}");
+                    }
+                }
+
+                TempData["Error"] = "Please fill all the required fields.";
+                return View("AddHome", model); // Render the correct view explicitly
+            }
+
+            try
+            {
+                var propertyData = new PropertyDataInfo();
+
+                // Generate Property ID based on the BuildingNumber
+                if (string.IsNullOrEmpty(model.BuildingNumber))
+                {
+                    TempData["Error"] = "Building Number is required to generate Property ID.";
+                    return View("AddHome", model);
+                }
+
+                string propertyID = propertyData.GeneratePropertyID(model.BuildingNumber);
+                propertyStatus(propertyID, DateTime.Now, PropertyStatus);
+                addRoomToDatabase(propertyID, RoomName, RoomWidth, RoomLength);
+
+                // Save the property status using your existing AddPropertyInfo class
+                var addPropertyInfo = new AddPropertyInfo();
+                addPropertyInfo.AddPropertyStatus(propertyID, DateTime.Now, propertyStatus);
+
+                // Save the property information
+                propertyData.AddProperty(new HomeInfo
+                {
+                    PropertyID = propertyID,
+                    BuildingNumber = model.BuildingNumber,
+                    Street = model.Street,
+                    City = model.City,
+                    State = model.State,
+                    ZipCode = model.ZipCode,
+                    PropertyType = model.PropertyType,
+                    YearBuilt = model.YearBuilt,
+                    BedRooms = model.BedRooms,
+                    BathRooms = model.BathRooms,
+                    Heating = model.Heating,
+                    Cooling = model.Cooling,
+                    AskingPrice = model.AskingPrice,
+                    Description = model.Description,
+                    Garage = model.Garage
+                });
+
+                // Save selected utilities and amenities
+                propertyData.AddUtilities(new HomeInfo { PropertyID = propertyID, HomeUtility = new Utility(selectedUtilities) });
+                propertyData.AddAmenities(new HomeInfo { PropertyID = propertyID, HomeAmenities = new Amenities(selectedAmenities) });
+
+                TempData["Success"] = "Property added successfully!";
+                return RedirectToAction("Index", "Realtor");
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = $"An error occurred: {ex.Message}";
+                return View("AddHome", model);
+            }
+        }
+
+
+
+
+
 
     }
 }
