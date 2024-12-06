@@ -1,0 +1,53 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model Finial_Project_RealEstateWebPage.Models.HomeInfo
+
+@{
+    Layout = null;
+    ViewData["Title"] = "HomeViewing";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>
+        Add Property 
+    </title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="~/css/HomeViewing.css" />
+
+</head>
+
+    <body>
+        <header>
+            <a href="javascript:history.back()">Back</a>
+        </header>
+        <div class="titleContainer">
+            <div id="PageName">
+                <h1>Mr.Home's</h1>
+                <p>The best deals in town!!</p>
+            </div>
+        </div>
+
+
+        <div class="container">
+             <form asp-controller="AddHome" asp-action="AddProperty" method="post" class="addHome">
+            <div class="input">
+                <label for="PropertyStatus">Property Status</label>
+                <select name="PropertyStatus" id="PropertyStatus">
+                    <option value="Pending">Pending</option>
+                    <option value="Available">Available</option>
+                    <option value="Coming Soon">Coming Soon</option>
+                    <option value="Renovating">Renovating</option>
+                </select>
+            </div>
+
+            </form>
+
+        </div>
+        
+    </body>
+ </html>
