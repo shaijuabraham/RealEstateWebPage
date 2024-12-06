@@ -106,18 +106,29 @@
                                         <th>Room Name</th>
                                         <th>Length</th>
                                         <th>Width</th>
+                                        <th>Image</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach (var room in Model.HomeInfo.HomeRooms)
-                                    {
-                                        <tr>
-                                            <td>@room.RoomName</td>
-                                            <td>@room.Length</td>
-                                            <td>@room.Width</td>
-                                        </tr>
-                                    }
-                                </tbody>
+                  @foreach (var room in Model.HomeInfo.HomeRooms)
+            {
+                <tr>
+                    <td>@room.RoomName</td>
+                    <td>@room.Length</td>
+                    <td>@room.Width</td>
+                    <td>
+                        @foreach (var propertyImage in Models.PropertyImage)
+                        {
+                            if (propertyImage.PropertyID == room.PropertyID)
+                            {
+                                <img src="@propertyImage.ImageName" alt="Load Image" />
+                            }
+                        }
+                         </td>
+                         </tr>
+                         }
+
+                            </tbody>
                             </table>
                         }
                         else

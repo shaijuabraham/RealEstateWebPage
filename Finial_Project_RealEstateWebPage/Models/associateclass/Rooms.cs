@@ -12,6 +12,7 @@ namespace ClassLibrary
         private int length;
         private int width;
         private string roomName;
+        public string ImageName { get; set; }
 
         public Rooms(int height,int width,string roomName)
         {
@@ -47,5 +48,6 @@ namespace ClassLibrary
             get { return id; }
             set { id = value; }
         }
+
     }
 }

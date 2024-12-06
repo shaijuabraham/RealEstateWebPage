@@ -60,21 +60,43 @@ namespace Finial_Project_RealEstateWebPage.Models
             {
                 foreach (DataRow roomRow in propertyData.Tables[4].Rows)
                 {
-
                     string roomsName = roomRow["RoomName"].ToString();
-                    int Width = Convert.ToInt32(roomRow["Width"]);
-                    int Length = Convert.ToInt32(roomRow["Length"]);
+                    int width = Convert.ToInt32(roomRow["Width"]);
+                    int length = Convert.ToInt32(roomRow["Length"]);
                     int id = Convert.ToInt32(roomRow["Id"]);
 
-                    Rooms rooms1 = new Rooms(id, Length, Width, roomsName);
-                    rooms.Add(rooms1);
+                    Rooms room = new Rooms(id, length, width, roomsName)
+                    {
+                    };
+                    rooms.Add(room);
                 }
             }
             List<PropertyImage> images = new List<PropertyImage>();
+            if (propertyData.Tables.Count > 1)
+            {
+                foreach (DataRow propertImageRow in propertyData.Tables[3].Rows)
+                {
+                    string imageName = propertImageRow["ImageName"].ToString();
+
+                    // Use Convert.FromBase64String to parse the Base64 string into a byte[] 
+                    string imageDataStr = propertImageRow["ImageData"].ToString();
+                    byte[] imageData = null;
+                    string imageType = propertImageRow["ImageType"].ToString();
+
+                    // Parse ImageLength (assuming it's stored as an integer in the row)
+                    int imageLength = 0;
+                    // Create PropertyImage instance
+                    PropertyImage property = new PropertyImage(imageName, imageData, imageType, imageLength);
+
+                    // Add the property image to the list
+                    images.Add(property);
+                }
+            }
             HomeInfo home = new HomeInfo(buildingNumber, propertyID, agentID, street, city, state, zipCode,
-                                  propertyType, yearBuilt, bedRooms, bathRooms, heating, cooling,
-                                  askingPrice, homeSize, description, garage, utilities, amenities,
-                                  rooms, images);
+                                          propertyType, yearBuilt, bedRooms, bathRooms, heating, cooling,
+                                          askingPrice, homeSize, description, garage, utilities, amenities,
+                                          rooms, images);
+
             return home;
         }
 
@@ -157,6 +179,7 @@ namespace Finial_Project_RealEstateWebPage.Models
                 objDB.DoUpdateUsingCmdObj(objCommand);
             }
         }
+
 
     }
 }
