@@ -54,7 +54,10 @@
                                     <a asp-action="ViewRealtorSelectedPropertyInfo" asp-controller="Realtor" asp-route-id="@home.PropertyID" class="btn btn-primary w-100">
                                         View More
                                     </a>
-                                </div>
+                                    <a asp-action="DeleteHomeSowingRequest" asp-controller="PropertyOffer" asp-route-id="@home.ID" class="btn btn-primary w-100">
+                                        Cancel Appointment
+                                    </a>
+                                  </div>
                             </div>
                         </div>
                     }

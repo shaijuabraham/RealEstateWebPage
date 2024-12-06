@@ -43,7 +43,7 @@ namespace Finial_Project_RealEstateWebPage.Controllers
                                                 string Contingencies, string NeedToSell, string MoveInDate)
         {
 
-            string propertyID = Request.Cookies["SelectedPropertyID"];
+            string propertyID = Request.Cookies["SelectedPropertyID"]; 
 
             //if (propertyID != null && offerClass != null)
             if (propertyID != null)
@@ -58,12 +58,20 @@ namespace Finial_Project_RealEstateWebPage.Controllers
             {
                 Console.WriteLine("Having error to sent request plese refresh the page");
                 ViewBag.ErrorMessage = "Having error to sent request plese refresh the page";
-
+                 
                 return View("~/Views/Home/UserMakeOffer.cshtml");
             }
 
            // return RedirectToAction("ViewPropertyInfo", "ViewHome", new { id = propertyID });
 
+        }
+
+        [HttpPost]
+        public IActionResult DeleteHomeSowingRequest(int id)
+        {
+
+
+            return View();
         }
     }
 }
