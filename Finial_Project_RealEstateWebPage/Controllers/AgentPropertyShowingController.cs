@@ -31,7 +31,7 @@ namespace Finial_Project_RealEstateWebPage.Controllers
 
             OfferClass offerClass = new OfferClass();
             offerClass.DeleteAcceptedOffer(PropertyID);
-            return RedirectToAction("PropertyOffer", "AgentViewOffer");
+            return RedirectToAction("AgentViewOffer", "PropertyOffer");
         }
 
         [HttpPost]
@@ -39,7 +39,7 @@ namespace Finial_Project_RealEstateWebPage.Controllers
         {
             OfferClass offerClass = new OfferClass();
             offerClass.DeleteOffer(id);
-            return RedirectToAction("PropertyOffer", "AgentViewOffer");
+            return RedirectToAction("AgentViewOffer", "PropertyOffer");
 
         }
     }
