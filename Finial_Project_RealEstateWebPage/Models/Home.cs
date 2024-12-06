@@ -10,6 +10,7 @@ namespace Finial_Project_RealEstateWebPage.Models
     {
         private double askingPrice;
         public string BuildingNumber {  get; set; }
+        public string PropertyFrontImage { get; set; }
         public string PropertyID { get; set; }
         private int bedRooms;
         private int bathRooms;
@@ -111,6 +112,7 @@ namespace Finial_Project_RealEstateWebPage.Models
                             home.ZipCode = int.Parse(record["ZipCode"].ToString());
                             home.BuildingNumber = record["BuildingNumber"].ToString();
                             home.PropertyID = record["PropertyID"].ToString();
+                            home.PropertyFrontImage = record["PropertyFrontImage"].ToString();
                         }
 
                         homes.Add(home);
@@ -167,6 +169,8 @@ namespace Finial_Project_RealEstateWebPage.Models
                             home.State = record["State"].ToString();
                             home.ZipCode = int.Parse(record["ZipCode"].ToString());
                             home.PropertyID = record["PropertyID"].ToString();
+                            home.PropertyFrontImage = record["PropertyFrontImage"].ToString();
+
                         }
 
                         homes.Add(home);
