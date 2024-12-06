@@ -2,6 +2,9 @@
 using Finial_Project_RealEstateWebPage.Models.associateclass;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.FlowAnalysis;
+using System.Data;
+using System.Data.SqlClient;
+using Utilities;
 
 namespace Finial_Project_RealEstateWebPage.Controllers
 {
@@ -65,13 +68,24 @@ namespace Finial_Project_RealEstateWebPage.Controllers
            // return RedirectToAction("ViewPropertyInfo", "ViewHome", new { id = propertyID });
 
         }
-
+        /*Delete the property Showing request*/
         [HttpPost]
         public IActionResult DeleteHomeSowingRequest(int id)
         {
+            if (id > 0)
+            {
+                DBConnect objDB = new DBConnect();
+                SqlCommand command = new SqlCommand
+                {
+                    CommandType = CommandType.StoredProcedure,
+                    CommandText = "DeletePropertyShowing"
+                };
+                command.Parameters.Clear();
+                command.Parameters.AddWithValue("@ID", id);
 
-
-            return View();
+                objDB.DoUpdate(command);
+            }
+            return RedirectToAction("AgentHomeShowing", "AgentPropertyShowing");
         }
     }
 }

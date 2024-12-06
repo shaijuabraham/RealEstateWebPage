@@ -9,7 +9,7 @@ namespace Finial_Project_RealEstateWebPage.Models
     public class PropertyShowing
     {
 
-        public int ID {  get; set; }
+        public int HomeShowingID {  get; set; }
         public String FullName { get; set; }
         public String Email { get; set; }
         public String PhoneNumber { get; set; }
@@ -53,7 +53,7 @@ namespace Finial_Project_RealEstateWebPage.Models
 
                         if (propertyRow.Table.Rows.Count > 0)
                         {
-                            home.ID = int.Parse(propertyRow["Id"].ToString());
+                            home.HomeShowingID = int.Parse(propertyRow["Id"].ToString());
                             home.FullName = propertyRow["FullName"].ToString();
                             home.Email = propertyRow["Email"].ToString();
                             home.PhoneNumber = propertyRow["PhoneNumber"].ToString();

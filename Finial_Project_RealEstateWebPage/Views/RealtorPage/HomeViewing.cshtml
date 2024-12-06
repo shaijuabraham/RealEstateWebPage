@@ -31,7 +31,7 @@
             <p>The best deals in town!!</p>
         </div>
     </div>
-
+    @*Learing Opportuinity *@
         <div class="homeDashboard container mt-4">
             <div class="row gx-3 gy-5">
                 @if (ViewBag.RelatorHomeShowing != null && ViewBag.RelatorHomeShowing.Count > 0)
@@ -54,10 +54,17 @@
                                     <a asp-action="ViewRealtorSelectedPropertyInfo" asp-controller="Realtor" asp-route-id="@home.PropertyID" class="btn btn-primary w-100">
                                         View More
                                     </a>
-                                    <a asp-action="DeleteHomeSowingRequest" asp-controller="PropertyOffer" asp-route-id="@home.ID" class="btn btn-primary w-100">
-                                        Cancel Appointment
-                                    </a>
-                                  </div>
+                                </div>
+
+                                <div class="card-footer mt-auto text-center">
+
+                                    <form asp-action="DeleteHomeSowingRequest" asp-controller="PropertyOffer" method="post">
+                                        <input type="hidden" name="id" value="@home.HomeShowingID" />
+                                        <button type="submit" class="btn btn-primary w-100">Cancel Appointment</button>
+                                    </form>
+
+                                </div>
+
                             </div>
                         </div>
                     }
