@@ -1,4 +1,5 @@
 ﻿using Finial_Project_RealEstateWebPage.Models;
+using Finial_Project_RealEstateWebPage.Models.associateclass;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Finial_Project_RealEstateWebPage.Controllers
@@ -21,6 +22,24 @@ namespace Finial_Project_RealEstateWebPage.Controllers
             }
 
             return View("~/Views/RealtorPage/HomeViewing.cshtml");
+
+        }
+
+        [HttpPost]
+        public IActionResult AcceptClientPropertyOffer(string PropertyID)
+        {
+
+            OfferClass offerClass = new OfferClass();
+            offerClass.DeleteAcceptedOffer(PropertyID);
+            return RedirectToAction("PropertyOffer", "AgentViewOffer");
+        }
+
+        [HttpPost]
+        public IActionResult DeclineClientPropertyOffer(int id)
+        {
+            OfferClass offerClass = new OfferClass();
+            offerClass.DeleteOffer(id);
+            return RedirectToAction("PropertyOffer", "AgentViewOffer");
 
         }
     }

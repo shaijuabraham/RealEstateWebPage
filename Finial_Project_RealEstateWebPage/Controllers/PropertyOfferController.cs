@@ -86,6 +86,9 @@ namespace Finial_Project_RealEstateWebPage.Controllers
                 objDB.DoUpdate(command);
             }
             return RedirectToAction("AgentHomeShowing", "AgentPropertyShowing");
+         
         }
+
+
     }
 }

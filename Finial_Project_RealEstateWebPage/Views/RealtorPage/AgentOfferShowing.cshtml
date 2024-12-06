@@ -42,11 +42,34 @@
                 {
                             <div class="card-body">
                                 <h5 class="card-title">@home.PropertyID</h5>
+                                <p class="card-text">
+                                    <strong>Full Name:</strong> @home.FullName<br />
+                                    <strong>Offer Amount:</strong> @home.OfferAmount<br />
+                                    <strong>Sale Type:</strong> @home.SaleType<br />
+                                    <strong>Contingencies:</strong> @home.Contingencies<br />
+                                    <strong>Need to Sell:</strong> @home.NeedToSell<br />
+                                    <strong>Move-In Date:</strong> @home.MoveInDate<br />
+                                    <strong>Buyer Phone:</strong> @home.BuyerPhone<br />
+                                    <strong>Buyer Email:</strong> @home.BuyerEmail<br />
+                                </p>
+
                             </div>
+
                             <div class="card-footer mt-auto text-center">
-                        <a asp-action="ViewRealtorSelectedPropertyInfo" asp-controller="Realtor" asp-route-id="@home.PropertyID" class="btn btn-primary w-100">
+                                <a asp-action="ViewRealtorSelectedPropertyInfo" asp-controller="Realtor" asp-route-id="@home.PropertyID" class="btn btn-primary w-100">
                                     View More
                                 </a>
+
+                                 <form asp-action="AcceptClientPropertyOffer" asp-controller="AgentPropertyShowing" method="post">
+                                    <input type="hidden" name="PropertyID" value="@home.PropertyID" />
+                                    <button type="submit" class="btn btn-primary w-100"> Accept </button>
+                                </form>
+
+                                 <form asp-action="DeclineClientPropertyOffer" asp-controller="AgentPropertyShowing" method="post">
+                                    <input type="hidden" name="id" value="@home.OfferId" />
+                                    <button type="submit" class="btn btn-primary w-100"> Decline </button>
+                                </form>
+
                             </div>
                 }
             }

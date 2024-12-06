@@ -66,6 +66,14 @@ namespace Finial_Project_RealEstateWebPage.Models.associateclass
                         {
                             home.PropertyID = propertyRow["PropertyId"].ToString();
                             home.OfferId = propertyRow["id"].ToString();
+                            home.FullName = propertyRow["FullName"].ToString();
+                            home.OfferAmount = propertyRow["OfferAmount"].ToString();
+                            home.SaleType = propertyRow["SaleType"].ToString();
+                            home.Contingencies = propertyRow["Contingencies"].ToString();
+                            home.NeedToSell = propertyRow["NeedToSell"].ToString();
+                            home.MoveInDate = propertyRow["MoveInDate"].ToString();
+                            home.BuyerPhone = propertyRow["BuyerPhone"].ToString();
+                            home.BuyerEmail = propertyRow["BuyerEmail"].ToString();
                         }
 
                         homes.Add(home);
@@ -106,5 +114,26 @@ namespace Finial_Project_RealEstateWebPage.Models.associateclass
             objDB.DoUpdateUsingCmdObj(objCommand);
         }
 
+
+        /*methode to delete the specfic property id data based on the 
+             user selction using when usere decline the specfic offer*/
+        public void DeleteOffer(int OfferId)
+        {
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "DeletePropertyOfferDetails";
+            objCommand.Parameters.Clear();
+            objCommand.Parameters.AddWithValue("@Id", OfferId);
+            objDB.DoUpdateUsingCmdObj(objCommand);
+        }
+        /*when user accept a offer its delete the that offfer and all the 
+         * property data based on the propertyid*/
+        public void DeleteAcceptedOffer(string propertyId)
+        {
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "DeleteAcceptPropertyOffer";
+            objCommand.Parameters.Clear();
+            objCommand.Parameters.AddWithValue("@PropertyID", propertyId);
+            objDB.DoUpdateUsingCmdObj(objCommand);
+        }
     }
 }
