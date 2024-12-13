@@ -24,6 +24,7 @@ namespace Finial_Project_RealEstateWebPage.Models
             objCommand.Parameters.AddWithValue("@PropertyStatus", status);
             objDB.DoUpdateUsingCmdObj(objCommand);
         }
+
         /*methode to get the property status from database and put it in a string builder*/
         public string GetPropertyStatus(string propertyID)
         {

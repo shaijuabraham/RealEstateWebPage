@@ -13,15 +13,14 @@ namespace Finial_Project_RealEstateWebPage.Controllers
 {
     public class AddHomeController : Controller
     {
-        string webApiUrl = "https://localhost:44397/swagger/index.html";
+
         //run the Addproperty IAction methode Wuth the page load.
         public IActionResult AddProperty(HomeInfo addHome)
         {
-           //String webApi = ""
-            string userId = Request.Cookies["UserID"];
+            //We want a new object to handle api calls
 
-            ViewBag.UserID = userId;
-            return View("~/Views/RealtorPage/AddHome.cshtml");
+
+            return View();
         }
     }
 }

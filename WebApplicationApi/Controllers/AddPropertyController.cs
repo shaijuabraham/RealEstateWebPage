@@ -4,15 +4,25 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebApplicationApi.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
     public class AddPropertyController : ControllerBase
     {
 
+
+        [Route("api/home/AddProperty")]
         [HttpPost]
-        public void AddProerty([FromBody] HomeInfo homeInfo)
+        public Boolean AddProperty([FromBody] HomeInfo homeInfo)
         {
-          
+            // Add the property to the database
+                // Call your database object
+            PropertyDataInfo dbCall = new PropertyDataInfo();
+            
+            if (dbCall.AddProperty(homeInfo) > 0)
+            {
+                return true;
+            }
+
+            return false;
+
         }
     }
 }
